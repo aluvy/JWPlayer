@@ -1,0 +1,14 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 999,
+  "prettier.htmlWhitespaceSensitivity": "ignore",
+  "prettier.bracketSameLine": true,
+  "workbench.colorTheme": "Dracula Theme Soft"
+}
