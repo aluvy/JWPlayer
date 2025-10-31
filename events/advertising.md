@@ -1,14 +1,22 @@
-# .on('adBidRequest')
+# Advertising Events
+
+> Video ad insertion requires a JWP Enterprise license. Please contact our team to upgrade your account.
+
+This API provides developers with more control over the functionality of the Advertising edition of JWP. For VAST and IMA plugins, this API allows for things like impression verification, custom scheduling, and multiple companions.
+
+<br>
+
+## .on('adBidRequest')
 
 Fired when header bidding starts requesting for bids.
 
-## 호출시점
+### 호출시점
 
 - 광고 입찰이 시작될 때, 즉 플레이어가 **광고 요청(bid request)을 보내기 직전**에 발생합니다.
 - 구체적으로는 광고 설정이 되어 있고 헤더입찰(bidding) 구성요소가 활성화된 상황에서, 광고 시스템(예: VAST, IMA, FreeWheel 등)으로 입찰 요청을 시작하는 타이밍입니다.
 - 이 이벤트 이후에 입찰 결과를 담은 `adBidResponse` 이벤트가 이어집니다.
 
-## 이벤트 객체 구조 (콜백 파라미터)
+### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
 {
@@ -38,7 +46,7 @@ Fired when header bidding starts requesting for bids.
 | **offset** (string)                    | 광고 위치 기준(예: `pre`, `mid`, `post`)                                                 |
 | **viewable** (number)                  | 플레이어가 현재 뷰포트 내에서 보이는지 여부(1/0)                                         |
 
-## 활용
+### 활용
 
 - **입찰 시작 시점 로그 수집**: 입찰 요청이 언제, 어떤 bidders와 함께 시작됐는지 기록해 입찰 성능 분석 가능.
 - **입찰 타이밍 조정**: `bidTimeout`, `floorPriceCents` 등을 참조해 요구 조건 변경 또는 최적화 가능.  
@@ -47,7 +55,7 @@ Fired when header bidding starts requesting for bids.
 - **뷰어빌리티 기반 제어**: `viewable` 값이 0이면 입찰 요청을 취소하거나 다른 흐름으로 대체 가능.
 - **A/B 테스트나 광고 정책 분석**: 입찰 요청 시점 데이터를 측정해 전환율 또는 광고 수익 연관 분석 가능.
 
-## 주의사항
+### 주의사항
 
 - 이 이벤트는 **헤더 입찰 환경이 구성된 경우에만 발생**합니다. 광고 시스템이 단순 VAST 요청만 있을 경우엔 발생하지 않을 수 있습니다.
   Platform
@@ -57,7 +65,7 @@ Fired when header bidding starts requesting for bids.
 - 광고 클라이언트 및 설정(`client`, `mediationLayerAdServer`)에 따라 반환 필드 또는 동작이 달라질 수 있으므로, 사용하는 라이선스 및 버전에 맞게 테스트 필수입니다.
 - 이 이벤트는 광고 노출 전 단계이므로 **사용자에게 직접 보이는 변화는 거의 없음**. 따라서 UI 변화보다는 백엔드/트래킹 목적에 적합합니다.
 
-## 특징
+### 특징
 
 - 광고모듈 중에서도 **입찰(request) 시작 시점**을 공식적으로 인식할 수 있는 **유일한 이벤트**입니다.
 - 광고의 수익 최적화 관점에서 특히 중요하며, 광고 로딩 앞단에서 **입찰 구조·타이밍을 분석** 가능.

@@ -2,7 +2,7 @@
 
 These API calls are used to create players and provide setup information.
 
-<br><br><br>
+<br>
 
 ## .on('ready')
 
@@ -48,7 +48,7 @@ This is the earliest point at which any API calls should be made.
 - **JW Player** 초기화 완료의 유일한 보장 이벤트.
 - 모든 **API 호출의 시작점**이며, `setupError`와 짝지어 사용해야 안정적인 로딩 관리 가능.
 
-<br><br><br>
+<br>
 
 ## .on('remove')
 
@@ -88,7 +88,7 @@ No value returned
 - **리소스 정리·메모리 관리 트리거**로 사용하기 적합.
 - 다른 이벤트(`ready`, `complete`, `setupError`)와 달리, `remove()` 명시 호출 없이는 발생하지 않음.
 
-<br><br><br>
+<br>
 
 ## .on('setupError')
 
