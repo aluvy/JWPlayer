@@ -155,7 +155,7 @@
 | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [**autostartNotAllowed**](./playback.md#onautostartNotAllowed) | 플레이어 설정(`autostart: true`) 또는 `player.play()` 호출로 자동재생을 시도했으나, 브라우저나 OS의 미디어 자동재생 정책에 의해 차단되었을 때 호출 |
 | [**buffer**](./playback.md#onbuffer)                           | 플레이어가 재생 도중 데이터 로딩이 부족하여 일시적으로 멈출 때 호출                                                                                |
-| [**complete**](./playback.md#oncomplete)                       |                                                                                                                                                    |
+| [**complete**](./playback.md#oncomplete)                       | 플레이어가 현재 재생 중인 영상의 마지막 프레임을 모두 재생 완료했을 때 호출                                                                        |
 | [**error**](./playback.md#onerror)                             |                                                                                                                                                    |
 | [**firstFrame**](./playback.md#onfirstFrame)                   |                                                                                                                                                    |
 | [**idle**](./playback.md#onidle)                               |                                                                                                                                                    |
