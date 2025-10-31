@@ -1,5 +1,8 @@
 # .on('ready)
 
+Signifies when the player has been initialized and is ready for playback  
+This is the earliest point at which any API calls should be made.
+
 ## 호출시점
 
 - `.setup()` 실행 후 **플레이어 초기화가 완료되어 재생 준비가 끝난 시점**에 호출됨.
@@ -16,13 +19,10 @@
 }
 ```
 
-| Value              | Description                                      |
-| ------------------ | ------------------------------------------------ |
-| setupTime (number) | setup() → ready까지 걸린 시간 (ms)               |
+| Value              |                   Description                    |
+| :----------------- | :----------------------------------------------: |
+| setupTime (number) |        setup() → ready까지 걸린 시간 (ms)        |
 | viewable (number)  | 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임) |
-
-- setupTime: setup() → ready까지 걸린 시간 (ms)
-- viewable: 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임)
 
 ## 활용
 
