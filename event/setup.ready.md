@@ -1,4 +1,4 @@
-# .on('ready)
+# .on('ready')
 
 Signifies when the player has been initialized and is ready for playback  
 This is the earliest point at which any API calls should be made.

@@ -1,4 +1,4 @@
-# .on('remove)
+# .on('remove')
 
 Triggered when the player is taken off of a page via `jwplayer().remove();`  
 No value returned
