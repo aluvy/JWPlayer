@@ -18,7 +18,7 @@ This singular API call can be used to gather all events from the player's API.
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```javascript
-jwplayer('player').on('all', function (eventName, eventData) {
+player.on('all', function (eventName, eventData) {
   console.log(eventName, eventData);
 });
 ```

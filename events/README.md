@@ -8,11 +8,11 @@ JWPlayer 이벤트 리스트
 
 플레이어 셋업과 관련된 이벤트 그룹
 
-| Event                                     | Description                                      |
-| :---------------------------------------- | :----------------------------------------------- |
-| [**ready**](./setup.md#onready)           | 플레이어 초기화가 완료되어 재생 준비가 끝난 시점 |
-| [**remove**](./setup.md#onremove)         | 플레이어 인스턴스가 DOM에서 제거될 때            |
-| [**setupError**](./setup.md#onsetuperror) | 플레이어 초기화가 실패했을 때                    |
+| Event                                     | Description                                             |
+| :---------------------------------------- | :------------------------------------------------------ |
+| [**ready**](./setup.md#onready)           | 플레이어 초기화가 완료되어 재생 준비가 끝난 시점에 호출 |
+| [**remove**](./setup.md#onremove)         | 플레이어 인스턴스가 DOM에서 제거될 때 호출              |
+| [**setupError**](./setup.md#onsetuperror) | 플레이어 초기화가 실패했을 때 호출                      |
 
 <br>
 
@@ -32,7 +32,7 @@ JWPlayer 이벤트 리스트
 
 | Event                                                    | Description                                 |
 | :------------------------------------------------------- | :------------------------------------------ |
-| [**adBidRequest**](./advertising.md#onEvent)             | 광고 요청(bid request)을 보내기 직전에 발생 |
+| [**adBidRequest**](./advertising.md#onadbidrequest)      | 광고 요청(bid request)을 보내기 직전에 호출 |
 | [**adBidResponse**](./advertising.md#onEvent)            |                                             |
 | [**adBlock**](./advertising.md#onEvent)                  |                                             |
 | [**adBreakEnd**](./advertising.md#onEvent)               |                                             |
@@ -79,9 +79,9 @@ JWPlayer 이벤트 리스트
 
 플레이어 버퍼링과 관련된 이벤트 그룹
 
-| Event                                   | Description                                                       |
-| :-------------------------------------- | :---------------------------------------------------------------- |
-| [**bufferChange**](./buffer.md#onEvent) | 현재 재생 중인 미디어의 버퍼(로딩된 데이터 양)가 변할 때마다 호출 |
+| Event                                          | Description                                                       |
+| :--------------------------------------------- | :---------------------------------------------------------------- |
+| [**bufferChange**](./buffer.md#onbufferchange) | 현재 재생 중인 미디어의 버퍼(로딩된 데이터 양)가 변할 때마다 호출 |
 
 <br>
 
@@ -89,10 +89,10 @@ JWPlayer 이벤트 리스트
 
 자막과 관련된 이벤트 그룹
 
-| Event                                        | Description                                                              |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
-| [**captionsChanged**](./captions.md#onEvent) | 자막 트랙을 변경했을 때 발생                                             |
-| [**captionsList**](./captions.md#onEvent)    | 사용 가능한 자막 트랙(caption tracks)을 처음 인식하거나 갱신했을 때 발생 |
+| Event                                                  | Description                                                              |
+| :----------------------------------------------------- | :----------------------------------------------------------------------- |
+| [**captionsChanged**](./captions.md#oncaptionschanged) | 자막 트랙을 변경했을 때 호출                                             |
+| [**captionsList**](./captions.md#oncaptionslist)       | 사용 가능한 자막 트랙(caption tracks)을 처음 인식하거나 갱신했을 때 호출 |
 
 <br>
 
@@ -226,7 +226,7 @@ JWPlayer 이벤트 리스트
 공유 기능(소셜 링크, 임베드 코드 등)과 관련된 이벤트 그룹
 
 ```javascript
-jwplayer().on('ready', function (event) {
+player.on('ready', function (event) {
   sharingPlugin = jwplayer().getPlugin('sharing');
 });
 ```

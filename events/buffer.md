@@ -49,7 +49,7 @@ Fires when the currently playing item loads additional data into its buffer
 → 버퍼링 진행 정도를 시각화하여 사용자에게 진행 상황 표시.
 
 ```javascript
-jwplayer('player').on('bufferChange', (e) => {
+player.on('bufferChange', (e) => {
   updateBufferBar(e.bufferPercent);
 });
 ```
