@@ -1,6 +1,6 @@
 # Events Index
 
-JWPlayer 이벤트
+**JWPlayer 이벤트**
 
 이벤트 핸들러 `.on`, `.once`, `.off` 을 사용하여 이벤트를 등록하거나 제거할 수 있으며,  
 `.trigger` 를 통해 사용자 정의 이벤트를 발생시킬 수도 있습니다.
@@ -38,37 +38,37 @@ JWPlayer 이벤트
 
 광고 기능과 관련된 이벤트 그룹
 
-| Event                                                                       | Description                                 |
-| :-------------------------------------------------------------------------- | :------------------------------------------ |
-| [**adBidRequest**](./advertising.md#onadBidRequest)                         | 광고 요청(bid request)을 보내기 직전에 호출 |
-| [**adBidResponse**](./advertising.md#onadBidResponse)                       |                                             |
-| [**adBlock**](./advertising.md#onadBlock)                                   |                                             |
-| [**adBreakEnd**](./advertising.md#onadBreakEnd)                             |                                             |
-| [**adBreakIgnored**](./advertising.md#onadBreakIgnored)                     |                                             |
-| [**adBreakStart**](./advertising.md#onadBreakStart)                         |                                             |
-| [**adClick**](./advertising.md#onadClick)                                   |                                             |
-| [**adCompanions**](./advertising.md#onadCompanions)                         |                                             |
-| [**adComplete**](./advertising.md#onadComplete)                             |                                             |
-| [**adError**](./advertising.md#onadError)                                   |                                             |
-| [**adImpression**](./advertising.md#onadImpression)                         |                                             |
-| [**adItem**](./advertising.md#onadItem)                                     |                                             |
-| [**adLoaded**](./advertising.md#onadLoaded)                                 |                                             |
-| [**adManager**](./advertising.md#onadManager)                               |                                             |
-| [**adMeta**](./advertising.md#onadMeta)                                     |                                             |
-| [**adPause**](./advertising.md#onadPause)                                   |                                             |
-| [**adPlay**](./advertising.md#onadPlay)                                     |                                             |
-| [**adRequest**](./advertising.md#onadRequest)                               |                                             |
-| [**adRequestedContentResume**](./advertising.md#onadRequestedContentResume) |                                             |
-| [**adSchedule**](./advertising.md#onadSchedule)                             |                                             |
-| [**adLoadedXML**](./advertising.md#onadLoadedXML)                           |                                             |
-| [**adSkipped**](./advertising.md#onadSkipped)                               |                                             |
-| [**adStarted**](./advertising.md#onadStarted)                               |                                             |
-| [**adTime**](./advertising.md#onadTime)                                     |                                             |
-| [**adViewableImpression**](./advertising.md#onadViewableImpression)         |                                             |
-| [**adWarning**](./advertising.md#onadWarning)                               |                                             |
-| [**adsManager**](./advertising.md#onadsManager)                             |                                             |
-| [**beforeComplete**](./advertising.md#onbeforeComplete)                     |                                             |
-| [**beforePlay**](./advertising.md#onbeforePlay)                             |                                             |
+| Event                                                                       | Description                                                        |
+| :-------------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| [**adBidRequest**](./advertising.md#onadBidRequest)                         | 광고 요청(bid request)을 보내기 직전에 호출                        |
+| [**adBidResponse**](./advertising.md#onadBidResponse)                       |                                                                    |
+| [**adBlock**](./advertising.md#onadBlock)                                   |                                                                    |
+| [**adBreakEnd**](./advertising.md#onadBreakEnd)                             |                                                                    |
+| [**adBreakIgnored**](./advertising.md#onadBreakIgnored)                     |                                                                    |
+| [**adBreakStart**](./advertising.md#onadBreakStart)                         |                                                                    |
+| [**adClick**](./advertising.md#onadClick)                                   |                                                                    |
+| [**adCompanions**](./advertising.md#onadCompanions)                         |                                                                    |
+| [**adComplete**](./advertising.md#onadComplete)                             |                                                                    |
+| [**adError**](./advertising.md#onadError)                                   |                                                                    |
+| [**adImpression**](./advertising.md#onadImpression)                         |                                                                    |
+| [**adItem**](./advertising.md#onadItem)                                     |                                                                    |
+| [**adLoaded**](./advertising.md#onadLoaded)                                 |                                                                    |
+| [**adManager**](./advertising.md#onadManager)                               |                                                                    |
+| [**adMeta**](./advertising.md#onadMeta)                                     |                                                                    |
+| [**adPause**](./advertising.md#onadPause)                                   |                                                                    |
+| [**adPlay**](./advertising.md#onadPlay)                                     |                                                                    |
+| [**adRequest**](./advertising.md#onadRequest)                               |                                                                    |
+| [**adRequestedContentResume**](./advertising.md#onadRequestedContentResume) |                                                                    |
+| [**adSchedule**](./advertising.md#onadSchedule)                             |                                                                    |
+| [**adLoadedXML**](./advertising.md#onadLoadedXML)                           |                                                                    |
+| [**adSkipped**](./advertising.md#onadSkipped)                               |                                                                    |
+| [**adStarted**](./advertising.md#onadStarted)                               |                                                                    |
+| [**adTime**](./advertising.md#onadTime)                                     |                                                                    |
+| [**adViewableImpression**](./advertising.md#onadViewableImpression)         |                                                                    |
+| [**adWarning**](./advertising.md#onadWarning)                               |                                                                    |
+| [**adsManager**](./advertising.md#onadsManager)                             |                                                                    |
+| [**beforeComplete**](./advertising.md#onbeforeComplete)                     | 현재 재생 중인 영상이 끝나기 직전(마지막 프레임 재생 직전) 에 호출 |
+| [**beforePlay**](./advertising.md#onbeforePlay)                             | 영상이 재생되기 직전, 즉 실제 `play()` 명령이 실행되기 직전에 호출 |
 
 <br>
 
