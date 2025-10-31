@@ -1,6 +1,14 @@
 # Events Index
 
-JWPlayer 이벤트 리스트
+JWPlayer 이벤트
+
+이벤트 핸들러 `.on`, `.once`, `.off` 을 사용하여 이벤트를 등록하거나 제거할 수 있으며,  
+`.trigger` 를 통해 사용자 정의 이벤트를 발생시킬 수도 있습니다.
+
+- `on`: 하나 또는 여러 개의 이벤트를 선택한 요소에 부착합니다. 이벤트가 발생할 때마다 지정된 함수(핸들러)를 실행합니다.
+- `once`: 이벤트가 단 한 번만 발생하도록 등록합니다. 이벤트 핸들러가 한 번 실행된 후에는 자동으로 제거됩니다.
+- `off`: 이전에 `on` 또는 `once`를 통해 등록했던 이벤트 핸들러를 제거합니다.
+- `trigger`: 마우스 클릭과 같은 사용자의 실제 행동 없이도, 특정 요소에 연결된 이벤트를 프로그래밍 방식으로 강제 발생시킵니다. 또한, 사용자 정의 이벤트를 생성하여 원하는 시점에 실행하는 데에도 사용됩니다.
 
 <br>
 
@@ -12,7 +20,7 @@ JWPlayer 이벤트 리스트
 | :---------------------------------------- | :------------------------------------------------------ |
 | [**ready**](./setup.md#onready)           | 플레이어 초기화가 완료되어 재생 준비가 끝난 시점에 호출 |
 | [**remove**](./setup.md#onremove)         | 플레이어 인스턴스가 DOM에서 제거될 때 호출              |
-| [**setupError**](./setup.md#onsetuperror) | 플레이어 초기화가 실패했을 때 호출                      |
+| [**setupError**](./setup.md#onsetupError) | 플레이어 초기화가 실패했을 때 호출                      |
 
 <br>
 
@@ -33,34 +41,34 @@ JWPlayer 이벤트 리스트
 | Event                                                                       | Description                                 |
 | :-------------------------------------------------------------------------- | :------------------------------------------ |
 | [**adBidRequest**](./advertising.md#onadBidRequest)                         | 광고 요청(bid request)을 보내기 직전에 호출 |
-| [**adBidResponse**](./advertising.md#onadbidresponse)                       |                                             |
-| [**adBlock**](./advertising.md#onadblock)                                   |                                             |
-| [**adBreakEnd**](./advertising.md#onadbreakend)                             |                                             |
-| [**adBreakIgnored**](./advertising.md#onadbreakignored)                     |                                             |
-| [**adBreakStart**](./advertising.md#onadbreakstart)                         |                                             |
-| [**adClick**](./advertising.md#onadclick)                                   |                                             |
-| [**adCompanions**](./advertising.md#onadcompanions)                         |                                             |
-| [**adComplete**](./advertising.md#pmadcomplete)                             |                                             |
-| [**adError**](./advertising.md#onaderror)                                   |                                             |
-| [**adImpression**](./advertising.md#onadimpression)                         |                                             |
-| [**adItem**](./advertising.md#onaditem)                                     |                                             |
-| [**adLoaded**](./advertising.md#onadloaded)                                 |                                             |
-| [**adManager**](./advertising.md#onadmanager)                               |                                             |
-| [**adMeta**](./advertising.md#onadmeta)                                     |                                             |
-| [**adPause**](./advertising.md#onadpause)                                   |                                             |
-| [**adPlay**](./advertising.md#onadplay)                                     |                                             |
-| [**adRequest**](./advertising.md#onadrequest)                               |                                             |
-| [**adRequestedContentResume**](./advertising.md#onadrequestedcontentresume) |                                             |
-| [**adSchedule**](./advertising.md#onadschedule)                             |                                             |
-| [**adLoadedXML**](./advertising.md#onadloadedxml)                           |                                             |
-| [**adSkipped**](./advertising.md#onadskipped)                               |                                             |
-| [**adStarted**](./advertising.md#onadstarted)                               |                                             |
-| [**adTime**](./advertising.md#onadtime)                                     |                                             |
-| [**adViewableImpression**](./advertising.md#onadviewableimpression)         |                                             |
-| [**adWarning**](./advertising.md#onadwarning)                               |                                             |
-| [**adsManager**](./advertising.md#onadsmanager)                             |                                             |
-| [**beforeComplete**](./advertising.md#onbeforecomplete)                     |                                             |
-| [**beforePlay**](./advertising.md#onbeforeplay)                             |                                             |
+| [**adBidResponse**](./advertising.md#onadBidResponse)                       |                                             |
+| [**adBlock**](./advertising.md#onadBlock)                                   |                                             |
+| [**adBreakEnd**](./advertising.md#onadBreakEnd)                             |                                             |
+| [**adBreakIgnored**](./advertising.md#onadBreakIgnored)                     |                                             |
+| [**adBreakStart**](./advertising.md#onadBreakStart)                         |                                             |
+| [**adClick**](./advertising.md#onadClick)                                   |                                             |
+| [**adCompanions**](./advertising.md#onadCompanions)                         |                                             |
+| [**adComplete**](./advertising.md#onadComplete)                             |                                             |
+| [**adError**](./advertising.md#onadError)                                   |                                             |
+| [**adImpression**](./advertising.md#onadImpression)                         |                                             |
+| [**adItem**](./advertising.md#onadItem)                                     |                                             |
+| [**adLoaded**](./advertising.md#onadLoaded)                                 |                                             |
+| [**adManager**](./advertising.md#onadManager)                               |                                             |
+| [**adMeta**](./advertising.md#onadMeta)                                     |                                             |
+| [**adPause**](./advertising.md#onadPause)                                   |                                             |
+| [**adPlay**](./advertising.md#onadPlay)                                     |                                             |
+| [**adRequest**](./advertising.md#onadRequest)                               |                                             |
+| [**adRequestedContentResume**](./advertising.md#onadRequestedContentResume) |                                             |
+| [**adSchedule**](./advertising.md#onadSchedule)                             |                                             |
+| [**adLoadedXML**](./advertising.md#onadLoadedXML)                           |                                             |
+| [**adSkipped**](./advertising.md#onadSkipped)                               |                                             |
+| [**adStarted**](./advertising.md#onadStarted)                               |                                             |
+| [**adTime**](./advertising.md#onadTime)                                     |                                             |
+| [**adViewableImpression**](./advertising.md#onadViewableImpression)         |                                             |
+| [**adWarning**](./advertising.md#onadWarning)                               |                                             |
+| [**adsManager**](./advertising.md#onadsManager)                             |                                             |
+| [**beforeComplete**](./advertising.md#onbeforeComplete)                     |                                             |
+| [**beforePlay**](./advertising.md#onbeforePlay)                             |                                             |
 
 <br>
 
@@ -70,8 +78,8 @@ JWPlayer 이벤트 리스트
 
 | Event                                                          | Description |
 | :------------------------------------------------------------- | :---------- |
-| [**audioTrackChanged**](./audio-tracks.md#onaudiotrackchanged) |             |
-| [**audioTracks**](./audio-tracks.md#onaudiotracks)             |             |
+| [**audioTrackChanged**](./audio-tracks.md#onaudioTrackChanged) |             |
+| [**audioTracks**](./audio-tracks.md#onaudioTracks)             |             |
 
 <br>
 
@@ -81,7 +89,7 @@ JWPlayer 이벤트 리스트
 
 | Event                                          | Description                                                       |
 | :--------------------------------------------- | :---------------------------------------------------------------- |
-| [**bufferChange**](./buffer.md#onbufferchange) | 현재 재생 중인 미디어의 버퍼(로딩된 데이터 양)가 변할 때마다 호출 |
+| [**bufferChange**](./buffer.md#onbufferChange) | 현재 재생 중인 미디어의 버퍼(로딩된 데이터 양)가 변할 때마다 호출 |
 
 <br>
 
@@ -91,8 +99,8 @@ JWPlayer 이벤트 리스트
 
 | Event                                                  | Description                                                              |
 | :----------------------------------------------------- | :----------------------------------------------------------------------- |
-| [**captionsChanged**](./captions.md#oncaptionschanged) | 자막 트랙을 변경했을 때 호출                                             |
-| [**captionsList**](./captions.md#oncaptionslist)       | 사용 가능한 자막 트랙(caption tracks)을 처음 인식하거나 갱신했을 때 호출 |
+| [**captionsChanged**](./captions.md#oncaptionsChanged) | 자막 트랙을 변경했을 때 호출                                             |
+| [**captionsList**](./captions.md#oncaptionsList)       | 사용 가능한 자막 트랙(caption tracks)을 처음 인식하거나 갱신했을 때 호출 |
 
 <br>
 
@@ -103,7 +111,7 @@ JWPlayer 이벤트 리스트
 | Event                                              | Description |
 | :------------------------------------------------- | :---------- |
 | [**cast**](./cast.md#oncast)                       |             |
-| [**castIntercepted**](./cast.md#oncastintercepted) |             |
+| [**castIntercepted**](./cast.md#oncastIntercepted) |             |
 
 <br>
 
@@ -114,7 +122,7 @@ JWPlayer 이벤트 리스트
 | Event                                            | Description |
 | :----------------------------------------------- | :---------- |
 | [**controls**](./controls.md#oncontrols)         |             |
-| [**displayClick**](./controls.md#ondisplayclick) |             |
+| [**displayClick**](./controls.md#ondisplayClick) |             |
 
 <br>
 
@@ -135,7 +143,7 @@ JWPlayer 이벤트 리스트
 | Event                                                      | Description |
 | :--------------------------------------------------------- | :---------- |
 | [**meta**](./metadata.md#onmeta)                           |             |
-| [**metadataCueParsed**](./metadata.md#onmetadatacueparsed) |             |
+| [**metadataCueParsed**](./metadata.md#onmetadataCueParsed) |             |
 
 <br>
 
@@ -145,16 +153,16 @@ JWPlayer 이벤트 리스트
 
 | Event                                                          | Description |
 | :------------------------------------------------------------- | :---------- |
-| [**autostartNotAllowed**](./playback.md#onautostartnotallowed) |             |
+| [**autostartNotAllowed**](./playback.md#onautostartNotAllowed) |             |
 | [**buffer**](./playback.md#onbuffer)                           |             |
 | [**complete**](./playback.md#oncomplete)                       |             |
 | [**error**](./playback.md#onerror)                             |             |
-| [**firstFrame**](./playback.md#onfirstframe)                   |             |
+| [**firstFrame**](./playback.md#onfirstFrame)                   |             |
 | [**idle**](./playback.md#onidle)                               |             |
 | [**pause**](./playback.md#onpause)                             |             |
 | [**play**](./playback.md#onplay)                               |             |
-| [**playAttemptFailed**](./playback.md#onplayattemptfailed)     |             |
-| [**playbackRateChanged**](./playback.md#onplaybackratechanged) |             |
+| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |             |
+| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |             |
 | [**warning**](./playback.md#onwarning)                         |             |
 
 <br>
@@ -165,10 +173,10 @@ JWPlayer 이벤트 리스트
 
 | Event                                                    | Description |
 | :------------------------------------------------------- | :---------- |
-| [**nextClick**](./playlist.md#onnextclick)               |             |
+| [**nextClick**](./playlist.md#onnextClick)               |             |
 | [**playlist**](./playlist.md#onplaylist)                 |             |
-| [**playlistItem**](./playlist.md#onplaylistitem)         |             |
-| [**playlistComplete**](./playlist.md#onplaylistcomplete) |             |
+| [**playlistItem**](./playlist.md#onplaylistItem)         |             |
+| [**playlistComplete**](./playlist.md#onplaylistComplete) |             |
 
 <br>
 
@@ -179,8 +187,8 @@ JWPlayer 이벤트 리스트
 | Event                                             | Description |
 | :------------------------------------------------ | :---------- |
 | [**levels**](./quality.md#onlevels)               |             |
-| [**levelsChanged**](./quality.md#onlevelschanged) |             |
-| [**visualQuality**](./quality.md#onvisualquality) |             |
+| [**levelsChanged**](./quality.md#onlevelsChanged) |             |
+| [**visualQuality**](./quality.md#onvisualQuality) |             |
 
 <br>
 
@@ -190,10 +198,10 @@ JWPlayer 이벤트 리스트
 
 | Event                                               | Description |
 | :-------------------------------------------------- | :---------- |
-| [**relatedReady**](./related.md#onrelatedready)     |             |
-| [**relatedOnclose**](./related.md#onrelatedonclose) |             |
-| [**relatedOnopen**](./related.md#onrelatedonopen)   |             |
-| [**relatedOnplay**](./related.md#onrelatedonplay)   |             |
+| [**relatedReady**](./related.md#onrelatedReady)     |             |
+| [**relatedOnclose**](./related.md#onrelatedOnclose) |             |
+| [**relatedOnopen**](./related.md#onrelatedOnopen)   |             |
+| [**relatedOnplay**](./related.md#onrelatedOnplay)   |             |
 
 <br>
 
@@ -214,7 +222,7 @@ JWPlayer 이벤트 리스트
 
 | Event                                                          | Description |
 | :------------------------------------------------------------- | :---------- |
-| [**absolutePositionReady**](./seek.md#onabsolutepositionready) |             |
+| [**absolutePositionReady**](./seek.md#onabsolutePositionReady) |             |
 | [**seek**](./seek.md#onseek)                                   |             |
 | [**seeked**](./seek.md#onseeked)                               |             |
 | [**time**](./seek.md#ontime)                                   |             |
