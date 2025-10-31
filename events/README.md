@@ -30,37 +30,37 @@ JWPlayer 이벤트 리스트
 
 광고 기능과 관련된 이벤트 그룹
 
-| Event                                                    | Description                                 |
-| :------------------------------------------------------- | :------------------------------------------ |
-| [**adBidRequest**](./advertising.md#onadbidrequest)      | 광고 요청(bid request)을 보내기 직전에 호출 |
-| [**adBidResponse**](./advertising.md#onEvent)            |                                             |
-| [**adBlock**](./advertising.md#onEvent)                  |                                             |
-| [**adBreakEnd**](./advertising.md#onEvent)               |                                             |
-| [**adBreakIgnored**](./advertising.md#onEvent)           |                                             |
-| [**adBreakStart**](./advertising.md#onEvent)             |                                             |
-| [**adClick**](./advertising.md#onEvent)                  |                                             |
-| [**adCompanions**](./advertising.md#onEvent)             |                                             |
-| [**adComplete**](./advertising.md#onEvent)               |                                             |
-| [**adError**](./advertising.md#onEvent)                  |                                             |
-| [**adImpression**](./advertising.md#onEvent)             |                                             |
-| [**adItem**](./advertising.md#onEvent)                   |                                             |
-| [**adLoaded**](./advertising.md#onEvent)                 |                                             |
-| [**adManager**](./advertising.md#onEvent)                |                                             |
-| [**adMeta**](./advertising.md#onEvent)                   |                                             |
-| [**adPause**](./advertising.md#onEvent)                  |                                             |
-| [**adPlay**](./advertising.md#onEvent)                   |                                             |
-| [**adRequest**](./advertising.md#onEvent)                |                                             |
-| [**adRequestedContentResume**](./advertising.md#onEvent) |                                             |
-| [**adSchedule**](./advertising.md#onEvent)               |                                             |
-| [**adLoadedXML**](./advertising.md#onEvent)              |                                             |
-| [**adSkipped**](./advertising.md#onEvent)                |                                             |
-| [**adStarted**](./advertising.md#onEvent)                |                                             |
-| [**adTime**](./advertising.md#onEvent)                   |                                             |
-| [**adViewableImpression**](./advertising.md#onEvent)     |                                             |
-| [**adWarning**](./advertising.md#onEvent)                |                                             |
-| [**adsManager**](./advertising.md#onEvent)               |                                             |
-| [**beforeComplete**](./advertising.md#onEvent)           |                                             |
-| [**beforePlay**](./advertising.md#onEvent)               |                                             |
+| Event                                                                       | Description                                 |
+| :-------------------------------------------------------------------------- | :------------------------------------------ |
+| [**adBidRequest**](./advertising.md#onadBidRequest)                         | 광고 요청(bid request)을 보내기 직전에 호출 |
+| [**adBidResponse**](./advertising.md#onadbidresponse)                       |                                             |
+| [**adBlock**](./advertising.md#onadblock)                                   |                                             |
+| [**adBreakEnd**](./advertising.md#onadbreakend)                             |                                             |
+| [**adBreakIgnored**](./advertising.md#onadbreakignored)                     |                                             |
+| [**adBreakStart**](./advertising.md#onadbreakstart)                         |                                             |
+| [**adClick**](./advertising.md#onadclick)                                   |                                             |
+| [**adCompanions**](./advertising.md#onadcompanions)                         |                                             |
+| [**adComplete**](./advertising.md#pmadcomplete)                             |                                             |
+| [**adError**](./advertising.md#onaderror)                                   |                                             |
+| [**adImpression**](./advertising.md#onadimpression)                         |                                             |
+| [**adItem**](./advertising.md#onaditem)                                     |                                             |
+| [**adLoaded**](./advertising.md#onadloaded)                                 |                                             |
+| [**adManager**](./advertising.md#onadmanager)                               |                                             |
+| [**adMeta**](./advertising.md#onadmeta)                                     |                                             |
+| [**adPause**](./advertising.md#onadpause)                                   |                                             |
+| [**adPlay**](./advertising.md#onadplay)                                     |                                             |
+| [**adRequest**](./advertising.md#onadrequest)                               |                                             |
+| [**adRequestedContentResume**](./advertising.md#onadrequestedcontentresume) |                                             |
+| [**adSchedule**](./advertising.md#onadschedule)                             |                                             |
+| [**adLoadedXML**](./advertising.md#onadloadedxml)                           |                                             |
+| [**adSkipped**](./advertising.md#onadskipped)                               |                                             |
+| [**adStarted**](./advertising.md#onadstarted)                               |                                             |
+| [**adTime**](./advertising.md#onadtime)                                     |                                             |
+| [**adViewableImpression**](./advertising.md#onadviewableimpression)         |                                             |
+| [**adWarning**](./advertising.md#onadwarning)                               |                                             |
+| [**adsManager**](./advertising.md#onadsmanager)                             |                                             |
+| [**beforeComplete**](./advertising.md#onbeforecomplete)                     |                                             |
+| [**beforePlay**](./advertising.md#onbeforeplay)                             |                                             |
 
 <br>
 
@@ -68,10 +68,10 @@ JWPlayer 이벤트 리스트
 
 오디오 트랙과 관련된 이벤트 그룹
 
-| Event                                              | Description |
-| :------------------------------------------------- | :---------- |
-| [**audioTrackChanged**](./audio-tracks.md#onEvent) |             |
-| [**audioTracks**](./audio-tracks.md#onEvent)       |             |
+| Event                                                          | Description |
+| :------------------------------------------------------------- | :---------- |
+| [**audioTrackChanged**](./audio-tracks.md#onaudiotrackchanged) |             |
+| [**audioTracks**](./audio-tracks.md#onaudiotracks)             |             |
 
 <br>
 
@@ -100,10 +100,10 @@ JWPlayer 이벤트 리스트
 
 크롬캐스트(Chromecast)나 AirPlay 같은 외부 기기로의 영상 송출(cast)과 관련된 이벤트 그룹
 
-| Event                                    | Description |
-| :--------------------------------------- | :---------- |
-| [**cast**](./cast.md#onEvent)            |             |
-| [**castIntercepted**](./cast.md#onEvent) |             |
+| Event                                              | Description |
+| :------------------------------------------------- | :---------- |
+| [**cast**](./cast.md#oncast)                       |             |
+| [**castIntercepted**](./cast.md#oncastintercepted) |             |
 
 <br>
 
@@ -111,10 +111,10 @@ JWPlayer 이벤트 리스트
 
 플레이어 제어 UI(재생/일시정지/음량/전체화면/트랙변경 등)와 관련된 이벤트 그룹
 
-| Event                                     | Description |
-| :---------------------------------------- | :---------- |
-| [**controls**](./controls.md#onEvent)     |             |
-| [**displayClick**](./controls.md#onEvent) |             |
+| Event                                            | Description |
+| :----------------------------------------------- | :---------- |
+| [**controls**](./controls.md#oncontrols)         |             |
+| [**displayClick**](./controls.md#ondisplayclick) |             |
 
 <br>
 
@@ -124,7 +124,7 @@ JWPlayer 이벤트 리스트
 
 | Event                                     | Description |
 | :---------------------------------------- | :---------- |
-| [**float**](./floating-player.md#onEvent) |             |
+| [**float**](./floating-player.md#onfloat) |             |
 
 <br>
 
@@ -132,10 +132,10 @@ JWPlayer 이벤트 리스트
 
 미디어 파일 내부에 포함된 메타데이터(e.g., ID3, timed-metadata, 트랙 길이·제작자 정보 등)와 관련된 이벤트 그룹
 
-| Event                                          | Description |
-| :--------------------------------------------- | :---------- |
-| [**meta**](./metadata.md#onEvent)              |             |
-| [**metadataCueParsed**](./metadata.md#onEvent) |             |
+| Event                                                      | Description |
+| :--------------------------------------------------------- | :---------- |
+| [**meta**](./metadata.md#onmeta)                           |             |
+| [**metadataCueParsed**](./metadata.md#onmetadatacueparsed) |             |
 
 <br>
 
@@ -143,19 +143,19 @@ JWPlayer 이벤트 리스트
 
 실제 재생 상태 변화와 관련된 이벤트 그룹
 
-| Event                                            | Description |
-| :----------------------------------------------- | :---------- |
-| [**autostartNotAllowed**](./playback.md#onEvent) |             |
-| [**buffer**](./playback.md#onEvent)              |             |
-| [**complete**](./playback.md#onEvent)            |             |
-| [**error**](./playback.md#onEvent)               |             |
-| [**firstFrame**](./playback.md#onEvent)          |             |
-| [**idle**](./playback.md#onEvent)                |             |
-| [**pause**](./playback.md#onEvent)               |             |
-| [**play**](./playback.md#onEvent)                |             |
-| [**playAttemptFailed**](./playback.md#onEvent)   |             |
-| [**playbackRateChanged**](./playback.md#onEvent) |             |
-| [**warning**](./playback.md#onEvent)             |             |
+| Event                                                          | Description |
+| :------------------------------------------------------------- | :---------- |
+| [**autostartNotAllowed**](./playback.md#onautostartnotallowed) |             |
+| [**buffer**](./playback.md#onbuffer)                           |             |
+| [**complete**](./playback.md#oncomplete)                       |             |
+| [**error**](./playback.md#onerror)                             |             |
+| [**firstFrame**](./playback.md#onfirstframe)                   |             |
+| [**idle**](./playback.md#onidle)                               |             |
+| [**pause**](./playback.md#onpause)                             |             |
+| [**play**](./playback.md#onplay)                               |             |
+| [**playAttemptFailed**](./playback.md#onplayattemptfailed)     |             |
+| [**playbackRateChanged**](./playback.md#onplaybackratechanged) |             |
+| [**warning**](./playback.md#onwarning)                         |             |
 
 <br>
 
@@ -163,12 +163,12 @@ JWPlayer 이벤트 리스트
 
 플레이리스트와 관련된 이벤트 그룹
 
-| Event                                         | Description |
-| :-------------------------------------------- | :---------- |
-| [**nextClick**](./playlist.md#onEvent)        |             |
-| [**playlist**](./playlist.md#onEvent)         |             |
-| [**playlistItem**](./playlist.md#onEvent)     |             |
-| [**playlistComplete**](./playlist.md#onEvent) |             |
+| Event                                                    | Description |
+| :------------------------------------------------------- | :---------- |
+| [**nextClick**](./playlist.md#onnextclick)               |             |
+| [**playlist**](./playlist.md#onplaylist)                 |             |
+| [**playlistItem**](./playlist.md#onplaylistitem)         |             |
+| [**playlistComplete**](./playlist.md#onplaylistcomplete) |             |
 
 <br>
 
@@ -176,11 +176,11 @@ JWPlayer 이벤트 리스트
 
 영상/오디오의 품질과 관련된 이벤트 그룹
 
-| Event                                     | Description |
-| :---------------------------------------- | :---------- |
-| [**levels**](./quality.md#onEvent)        |             |
-| [**levelsChanged**](./quality.md#onEvent) |             |
-| [**visualQuality**](./quality.md#onEvent) |             |
+| Event                                             | Description |
+| :------------------------------------------------ | :---------- |
+| [**levels**](./quality.md#onlevels)               |             |
+| [**levelsChanged**](./quality.md#onlevelschanged) |             |
+| [**visualQuality**](./quality.md#onvisualquality) |             |
 
 <br>
 
@@ -188,12 +188,12 @@ JWPlayer 이벤트 리스트
 
 동영상이 끝난 뒤 관련 콘텐츠 표시와 관련된 이벤트 그룹
 
-| Event                                      | Description |
-| :----------------------------------------- | :---------- |
-| [**relatedReady**](./related.md#onEvent)   |             |
-| [**relatedOnclose**](./related.md#onEvent) |             |
-| [**relatedOnopen**](./related.md#onEvent)  |             |
-| [**relatedOnplay**](./related.md#onEvent)  |             |
+| Event                                               | Description |
+| :-------------------------------------------------- | :---------- |
+| [**relatedReady**](./related.md#onrelatedready)     |             |
+| [**relatedOnclose**](./related.md#onrelatedonclose) |             |
+| [**relatedOnopen**](./related.md#onrelatedonopen)   |             |
+| [**relatedOnplay**](./related.md#onrelatedonplay)   |             |
 
 <br>
 
@@ -201,10 +201,10 @@ JWPlayer 이벤트 리스트
 
 플레이어 크기(가로·세로) 또는 전체화면(fullscreen)과 관련된 이벤트 그룹
 
-| Event                                 | Description |
-| :------------------------------------ | :---------- |
-| [**fullscreen**](./resize.md#onEvent) |             |
-| [**resize**](./resize.md#onEvent)     |             |
+| Event                                      | Description |
+| :----------------------------------------- | :---------- |
+| [**fullscreen**](./resize.md#onfullscreen) |             |
+| [**resize**](./resize.md#onresize)         |             |
 
 <br>
 
@@ -212,12 +212,12 @@ JWPlayer 이벤트 리스트
 
 재생 위치를 이동(seek)과 관련된 이벤트 그룹
 
-| Event                                          | Description |
-| :--------------------------------------------- | :---------- |
-| [**absolutePositionReady**](./seek.md#onEvent) |             |
-| [**seek**](./seek.md#onEvent)                  |             |
-| [**seeked**](./seek.md#onEvent)                |             |
-| [**time**](./seek.md#onEvent)                  |             |
+| Event                                                          | Description |
+| :------------------------------------------------------------- | :---------- |
+| [**absolutePositionReady**](./seek.md#onabsolutepositionready) |             |
+| [**seek**](./seek.md#onseek)                                   |             |
+| [**seeked**](./seek.md#onseeked)                               |             |
+| [**time**](./seek.md#ontime)                                   |             |
 
 <br>
 
@@ -231,11 +231,11 @@ player.on('ready', function (event) {
 });
 ```
 
-| Event                                      | Description |
-| :----------------------------------------- | :---------- |
-| [**sharingOnclick**](./sharing.md#onEvent) |             |
-| [**sharingOnclose**](./sharing.md#onEvent) |             |
-| [**sharingOnopen**](./sharing.md#onEvent)  |             |
+| Event                                               | Description |
+| :-------------------------------------------------- | :---------- |
+| [**sharingOnclick**](./sharing.md#onsharingOnclick) |             |
+| [**sharingOnclose**](./sharing.md#onsharingOnclose) |             |
+| [**sharingOnopen**](./sharing.md#onsharingOnopen)   |             |
 
 <br>
 
@@ -243,10 +243,10 @@ player.on('ready', function (event) {
 
 플레이어가 화면에 얼마나 보여지는지(viewable)와 관련된 이벤트 그룹
 
-| Event                                             | Description |
-| :------------------------------------------------ | :---------- |
-| [**containerViewable**](./viewability.md#onEvent) |             |
-| [**viewable**](./viewability.md#onEvent)          |             |
+| Event                                                         | Description |
+| :------------------------------------------------------------ | :---------- |
+| [**containerViewable**](./viewability.md#oncontainerViewable) |             |
+| [**viewable**](./viewability.md#onviewable)                   |             |
 
 <br>
 
@@ -254,7 +254,7 @@ player.on('ready', function (event) {
 
 볼륨 변화(음량 변경, 음소거/음소거 해제)와 관련된 이벤트 그룹
 
-| Event                             | Description |
-| :-------------------------------- | :---------- |
-| [**mute**](./volume.md#onEvent)   |             |
-| [**volume**](./volume.md#onEvent) |             |
+| Event                              | Description |
+| :--------------------------------- | :---------- |
+| [**mute**](./volume.md#onmute)     |             |
+| [**volume**](./volume.md#onvolume) |             |
