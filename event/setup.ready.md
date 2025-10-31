@@ -19,10 +19,10 @@ This is the earliest point at which any API calls should be made.
 }
 ```
 
-| Value              | Description                                      |
-| :----------------- | :----------------------------------------------- |
-| setupTime (number) | setup() → ready까지 걸린 시간 (ms)               |
-| viewable (number)  | 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임) |
+| Value                  | Description                                      |
+| :--------------------- | :----------------------------------------------- |
+| **setupTime** (number) | setup() → ready까지 걸린 시간 (ms)               |
+| **viewable** (number)  | 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임) |
 
 ## 활용
 

@@ -19,11 +19,11 @@ Fires when neither the player could be set up
 }
 ```
 
-| Value                       | Description                                                 |
-| :-------------------------- | :---------------------------------------------------------- |
-| code (number)               | JW Player 내부 에러 코드 (원인 식별용)                      |
-| sourceError (object / null) | 하위 에러 객체 (브라우저 또는 네트워크 스택 오류 포함 가능) |
-| message (string)            | 오류 메시지 (사용자 또는 콘솔에 표시 가능)                  |
+| Value                           | Description                                                 |
+| :------------------------------ | :---------------------------------------------------------- |
+| **code** (number)               | JW Player 내부 에러 코드 (원인 식별용)                      |
+| **sourceError** (object / null) | 하위 에러 객체 (브라우저 또는 네트워크 스택 오류 포함 가능) |
+| **message** (string)            | 오류 메시지 (사용자 또는 콘솔에 표시 가능)                  |
 
 ## 활용
 
