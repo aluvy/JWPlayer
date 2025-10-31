@@ -263,7 +263,7 @@ Fires before any of the following occur:
 }
 ```
 
-|                         |                                                                                 |
+| Value                   | Description                                                                     |
 | :---------------------- | :------------------------------------------------------------------------------ |
 | **playReason** (string) | 재생 시작 이유 (`"autostart"`, `"interaction"`, `"external"`, `"playlist"`, 등) |
 | **state** (string)      | 이벤트 발생 시 플레이어 상태 (일반적으로 `"idle"`)                              |

@@ -130,9 +130,9 @@
 
 플레이어가 화면 위에 떠(floating)서 위치가 바뀔 때와 관련된 이벤트 그룹
 
-| Event                                     | Description |
-| :---------------------------------------- | :---------- |
-| [**float**](./floating-player.md#onfloat) |             |
+| Event                                     | Description                                                  |
+| :---------------------------------------- | :----------------------------------------------------------- |
+| [**float**](./floating-player.md#onfloat) | 플레이어가 플로팅(floating) 상태로 전환되거나 해제될 때 호출 |
 
 <br>
 
@@ -151,19 +151,19 @@
 
 실제 재생 상태 변화와 관련된 이벤트 그룹
 
-| Event                                                          | Description |
-| :------------------------------------------------------------- | :---------- |
-| [**autostartNotAllowed**](./playback.md#onautostartNotAllowed) |             |
-| [**buffer**](./playback.md#onbuffer)                           |             |
-| [**complete**](./playback.md#oncomplete)                       |             |
-| [**error**](./playback.md#onerror)                             |             |
-| [**firstFrame**](./playback.md#onfirstFrame)                   |             |
-| [**idle**](./playback.md#onidle)                               |             |
-| [**pause**](./playback.md#onpause)                             |             |
-| [**play**](./playback.md#onplay)                               |             |
-| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |             |
-| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |             |
-| [**warning**](./playback.md#onwarning)                         |             |
+| Event                                                          | Description                                                                                                                                        |
+| :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**autostartNotAllowed**](./playback.md#onautostartNotAllowed) | 플레이어 설정(`autostart: true`) 또는 `player.play()` 호출로 자동재생을 시도했으나, 브라우저나 OS의 미디어 자동재생 정책에 의해 차단되었을 때 호출 |
+| [**buffer**](./playback.md#onbuffer)                           | 플레이어가 재생 도중 데이터 로딩이 부족하여 일시적으로 멈출 때 호출                                                                                |
+| [**complete**](./playback.md#oncomplete)                       |                                                                                                                                                    |
+| [**error**](./playback.md#onerror)                             |                                                                                                                                                    |
+| [**firstFrame**](./playback.md#onfirstFrame)                   |                                                                                                                                                    |
+| [**idle**](./playback.md#onidle)                               |                                                                                                                                                    |
+| [**pause**](./playback.md#onpause)                             |                                                                                                                                                    |
+| [**play**](./playback.md#onplay)                               |                                                                                                                                                    |
+| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |                                                                                                                                                    |
+| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |                                                                                                                                                    |
+| [**warning**](./playback.md#onwarning)                         |                                                                                                                                                    |
 
 <br>
 
