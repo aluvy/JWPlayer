@@ -1,7 +1,6 @@
-# .on('ready')
+# .on('captionsChanged')
 
-Signifies when the player has been initialized and is ready for playback  
-This is the earliest point at which any API calls should be made.
+Triggers whenever the active captions track is changed manually or via API
 
 ## 호출시점
 

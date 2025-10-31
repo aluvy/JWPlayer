@@ -10,7 +10,7 @@ Fired when header bidding starts requesting for bids.
 
 ## 이벤트 객체 구조 (콜백 파라미터)
 
-```javascript
+```json
 {
   "bidders": [
     { "id": 1234, "name": "BidderX" },
