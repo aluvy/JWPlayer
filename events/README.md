@@ -158,7 +158,7 @@
 | [**complete**](./playback.md#oncomplete)                       | 플레이어가 현재 재생 중인 영상의 마지막 프레임을 모두 재생 완료했을 때 호출                                                                        |
 | [**error**](./playback.md#onerror)                             | 플레이어가 재생 중 오류를 감지했을 때 호출                                                                                                         |
 | [**firstFrame**](./playback.md#onfirstFrame)                   | 영상이 실제로 화면에 첫 번째 프레임을 렌더링했을 때 호출                                                                                           |
-| [**idle**](./playback.md#onidle)                               |                                                                                                                                                    |
+| [**idle**](./playback.md#onidle)                               | 플레이어가 재생 가능한 미디어가 없거나, 현재 재생이 완전히 종료되어 대기 상태로 전환될 때 호출                                                     |
 | [**pause**](./playback.md#onpause)                             |                                                                                                                                                    |
 | [**play**](./playback.md#onplay)                               |                                                                                                                                                    |
 | [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |                                                                                                                                                    |

@@ -392,23 +392,86 @@ player.on('firstFrame', (e) => {
 
 ## .on('idle')
 
+Fires when the player enters the idle state
+
 ### 호출시점
+
+- 플레이어가 **재생 가능한 미디어가 없거나**, **현재 재생이 완전히 종료되어 대기 상태로 전환될 때** 발생합니다.
+- 즉, “플레이어가 아무 것도 재생하지 않는 상태(idle state)”로 들어간 시점입니다.
+- 일반적인 이벤트 흐름:
+
+```
+ready → play → firstFrame → complete → idle
+```
+
+- 또한 다음과 같은 경우에도 발생할 수 있습니다:
+  - `player.stop()` 호출 시
+  - `setup()` 이후 재생 전 상태
+  - 플레이리스트의 마지막 아이템 재생 완료 후
+  - 에러(`error`), `remove()` 등으로 재생이 종료된 뒤
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "oldstate": "playing",
+  "newstate": "idle",
+  "reason": "complete",
+  "type": "idle"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                 | Description                                                      |
+| :-------------------- | :--------------------------------------------------------------- |
+| **oldstate** (string) | 이전 플레이어 상태 (`"playing"`, `"buffering"`, `"paused"` 등)   |
+| **newstate** (string) | `"idle"` 고정                                                    |
+| **reason** (string)   | 상태 전환 원인 (`"complete"`, `"stopped"`, `"error"`, `"setup"`) |
 
 ### 활용
 
+#### 1. 재생 종료 후 UI 초기화
+
+```javascript
+player.on('idle', (e) => {
+  console.log(`플레이어가 idle 상태로 전환됨. 이유: ${e.reason}`);
+  document.querySelector('.end-screen').classList.add('show');
+});
+```
+
+- 재생이 끝난 후 “다음 보기”, “추천 영상” 등의 종료 화면 표시.
+
+#### 2. 재생 루프 또는 자동재생 처리
+
+- `reason: "complete"` 일 때 다음 콘텐츠 자동재생:
+
+```javascript
+player.on('idle', (e) => {
+  if (e.reason === 'complete') playNextItem();
+});
+```
+
+#### 3. 플레이어 상태 복원 / 정리
+
+- `remove()` 전 UI/트래킹 정리
+- “idle → ready” 전환 전, 이전 재생 데이터 초기화
+
 ### 주의사항
 
+- `idle` 은 단순히 “대기 상태”일 뿐, 에러나 중단 등 다양한 원인으로 발생할 수 있음.
+  → `reason` 값으로 명확한 원인 구분 필요 (`complete`, `error`, `stopped` 등).
+- `complete` 이벤트와 함께 발생할 수 있으므로,
+  **중복 처리(예: 다음 영상 재생 로직)** 방지 로직 필요.
+- 초기 `setup()` 직후 재생 전에도 `idle` 상태가 될 수 있으므로
+  “초기화 단계”와 “재생 종료 단계” 구분이 필요.
+- `remove()` 호출 후 `idle` 이벤트가 즉시 발생하지 않을 수 있으며,
+  내부 정리 이후 다음 `setup()` 호출 시점에만 상태가 갱신되기도 함.
+
 ### 특징
+
+- **플레이어가 아무 것도 재생하지 않는 “완전한 대기 상태”를 나타내는 유일한 이벤트.**
+- `complete` 는 “콘텐츠 재생 완료”, `idle` 은 “플레이어 전체가 쉬는 상태”라는 점에서 다름.
+- UI·로직 측면에서 “재생 종료 후 초기화”의 기준 타이밍으로 가장 자주 사용됨.
+- `reason` 필드가 포함되어 있어 **종료 원인 분석**이 가능한 점이 특징.
 
 <br>
 
