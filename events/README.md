@@ -209,10 +209,10 @@
 
 플레이어 크기(가로·세로) 또는 전체화면(fullscreen)과 관련된 이벤트 그룹
 
-| Event                                      | Description |
-| :----------------------------------------- | :---------- |
-| [**fullscreen**](./resize.md#onfullscreen) |             |
-| [**resize**](./resize.md#onresize)         |             |
+| Event                                      | Description                                                            |
+| :----------------------------------------- | :--------------------------------------------------------------------- |
+| [**fullscreen**](./resize.md#onfullscreen) | 플레이어가 전체화면 모드(Fullscreen Mode) 로 진입하거나 해제될 때 호출 |
+| [**resize**](./resize.md#onresize)         | 플레이어 컨테이너의 크기(width/height)가 변경될 때마다 호출            |
 
 <br>
 
