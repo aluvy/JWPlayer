@@ -196,12 +196,12 @@
 
 동영상이 끝난 뒤 관련 콘텐츠 표시와 관련된 이벤트 그룹
 
-| Event                                               | Description                                                                                                    |
-| :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
-| [**relatedReady**](./related.md#onrelatedReady)     | Related 플러그인(추천 영상 기능) 이 추천 콘텐츠(related playlist) 를 불러오고 DOM 렌더링 준비가 끝났을 때 호출 |
-| [**relatedOnclose**](./related.md#onrelatedOnclose) | 추천(related) 콘텐츠 오버레이가 닫힐 때 발생                                                                   |
-| [**relatedOnopen**](./related.md#onrelatedOnopen)   | 추천(related) 콘텐츠 오버레이가 실제로 열릴 때 발생                                                            |
-| [**relatedOnplay**](./related.md#onrelatedOnplay)   |                                                                                                                |
+| Event                                                 | Description                                                                                                    |
+| :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
+| [**relatedReady**](./related.md#onrelatedReady)       | Related 플러그인(추천 영상 기능) 이 추천 콘텐츠(related playlist) 를 불러오고 DOM 렌더링 준비가 끝났을 때 호출 |
+| [**related-on-close**](./related.md#onrelatedOnclose) | 추천(related) 콘텐츠 오버레이가 닫힐 때 호출                                                                   |
+| [**related-on-open**](./related.md#onrelatedOnopen)   | 추천(related) 콘텐츠 오버레이가 실제로 열릴 때 호출                                                            |
+| [**related-on-play**](./related.md#onrelatedOnplay)   | 사용자가 추천 콘텐츠(related item)를 클릭하여 재생이 시작될 때 호출                                            |
 
 <br>
 

@@ -403,18 +403,127 @@ Triggers when a user selects an object in a related feed.
 
 ### 호출시점
 
+- `relatedPlay` 이벤트는 사용자가 **추천 콘텐츠(related item)를 클릭하여 재생이 시작될 때** 발생합니다.
+
+- 즉, **추천 오버레이(related UI)** 에서 **썸네일을 클릭하거나 자동재생(autoplay)** 으로  
+  다음 영상이 로드될 때 트리거됩니다.
+
+#### 일반적인 호출 흐름
+
+```
+complete                     ← 영상 재생 종료
+→ relatedReady               ← 추천 콘텐츠 데이터 로드 완료
+→ relatedOpen                ← 추천 오버레이 표시
+→ relatedClick               ← 추천 썸네일 클릭
+→ relatedPlay                ← 선택된 추천 아이템 로드 시작
+→ playlistItem               ← 새 콘텐츠 로드 완료
+→ play / firstFrame          ← 재생 시작
+```
+
+즉, `relatedPlay`는 **“추천 콘텐츠를 선택하여 실제 재생이 개시되는 순간”** 에 발생합니다.  
+(`relatedClick`은 클릭 동작만 감지하고, `relatedPlay`는 실제 재생 실행을 의미합니다.)
+
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "auto": false,
+  "item": {
+    "mediaid": "abc123",
+    "title": "추천 영상 제목",
+    "link": "https://example.com/next-video",
+    "image": "https://example.com/thumbnail.jpg"
+  },
+  "type": "relatedPlay"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value              | Description                                          |
+| :----------------- | :--------------------------------------------------- |
+| **auto** (boolean) | 자동재생 여부 (`true`=autoplay, `false`=사용자 클릭) |
+| **item** (object)  | 재생될 추천 콘텐츠 정보 (JW Playlist Item 구조)      |
+
+> `item` 객체는 `mediaid`, `title`, `image`, `file`, `link` 등  
+> 일반적인 JWPlayer playlist item과 동일한 구조를 가집니다.
 
 ### 활용
 
+#### 1. 추천 콘텐츠 클릭(또는 자동재생) 로깅
+
+- 클릭 기반 추천 전환율(CTR), 자동재생 비율 등을 트래킹.
+
+```javascript
+player.on('relatedPlay', (e) => {
+  console.log(`추천 콘텐츠 재생 시작: ${e.item.title}`);
+  sendAnalytics('related_play', {
+    title: e.item.title,
+    mediaid: e.item.mediaid,
+    auto: e.auto,
+  });
+});
+```
+
+#### 2. 자동재생(Auto Next) UX 제어
+
+- 자동재생인 경우 별도 안내 배너 표시:
+
+```javascript
+player.on('relatedPlay', (e) => {
+  if (e.auto) showToast(`다음 영상 자동 재생: ${e.item.title}`);
+});
+```
+
+#### 3. 추천 세션 전환 관리
+
+- 현재 재생 콘텐츠와 추천 콘텐츠 간 세션 구분:
+
+```javascript
+player.on('relatedPlay', (e) => {
+  sessionStorage.setItem('prevVideoId', player.getPlaylistItem().mediaid);
+  sessionStorage.setItem('nextVideoId', e.item.mediaid);
+});
+```
+
+#### 4. UI 갱신 및 사용자 전환 표시
+
+- 추천 재생이 시작되면 오버레이 닫기, 로딩 표시 전환:
+
+```javascript
+player.on('relatedPlay', () => {
+  document.body.classList.remove('related-active');
+  showLoadingSpinner(true);
+});
+```
+
 ### 주의사항
 
+- `relatedPlay`는 `related` **플러그인이 활성화되어 있어야만** 발생합니다.  
+  (설정: `related: { file: "related.json" }` 또는 `related: true`)
+
+- `relatedClick` 이벤트보다 **항상 나중에** 발생합니다.  
+  (`relatedClick` = UI 클릭 감지 / `relatedPlay` = 실제 재생 시작)
+
+- 자동재생(`auto: true`)일 경우, 사용자의 직접 클릭 없이도 호출됩니다.  
+  이 때 `relatedClick`은 발생하지 않습니다.
+
+- 추천 영상의 **로드가 실패**(`404`, `CORS`, `setupError`) 한 경우  
+  `relatedPlay`는 발생하지 않습니다.
+
+- iOS Safari(특히 네이티브 전체화면 모드)에서는  
+  자동재생(`autoplay`)이 브라우저 정책에 의해 차단될 수 있습니다 →  
+  `relatedPlay` 이벤트가 발생하지 않음.
+
 ### 특징
+
+- **추천 콘텐츠 재생 시작을 감지하는 핵심 이벤트.**
+
+- `relatedClick`은 행동(intent), `relatedPlay`는 실행(action)에 해당.
+
+- 추천 콘텐츠 간 “전환(Conversion)”을 측정하거나  
+  “다음 영상 자동재생 시점”을 제어하기에 최적화된 이벤트.
+
+- `relatedReady` → `relatedOpen` → `relatedPlay`로 이어지는  
+  **추천 UX의 마지막 단계 이벤트**로 볼 수 있습니다.
+
+- OTT, 뉴스, 쇼츠(Shorts) 플랫폼 등에서  
+  **“다음 영상 재생율(Next Play Rate)” 측정의 기준 이벤트**로 사용됩니다.
