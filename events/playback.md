@@ -567,23 +567,85 @@ player.on('pause', (e) => {
 
 ## .on('play')
 
+Fires when non-advertising media within the player begins playback
+
+To listen for an ad break play event, use [.on('adPlay')](https://docs.jwplayer.com/players/reference/advertising-events#onadplay).
+
 ### 호출시점
+
+- 플레이어가 **실제 재생 상태(`playing`)로 전환될 때** 발생합니다.
+- 즉, `beforePlay` → `play` → `firstFrame` 순서 중 **재생 명령이 실행되어 미디어가 재생되기 시작한 시점**입니다.
+- 발생 조건은 다음과 같습니다:
+  1. 사용자가 “재생 버튼”을 클릭했을 때
+  2. `player.play()` 또는 `autostart: true` 설정으로 자동재생이 시작될 때
+  3. 일시정지(`pause`) 상태에서 다시 재생될 때
+  4. 광고 재생 후 본편이 이어질 때
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "oldstate": "paused",
+  "newstate": "playing",
+  "playReason": "interaction",
+  "viewable": 1,
+  "type": "play"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                   | Description                                                                              |
+| :---------------------- | :--------------------------------------------------------------------------------------- |
+| **oldstate** (string)   | 재생 전 상태 (`"paused"`, `"buffering"`, `"idle"`, 등)                                   |
+| **newstate** (string)   | `"playing"` 고정                                                                         |
+| **playReason** (string) | 재생이 시작된 이유 (`"autostart"`, `"interaction"`, `"external"`, `"playlist"`, `"api"`) |
+| **viewable** (number)   | 플레이어가 현재 화면에 보이는 여부 (1 = 보임, 0 = 숨김)                                  |
 
 ### 활용
 
+#### 1. 시청 시작 트래킹
+
+- 사용자가 실제로 재생을 시작한 시점을 기록.
+  (`firstFrame`은 화면 렌더링, `play`는 재생 명령 실행 시점)
+
+```javascript
+player.on('play', (e) => {
+  console.log(`Play event! Reason: ${e.playReason}`);
+  sendAnalytics('video_play');
+});
+```
+
+#### 2. UI 제어
+
+- 로딩 스피너 제거, 일시정지 버튼 활성화, 재생 애니메이션 표시 등
+
+#### 3. 자동재생 감지 및 정책 처리
+
+- `playReason: "autostart"` 값으로 자동재생 성공 여부 확인.
+- `autostartNotAllowed` 대비 분기 처리 로직 작성 가능.
+
+#### 4. 재생 분석 (Engagement Metrics)
+
+- `pause` / `play` 이벤트를 조합해 사용자의 시청 패턴(중단·재개)을 추적.
+- `viewable` 필드를 이용해 실제 화면에서 재생되는 경우만 카운트.
+
 ### 주의사항
 
+- `play`는 “재생 명령이 내려졌을 때” 호출되므로,
+  실제 영상 표시(`firstFrame`)보다 먼저 발생합니다.
+- 자동재생(`autostart`)이 브라우저 정책에 의해 차단되면
+  `play` 대신 `autostartNotAllowed` 가 호출될 수 있습니다.
+- 광고 재생 중에도 내부적으로 `play` 이벤트가 발생할 수 있으므로
+  **콘텐츠/광고 재생 구분(`adPlaying` 상태 확인)** 필요.
+- 동일한 세션 내에서 여러 번 발생할 수 있습니다.
+  (예: 일시정지 후 다시 재생할 때마다 `play` 이벤트 발생)
+
 ### 특징
+
+- **재생 상태로 진입하는 모든 순간을 감지할 수 있는 기본 이벤트.**
+- `beforePlay`(준비 단계)와 `firstFrame`(화면 표시) 사이의 연결고리 역할.
+- `playReason` 필드를 통해 **재생 트리거의 출처**를 명확히 구분할 수 있음.
+- `pause` 이벤트와 짝을 이루며,
+  **시청 패턴·이탈률·참여도(Engagement Rate)** 분석의 핵심 포인트가 됨.
 
 <br>
 
