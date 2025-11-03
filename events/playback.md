@@ -313,23 +313,80 @@ player.on('error', (e) => {
 
 ## .on('firstFrame')
 
+Fires when a video's first frame event occurs or the instant an audio file begins playback
+
+Use this to determine the period of time between a user pressing play and the same user viewing their content. This event pinpoints when content playback begins.
+
 ### 호출시점
+
+- 영상이 실제로 **화면에 첫 번째 프레임을 렌더링했을 때** 발생합니다.
+- 즉, “재생 요청(`play`)” 후 **사용자가 실제로 영상을 보기 시작하는 정확한 시점**입니다.
+- 일반적인 이벤트 흐름:
+
+```
+beforePlay → play → firstFrame → time → complete
+
+```
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "loadTime": 512,
+  "viewable": 1,
+  "type": "firstFrame"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                 | Description                                                            |
+| :-------------------- | :--------------------------------------------------------------------- |
+| **loadTime** (number) | `play` → `firstFrame` 까지 걸린 시간(ms) (로딩 시간, 초기 지연 측정용) |
+| **viewable** (number) | 플레이어가 화면에 보이는 상태 (1 = 보임, 0 = 숨김)                     |
 
 ### 활용
 
+#### 1. 재생 지연(Latency) 분석
+
+```javascript
+player.on('firstFrame', (e) => {
+  console.log(`첫 프레임 표시까지 ${e.loadTime}ms`);
+});
+```
+
+- 실제 영상이 눈에 보이기까지 걸린 시간을 측정 → 로딩 성능 분석용.
+
+#### 2. 재생 시작 시점 트래킹
+
+- 광고·버퍼링이 끝나고 실제 콘텐츠가 시작되는 타이밍 기록:
+
+#### 3. UX 전환
+
+- 로딩 스피너 제거, 오버레이 UI 숨김 등:
+
+#### 4. 사용자 시청률 계산 기준
+
+- `firstFrame`을 “시청 시작” 기준으로 정의하면
+  **시작 대비 완료율(Completion Rate)** 계산에 정확도 향상.
+
 ### 주의사항
 
+- **영상이 눈에 보이는 첫 시점**이므로,
+  재생 요청이 실패하거나 자동재생이 차단되면 발생하지 않습니다.
+- 광고 재생이 포함된 경우, **본편 시작 시점에 따로 발생**합니다.
+  (즉, 광고에서 `firstFrame`이 발생하지 않음)
+- `loadTime` 값은 네트워크, 브라우저, CDN, 디코딩 속도에 따라 달라지며
+  정확히 “영상 로드 시간”을 의미하지는 않습니다 (프레임 렌더링까지 걸린 전체 지연).
+- 빠른 연속 아이템 전환 시, 첫 프레임 로딩이 스킵될 수도 있으므로
+  `ready` → `firstFrame` 간 타이밍 측정 시점 명확히 분리 필요.
+
 ### 특징
+
+- **사용자에게 영상이 실제로 보이기 시작하는 유일한 시점 이벤트.**
+- `play` 이벤트는 “재생 요청”, `firstFrame`은 “재생이 실제로 시작된 시점”을 의미.
+- `loadTime`으로 재생 성능(초기지연)을 수치화할 수 있어
+  **UX 최적화 및 CDN 성능 평가의 핵심 지표**로 사용됨.
+- `ready`, `play`, `firstFrame` 세 이벤트를 조합하면
+  “초기화 → 요청 → 표시”의 전체 로딩 파이프라인을 정밀하게 추적 가능.
 
 <br>
 
