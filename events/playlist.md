@@ -66,7 +66,7 @@ play (현재 영상 재생 중)
 → play / firstFrame (재생 개시)
 ```
 
-> 즉, `nextClick`은 **"다음 콘텐츠 이동 요청"** 시점이며,
+> 즉, `nextClick`은 **"다음 콘텐츠 이동 요청"** 시점이며,  
 > 실제 재생은 그 직후 `playlistItem` 이벤트에서 시작됩니다.
 
 ### 이벤트 객체 구조 (콜백 파라미터)
@@ -170,21 +170,61 @@ Fired when an entirely new playlist has been loaded into the player.
 
 ### 호출시점
 
+- **완전히 새로운 플레이리스트가 플레이어에 로드되었을 때** 1회 발생합니다.
+
+- 초기 `setup()` **시 로드된 첫 플레이리스트에 대해서는 호출되지 않습니다.** 초기에는 ready를 사용하세요.
+
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "playlist": [
+    /* getPlaylist()와 동일한 배열 */
+  ]
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                              | Description                                                                                       |
+| :--------------------------------- | :------------------------------------------------------------------------------------------------ |
+| **playlist** (Array<PlaylistItem>) | 방금 로드된 새 플레이리스트(각 아이템은 `title`, `image`, `sources`, `tracks` 등 표준 필드 포함). |
 
 ### 활용
 
+#### 1. UI/메타데이터 갱신
+
+- 새 플레이리스트 카드/썸네일 영역을 재그리기:
+
+```javascript
+player.on('playlist', (e) => {
+  renderPlaylist(e.playlist); // 커스텀 목록 구성
+});
+```
+
+#### 2. 프리패치/썸네일 선로딩
+
+- 다음 아이템의 포스터·스프라이트를 미리 불러 안정성 향상.
+
+#### 3. 분석/로깅
+
+- 플레이리스트 교체 시점(콘텐츠 세트 변경)을 이벤트로 기록해 추천 전환률이나 세션 흐름을 분석.
+
 ### 주의사항
 
+- **초기 로드에는 트리거되지 않음** → 초기 세팅 로직은 `ready`에서 처리하고, 그 이후 동적 교체(`load()` 등) 시에만 `playlist`를 후킹.
+
+- `playlistItem`과 혼동 금지:
+
+  - `playlist` = **목록 자체가 바뀜**
+
+  - `playlistItem` = **재생 중인 인덱스가 바뀜**(아이템 전환)
+
+광고/관련(related)·추천 로직으로 목록을 교체할 때 비동기 지연이 있을 수 있으므로, UI 갱신은 **이 이벤트 이후**에 안전하게 수행.
+
 ### 특징
+
+- **목록 교체 감지 전용**으로, `getPlaylist()`와 동일한 구조를 즉시 제공해 **한 번에 전체 UI 재구성**이 가능합니다.
+
+- `nextClick`/`playlistItem` 같은 네비게이션 이벤트와 달리, **콘텐츠 세트 수준 변화**를 포착합니다.
 
 <br>
 <br>
@@ -195,21 +235,150 @@ Fired when the playlist index changes to a new playlist item. This event occurs 
 
 ### 호출시점
 
+- `playlistItem` 이벤트는 **플레이리스트 내에서 현재 재생 항목이 바뀌는 순간** 호출됩니다.
+
+- 즉, 플레이어가 **새로운 아이템(playlist index)** 을 로드하기 시작할 때 트리거됩니다.
+
+#### 대표적 발생 상황
+
+1. 사용자가 “다음/이전” 버튼 클릭 (`nextClick`, `prevClick`)
+
+2. `autoplay` 에 의해 다음 영상 자동 재생
+
+3. `player.load()` 또는 `player.playlistItem(index)` 로 프로그래밍 변경
+
+4. `relatedPlay` (추천 영상 클릭) 으로 새 항목 재생 시작
+
+5. `relatedClose` → 다음 영상 전환 시점
+
+#### 일반적인 이벤트 흐름
+
+```
+complete (이전 영상 종료)
+→ playlistItem (새 영상 로드 시작)
+→ levels (화질 옵션 파싱)
+→ play / firstFrame (재생 시작)
+```
+
+> 즉, **플레이어가 다음 미디어 소스를 로드하기 시작한 직후** 발생하는 이벤트입니다.
+
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "index": 2,
+  "item": {
+    "mediaid": "abc123",
+    "title": "새 영상 제목",
+    "image": "https://example.com/thumb.jpg",
+    "file": "https://cdn.example.com/video.mp4"
+  },
+  "type": "playlistItem"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                     | Description                             |
+| :------------------------ | :-------------------------------------- |
+| **index** (number)        | 새로 재생될 아이템의 인덱스(0부터 시작) |
+| **item** (object)         | 해당 플레이리스트 아이템의 전체 정보    |
+| **item.title** (string)   | 콘텐츠 제목                             |
+| **item.image** (string)   | 썸네일 이미지 URL                       |
+| **item.file** (string)    | 실제 미디어 파일 URL                    |
+| **item.mediaid** (string) | JW Player playlist item ID              |
+
+> `item` 구조는 `player.getPlaylistItem()` 결과와 동일합니다.
 
 ### 활용
 
+#### 1. 현재 재생 콘텐츠 UI 갱신
+
+- 플레이어 외부의 제목, 썸네일, 설명 영역을 실시간 업데이트.
+
+```javascript
+player.on('playlistItem', (e) => {
+  document.querySelector('.video-title').textContent = e.item.title;
+  document.querySelector('.video-thumb').src = e.item.image;
+});
+```
+
+#### 2. 재생 로그 / 분석 트래킹
+
+- → 사용자가 어떤 순서로 영상을 재생하는지,  
+  또는 자동재생/수동재생 전환을 분석할 수 있음.
+
+```javascript
+player.on('playlistItem', (e) => {
+  sendAnalytics('playlist_item_start', {
+    index: e.index,
+    title: e.item.title,
+    mediaid: e.item.mediaid,
+  });
+});
+```
+
+#### 3. 자동재생 UX 제어
+
+- 새 항목 재생 시 배너나 안내 메시지 표시:
+
+```javascript
+player.on('playlistItem', (e) => {
+  showToast(`다음 영상: ${e.item.title}`);
+});
+```
+
+#### 4. 광고 or 오버레이 초기화
+
+- 새 영상이 시작될 때 광고 오버레이, 챕터, 자막 등을 리셋:
+
+```javascript
+player.on('playlistItem', () => {
+  resetOverlay();
+  resetCaptionState();
+});
+```
+
+#### 5. 맞춤 자동재생 정책
+
+- 특정 조건일 때 다음 영상 자동 차단:
+
+```javascript
+player.on('playlistItem', (e) => {
+  if (e.index >= 5) player.pause();
+});
+```
+
 ### 주의사항
 
+- **이전 영상이 완전히 종료되기 전**(`complete` 직후)  
+  **다음 아이템이 로드되는 시점**에서 호출됩니다.  
+  따라서 오버레이나 타이머 초기화는 반드시 이 이벤트 이후에 처리해야 함.
+
+- `playlistItem` 이벤트는 **현재 인덱스 기준으로만 발생**합니다.  
+  같은 아이템을 다시 재생(`playlistItem(currentIndex)`)하면 이벤트가 재호출되지 않습니다.
+
+- `playlist` 자체가 교체될 경우(`load()` 호출 시)  
+  새 리스트 로드 후 **첫 번째 아이템 로드 시점에만** 다시 발생합니다.
+
+- 광고(IMA, FreeWheel) 삽입 시에는 **광고 슬롯 이후** 본편이 시작될 때  
+  다시 `playlistItem` 이 발생하므로, 본편 전용 초기화 로직으로 활용하기 좋습니다.
+
+- iOS Safari에서 관련 오버레이를 전환하는 경우  
+  `playlistItem` 이후 `ready` 이벤트가 **지연 호출될 수 있음** — 타이밍 동기화 유의.
+
 ### 특징
+
+- **JW Player의 콘텐츠 전환을 감지하는 핵심 이벤트.**
+
+- `playlist` 이벤트가 “목록 교체”라면,  
+  `playlistItem`은 “현재 재생 항목 교체”에 해당.
+
+- OTT, 뉴스, 교육 플랫폼 등에서  
+  **시청 세션 구간(Log segmentation)** 추적의 기준 이벤트로 가장 많이 사용됨.
+
+- 다른 이벤트(`time`, `levels`, `relatedPlay`, `nextClick`)의 **상위 트리거 지점**으로도 자주 활용됨.
+
+- `item` 객체는 재생 관련 메타데이터 접근의 기준이 되므로,  
+  API 기반 콘텐츠 로드 시 필수적으로 참조해야 함.
 
 <br>
 <br>
