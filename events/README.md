@@ -239,11 +239,11 @@ player.on('ready', function (event) {
 });
 ```
 
-| Event                                               | Description |
-| :-------------------------------------------------- | :---------- |
-| [**sharingOnclick**](./sharing.md#onsharingOnclick) |             |
-| [**sharingOnclose**](./sharing.md#onsharingOnclose) |             |
-| [**sharingOnopen**](./sharing.md#onsharingOnopen)   |             |
+| Event                                                 | Description                                                   |
+| :---------------------------------------------------- | :------------------------------------------------------------ |
+| [**sharing-on-click**](./sharing.md#onsharingOnclick) | 사용자가 공유 패널 내의 특정 플랫폼 아이콘을 클릭했을 때 호출 |
+| [**sharing-on-close**](./sharing.md#onsharingOnclose) | 사용자가 공유 패널(Sharing Overlay) 을 열었을 때 호출         |
+| [**sharing-on-open**](./sharing.md#onsharingOnopen)   | 사용자가 공유 패널을 닫았을 때 호출                           |
 
 <br>
 
