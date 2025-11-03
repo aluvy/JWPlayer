@@ -262,7 +262,7 @@ player.on('ready', function (event) {
 
 볼륨 변화(음량 변경, 음소거/음소거 해제)와 관련된 이벤트 그룹
 
-| Event                              | Description |
-| :--------------------------------- | :---------- |
-| [**mute**](./volume.md#onmute)     |             |
-| [**volume**](./volume.md#onvolume) |             |
+| Event                              | Description                                    |
+| :--------------------------------- | :--------------------------------------------- |
+| [**mute**](./volume.md#onmute)     | 플레이어의 음소거 상태(Muted)가 변경될 때 호출 |
+| [**volume**](./volume.md#onvolume) | 플레이어의 볼륨(Volume) 크기가 변경될 때 호출  |
