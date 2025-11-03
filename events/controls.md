@@ -5,8 +5,9 @@ This API call allows developers to interact with the built-in player controls (c
 > Controls will still fade out during playback if the video has no keyboard/mouse focus. When controls are disabled, JW Player is completely chrome-less.
 
 <br>
+<br>
 
-## .on('controls')
+# .on('controls')
 
 Fired when controls are enabled or disabled by a script.
 
@@ -29,8 +30,9 @@ Fired when controls are enabled or disabled by a script.
 ### 특징
 
 <br>
+<br>
 
-## .on('displayClick')
+# .on('displayClick')
 
 Fires when a user clicks the video display
 

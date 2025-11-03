@@ -3,8 +3,9 @@
 > We do not recommend using viewability API with iframes.
 
 <br>
+<br>
 
-## .on('containerViewable')
+# .on('containerViewable')
 
 Event fired denoting the viewability of the player container (named `<div>` element)
 
@@ -88,8 +89,9 @@ player.on('containerViewable', (e) => {
 - JW Player의 자동재생(`autostart: 'viewable'`) 기능과 내부적으로 연계됩니다.
 
 <br>
+<br>
 
-## .on('viewable')
+# .on('viewable')
 
 Event fired denoting the viewability of the player
 

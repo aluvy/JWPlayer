@@ -3,8 +3,9 @@
 These API calls are used to retrieve and update the current media playback position.
 
 <br>
+<br>
 
-## .on('absolutePositionReady')
+# .on('absolutePositionReady')
 
 Fired when [.getAbsolutePosition()](https://docs.jwplayer.com/players/reference/getabsoluteposition) is ready to return data.
 
@@ -99,8 +100,9 @@ player.on('absolutePositionReady', () => {
 - UI 및 시킹 관련 기능을 초기화하기에 가장 안정적인 시점입니다.
 
 <br>
+<br>
 
-## .on('seek')
+# .on('seek')
 
 Fired when a seek has been requested either by scrubbing the control bar or through the API.
 
@@ -214,8 +216,9 @@ player.on('firstFrame', () => showSpinner(false));
   **재생 전환 파이프라인의 첫 단계 이벤트.**
 
 <br>
+<br>
 
-## .on('seeked')
+# .on('seeked')
 
 Fired when video position changes after seeking, as opposed to on('seek') which triggers as a seek occurs.
 
@@ -328,8 +331,9 @@ player.on('seeked', (e) => {
 - UI/UX 관점에서는 **로딩 → 완료 전환 타이밍의 기준**으로 활용됨.
 
 <br>
+<br>
 
-## .on('time')
+# .on('time')
 
 Fired when the playback position updates as the player is playing. This may occur as frequently as 10 times per second.
 

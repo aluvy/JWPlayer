@@ -3,8 +3,9 @@
 These API calls are used to retrieve and update the current player dimensions and fullscreen state.
 
 <br>
+<br>
 
-## .on('fullscreen')
+# .on('fullscreen')
 
 Fires when the player toggles to/from fullscreen
 
@@ -27,8 +28,9 @@ Fires when the player toggles to/from fullscreen
 ### 특징
 
 <br>
+<br>
 
-## .on('resize')
+# .on('resize')
 
 Fires when the player's on-page dimensions have changed
 

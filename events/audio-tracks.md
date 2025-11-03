@@ -3,8 +3,9 @@
 These API calls are used to listen to or update the audio track if multiple audio tracks of a video are provided.
 
 <br>
+<br>
 
-## .on('audioTracks')
+# .on('audioTracks')
 
 Fires when the list of available audio tracks is updated
 
@@ -29,8 +30,9 @@ This occurs shortly after a playlist item starts playing.
 ### 특징
 
 <br>
+<br>
 
-## .on('audioTrackChanged')
+# .on('audioTrackChanged')
 
 Fires when the active audio track is changed.
 

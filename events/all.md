@@ -5,8 +5,9 @@ This singular API call can be used to gather all events from the player's API.
 > This will output a large amount of information and may degrade browser performance if it is used for an extended period of time.
 
 <br>
+<br>
 
-## .on('all')
+# .on('all')
 
 ### 호출시점
 

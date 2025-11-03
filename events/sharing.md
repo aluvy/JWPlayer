@@ -11,8 +11,9 @@ player.on('ready', function (event) {
 All `sharingPlugin` references below will assume that the above code is implemented on your page.
 
 <br>
+<br>
 
-## ("sharing").on('open')
+# ("sharing").on('open')
 
 Listens for the opening of the plugin
 
@@ -63,8 +64,9 @@ jwplayer().on('sharingOpen', () => {
 - `click`과 달리 UI 오픈 행위 자체를 감지.
 
 <br>
+<br>
 
-## ("sharing").on('close')
+# ("sharing").on('close')
 
 Listens for the closing of the plugin
 
@@ -113,8 +115,9 @@ jwplayer().on('sharingClose', () => {
 - UI 복원 및 사용자 세션 관리의 기준 타이밍으로 활용.
 
 <br>
+<br>
 
-## ("sharing").on('click')
+# ("sharing").on('click')
 
 Triggers whenever somebody shares content from within the sharing plugin
 

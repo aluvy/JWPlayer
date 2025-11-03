@@ -5,8 +5,9 @@
 This API provides developers with more control over the functionality of the Advertising edition of JWP. For VAST and IMA plugins, this API allows for things like impression verification, custom scheduling, and multiple companions.
 
 <br>
+<br>
 
-## .on('adBidRequest')
+# .on('adBidRequest')
 
 Fired when header bidding starts requesting for bids.
 
@@ -73,112 +74,139 @@ Fired when header bidding starts requesting for bids.
 - 헤더입찰 구조가 복잡해지는 현대 광고 플로우에서, 수익 모니터링/문제 진단 시 매우 유용한 진단 포인트가 됩니다.
 
 <br>
-
-## .on('adBidResponse')
-
 <br>
 
-## .on('adBlock')
+# .on('adBidResponse')
 
 <br>
-
-## .on('adBreakEnd')
-
 <br>
 
-## .on('adBreakIgnored')
+# .on('adBlock')
 
 <br>
-
-## .on('adBreakStart')
-
 <br>
 
-## .on('adClick')
+# .on('adBreakEnd')
 
 <br>
-
-## .on('adCompanions')
-
 <br>
 
-## .on('adComplete')
+# .on('adBreakIgnored')
 
 <br>
-
-## .on('adError')
-
 <br>
 
-## .on('adImpression')
+# .on('adBreakStart')
 
 <br>
-
-## .on('adItem')
-
 <br>
 
-## .on('adLoaded')
+# .on('adClick')
 
 <br>
-
-## .on('adManager')
-
 <br>
 
-## .on('adMeta')
+# .on('adCompanions')
 
 <br>
-
-## .on('adPause')
-
 <br>
 
-## .on('adPlay')
+# .on('adComplete')
 
 <br>
-
-## .on('adRequest')
-
 <br>
 
-## .on('adRequestedContentResume')
+# .on('adError')
 
 <br>
-
-## .on('adSchedule')
-
 <br>
 
-## .on('adLoadedXML')
+# .on('adImpression')
 
 <br>
-
-## .on('adSkipped')
-
 <br>
 
-## .on('adStarted')
+# .on('adItem')
 
 <br>
-
-## .on('adTime')
-
 <br>
 
-## .on('adViewableImpression')
+# .on('adLoaded')
 
 <br>
-
-## .on('adWarning')
-
 <br>
 
-## .on('adsManager')
+# .on('adManager')
 
 <br>
+<br>
 
-## .on('beforeComplete')
+# .on('adMeta')
+
+<br>
+<br>
+
+# .on('adPause')
+
+<br>
+<br>
+
+# .on('adPlay')
+
+<br>
+<br>
+
+# .on('adRequest')
+
+<br>
+<br>
+
+# .on('adRequestedContentResume')
+
+<br>
+<br>
+
+# .on('adSchedule')
+
+<br>
+<br>
+
+# .on('adLoadedXML')
+
+<br>
+<br>
+
+# .on('adSkipped')
+
+<br>
+<br>
+
+# .on('adStarted')
+
+<br>
+<br>
+
+# .on('adTime')
+
+<br>
+<br>
+
+# .on('adViewableImpression')
+
+<br>
+<br>
+
+# .on('adWarning')
+
+<br>
+<br>
+
+# .on('adsManager')
+
+<br>
+<br>
+
+# .on('beforeComplete')
 
 Fired just before the player completes playing. Unlike the onComplete event, the player will not have moved on to either showing the replay screen or advancing to the next playlistItem, which makes this the right moment to insert post-roll ads using `playAd()`.
 
@@ -235,8 +263,9 @@ Fired just before the player completes playing. Unlike the onComplete event, the
 - **포스트롤 광고 / 다음 영상 로드 / 종료 직전 분석 이벤트** 등에 매우 적합.
 
 <br>
+<br>
 
-## .on('beforePlay')
+# .on('beforePlay')
 
 Fires before any of the following occur:
 
@@ -309,5 +338,3 @@ player.on('beforePlay', (e) => {
 - 재생 사이클의 **가장 초기 이벤트** → 초기화 및 광고 트리거 위치로 최적.
 - `beforeComplete` 의 반대 개념으로, 콘텐츠 시작 전 개입할 수 있는 유일한 포인트.
 - `playReason` 값을 통해 “재생 시작 원인”을 명확히 구분할 수 있는 유일한 이벤트.
-
-<br>

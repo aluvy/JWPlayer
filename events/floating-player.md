@@ -3,8 +3,9 @@
 The player allows for a user to update the floating state of the player dynamically.
 
 <br>
+<br>
 
-## .on('float')
+# .on('float')
 
 Fires when a floating player starts and stops floating
 

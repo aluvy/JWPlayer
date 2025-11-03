@@ -5,8 +5,9 @@ These API calls are used to listen to or update the video quality if multiple qu
 > An index of 0 will always be "Auto".
 
 <br>
+<br>
 
-## .on('levels')
+# .on('levels')
 
 Fired when the list of available quality levels is updated. Happens e.g. shortly after a playlist item starts playing.
 
@@ -29,8 +30,9 @@ Fired when the list of available quality levels is updated. Happens e.g. shortly
 ### 특징
 
 <br>
+<br>
 
-## .on('levelsChanged')
+# .on('levelsChanged')
 
 Fired when the active quality level is changed. Happens in response to e.g. a user clicking an option in the quality menu or a script calling setCurrentQuality.
 
@@ -53,8 +55,9 @@ Fired when the active quality level is changed. Happens in response to e.g. a us
 ### 특징
 
 <br>
+<br>
 
-## .on('visualQuality')
+# .on('visualQuality')
 
 Fires when the active quality level is changed for HLS
 

@@ -3,8 +3,9 @@
 These API calls are used to retrieve and change the current playback state of the player.
 
 <br>
+<br>
 
-## .on('autostartNotAllowed')
+# .on('autostartNotAllowed')
 
 Fires when the player is configured to autostart but the browser's settings are preventing it
 
@@ -70,8 +71,9 @@ player.on('autostartNotAllowed', () => {
 - 광고 프리롤 또는 앱 내 임베드 환경에서 **재생 정책 대응 코드의 트리거** 역할을 함.
 
 <br>
+<br>
 
-## .on('buffer')
+# .on('buffer')
 
 Fires when one of the following events occurs:
 
@@ -147,8 +149,9 @@ player.on('play', () => clearTimeout(bufferTimer));
   재생 상태 플로우(`idle → playing → buffering → playing → complete`)를 구성하는 핵심 포인트.
 
 <br>
+<br>
 
-## .on('complete')
+# .on('complete')
 
 Fires when the end of a video is reached, but not when one of the following occurs:
 
@@ -213,8 +216,9 @@ player.on('complete', () => {
 - 이벤트 데이터가 단순하고 빈도가 낮아, 로깅이나 통계 수집용으로 매우 안정적.
 
 <br>
+<br>
 
-## .on('error')
+# .on('error')
 
 Signals a critical error in the playback process
 
@@ -310,8 +314,9 @@ player.on('error', (e) => {
 - 사용자가 오류 후 “다시 시도”하거나 “다음 콘텐츠로 이동”하도록 안내하는 트리거로 가장 많이 활용됨.
 
 <br>
+<br>
 
-## .on('firstFrame')
+# .on('firstFrame')
 
 Fires when a video's first frame event occurs or the instant an audio file begins playback
 
@@ -389,8 +394,9 @@ player.on('firstFrame', (e) => {
   “초기화 → 요청 → 표시”의 전체 로딩 파이프라인을 정밀하게 추적 가능.
 
 <br>
+<br>
 
-## .on('idle')
+# .on('idle')
 
 Fires when the player enters the idle state
 
@@ -474,8 +480,9 @@ player.on('idle', (e) => {
 - `reason` 필드가 포함되어 있어 **종료 원인 분석**이 가능한 점이 특징.
 
 <br>
+<br>
 
-## .on('pause')
+# .on('pause')
 
 Fires when non-advertising media within the player is paused
 
@@ -564,8 +571,9 @@ player.on('pause', (e) => {
 - `pause` → `play` 이벤트 조합은 **사용자 참여도(Engagement Rate)** 측정의 기본 단위로 활용됨.
 
 <br>
+<br>
 
-## .on('play')
+# .on('play')
 
 Fires when non-advertising media within the player begins playback
 
@@ -648,8 +656,9 @@ player.on('play', (e) => {
   **시청 패턴·이탈률·참여도(Engagement Rate)** 분석의 핵심 포인트가 됨.
 
 <br>
+<br>
 
-## .on('playAttemptFailed')
+# .on('playAttemptFailed')
 
 Fires when playback is aborted or blocked
 
@@ -738,8 +747,9 @@ player.on('playAttemptFailed', (e) => {
 - 특히 프리롤 광고 또는 미디어 로딩 도중 중단되는 케이스에서도 감지 가능.
 
 <br>
+<br>
 
-## .on('playbackRateChanged')
+# .on('playbackRateChanged')
 
 Fires when the playback rate has been changed
 
@@ -823,8 +833,9 @@ player.on('playbackRateChanged', (e) => {
 - playbac`kRate 값은 실시간으로 `player.getPlaybackRate()` 에서도 확인 가능.
 
 <br>
+<br>
 
-## .on('warning')
+# .on('warning')
 
 Signals a failure that is not critical to the setup or playback process
 

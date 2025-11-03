@@ -3,8 +3,9 @@
 These API calls are used to create players and provide setup information.
 
 <br>
+<br>
 
-## .on('ready')
+# .on('ready')
 
 Signifies when the player has been initialized and is ready for playback  
 This is the earliest point at which any API calls should be made.
@@ -49,8 +50,9 @@ This is the earliest point at which any API calls should be made.
 - 모든 **API 호출의 시작점**이며, `setupError`와 짝지어 사용해야 안정적인 로딩 관리 가능.
 
 <br>
+<br>
 
-## .on('remove')
+# .on('remove')
 
 Triggered when the player is taken off of a page via `jwplayer().remove();`  
 No value returned
@@ -89,8 +91,9 @@ No value returned
 - 다른 이벤트(`ready`, `complete`, `setupError`)와 달리, `remove()` 명시 호출 없이는 발생하지 않음.
 
 <br>
+<br>
 
-## .on('setupError')
+# .on('setupError')
 
 Fires when neither the player could be set up
 

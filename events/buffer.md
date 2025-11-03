@@ -5,8 +5,9 @@ These API calls are used to update clients with the percentage of a file that is
 > This only applies to VOD media. Live streaming media (HLS/DASH) does not expose this behavior.
 
 <br>
+<br>
 
-## .on('bufferChange')
+# .on('bufferChange')
 
 Fires when the currently playing item loads additional data into its buffer
 

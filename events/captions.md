@@ -5,8 +5,9 @@ These API calls are used to listen to or update the active captions track if one
 > An index of 0 implies that captions are off.
 
 <br>
+<br>
 
-## .on('captionsChanged')
+# .on('captionsChanged')
 
 Triggers whenever the active captions track is changed manually or via API
 
@@ -71,8 +72,9 @@ Triggers whenever the active captions track is changed manually or via API
 - 이벤트가 비교적 단순(데이터 용량 작음)하여 빈번하게 발생해도 성능 부담이 거의 없음.
 
 <br>
+<br>
 
-## .on('captionsList')
+# .on('captionsList')
 
 Fires when the list of available captions tracks changes
 

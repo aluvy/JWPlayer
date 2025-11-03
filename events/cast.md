@@ -3,8 +3,9 @@
 This API call allows a developer to listen for cast events.
 
 <br>
+<br>
 
-## .on('cast')
+# .on('cast')
 
 This API call allows a developer to listen for cast events.
 
@@ -27,8 +28,9 @@ This API call allows a developer to listen for cast events.
 ### 특징
 
 <br>
+<br>
 
-## .on('castIntercepted')
+# .on('castIntercepted')
 
 Fired when [interceptCast](https://docs.jwplayer.com/players/reference/casting) is enabled, and a customer tries to cast content.
 
