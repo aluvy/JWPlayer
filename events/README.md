@@ -251,10 +251,10 @@ player.on('ready', function (event) {
 
 플레이어가 화면에 얼마나 보여지는지(viewable)와 관련된 이벤트 그룹
 
-| Event                                                         | Description |
-| :------------------------------------------------------------ | :---------- |
-| [**containerViewable**](./viewability.md#oncontainerViewable) |             |
-| [**viewable**](./viewability.md#onviewable)                   |             |
+| Event                                                         | Description                                                                             |
+| :------------------------------------------------------------ | :-------------------------------------------------------------------------------------- |
+| [**containerViewable**](./viewability.md#oncontainerViewable) | 플레이어가 브라우저 뷰포트(Viewport) 내에서 보이는 상태인지 감지될 때마다 호출          |
+| [**viewable**](./viewability.md#onviewable)                   | 플레이어가 브라우저 탭 또는 OS 수준에서 “실제로 보이는 상태(Viewable)”로 전환될 때 호출 |
 
 <br>
 
