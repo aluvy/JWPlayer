@@ -477,23 +477,91 @@ player.on('idle', (e) => {
 
 ## .on('pause')
 
+Fires when non-advertising media within the player is paused
+
+> To listen for an ad break pause event, use [.on('adPause')](https://docs.jwplayer.com/players/reference/advertising-events#onadpause)
+
 ### 호출시점
+
+- 재생 중이던 영상이 **일시정지(Pause)** 상태로 전환될 때 발생합니다.
+- 다음과 같은 경우에 트리거됩니다:
+  1. 사용자가 플레이어의 일시정지 버튼 클릭
+  2. 스크립트로 `player.pause(true)` 호출
+  3. 브라우저 탭이 비활성화되거나 시스템 자원 부족으로 재생이 중단될 때
+  4. 자동 일시정지 정책(`autopause` or `viewability` 옵션)으로 인한 정지
+  5. 광고 재생을 위해 본편이 일시정지될 때
+- 즉, **재생이 중단되는 모든 정상적인 상황의 진입점 이벤트**입니다.
+  (`buffer`는 네트워크 지연, `pause`는 재생 중단)
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "oldstate": "playing",
+  "newstate": "paused",
+  "reason": "interaction",
+  "type": "pause"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                 | Description                                                                               |
+| :-------------------- | :---------------------------------------------------------------------------------------- |
+| **oldstate** (string) | 일시정지 전의 상태 (`"playing"`, `"buffering"` 등)                                        |
+| **newstate** (string) | `"paused"` 고정                                                                           |
+| **reason** (string)   | 일시정지 원인 (`"interaction"`, `"external"`, `"autostartFail"`, `"ad"`, `"viewability"`) |
 
 ### 활용
 
+#### 1. UI 동기화
+
+- 일시정지 상태일 때 버튼, 오버레이, 썸네일 표시 등 시각적 피드백 제공.
+
+```javascript
+player.on('pause', (e) => {
+  console.log(`Paused by: ${e.reason}`);
+  document.body.classList.add('paused');
+});
+```
+
+#### 2. 사용자 행동 분석
+
+- `reason: "interaction"`이면 사용자가 직접 누른 경우
+- `reason: "viewability"`이면 플레이어가 화면 밖으로 나가 자동 일시정지된 경우
+- 이를 이용해 **사용자 행동 통계(직접 중단 vs 자동 중단)** 구분 가능.
+
+#### 3. 광고/트래킹 처리
+
+- 광고 재생 시작 전 본편이 일시정지되는 시점 감지 → 광고 모듈 트리거.
+- 혹은 일시정지 시 광고 오버레이, 추천 배너 등을 표시.
+
+#### 4. 자동재개 제어
+
+- 특정 구간에서 pause가 발생하면 일정 시간 후 자동 재개:
+
+```javascript
+player.on('pause', (e) => {
+  if (e.reason === 'interaction') {
+    setTimeout(() => player.play(), 5000);
+  }
+});
+```
+
 ### 주의사항
 
+- `pause` 이벤트는 “상태 변경”이 일어날 때만 발생하므로,
+  이미 `paused` 상태에서 다시 `pause()`를 호출하면 이벤트가 중복 발생하지 않음.
+- 자동 일시정지(`viewability`, `autopause`)가 켜져 있을 경우
+  사용자가 직접 멈추지 않아도 자주 호출될 수 있음 → 로그 필터링 필요.
+- 광고 중단/재생 시점에도 `pause`가 발생할 수 있으므로,
+  본편/광고 상태 구분(`player.getState()` 혹은 `ad` 관련 이벤트) 필수.
+- 일부 모바일 브라우저(iOS Safari 등)는 시스템 이벤트(전화, 홈 이동 등)로 인한 일시정지 시에도 트리거될 수 있음.
+
 ### 특징
+
+- **“사용자 의도 또는 정책적 재생 중단”을 감지하는 대표 이벤트.**
+- `buffer`와 달리 네트워크 이슈가 아닌 **논리적 일시정지**임.
+- `reason` 필드 덕분에 **중단 원인을 정밀하게 추적**할 수 있음.
+- `pause` → `play` 이벤트 조합은 **사용자 참여도(Engagement Rate)** 측정의 기본 단위로 활용됨.
 
 <br>
 

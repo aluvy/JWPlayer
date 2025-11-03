@@ -159,7 +159,7 @@
 | [**error**](./playback.md#onerror)                             | 플레이어가 재생 중 오류를 감지했을 때 호출                                                                                                         |
 | [**firstFrame**](./playback.md#onfirstFrame)                   | 영상이 실제로 화면에 첫 번째 프레임을 렌더링했을 때 호출                                                                                           |
 | [**idle**](./playback.md#onidle)                               | 플레이어가 재생 가능한 미디어가 없거나, 현재 재생이 완전히 종료되어 대기 상태로 전환될 때 호출                                                     |
-| [**pause**](./playback.md#onpause)                             |                                                                                                                                                    |
+| [**pause**](./playback.md#onpause)                             | 재생 중이던 영상이 일시정지(Pause) 상태로 전환될 때 호출                                                                                           |
 | [**play**](./playback.md#onplay)                               |                                                                                                                                                    |
 | [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |                                                                                                                                                    |
 | [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |                                                                                                                                                    |
