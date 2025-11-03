@@ -220,12 +220,12 @@
 
 재생 위치를 이동(seek)과 관련된 이벤트 그룹
 
-| Event                                                          | Description |
-| :------------------------------------------------------------- | :---------- |
-| [**absolutePositionReady**](./seek.md#onabsolutePositionReady) |             |
-| [**seek**](./seek.md#onseek)                                   |             |
-| [**seeked**](./seek.md#onseeked)                               |             |
-| [**time**](./seek.md#ontime)                                   |             |
+| Event                                                          | Description                                                                                         |
+| :------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| [**absolutePositionReady**](./seek.md#onabsolutePositionReady) | 플레이어가 타임라인 상의 “절대 위치(absolute position)” 정보를 계산할 준비가 완료된 시점에 호출     |
+| [**seek**](./seek.md#onseek)                                   | 사용자가 재생 위치를 변경(Seek) 했을 때 호출                                                        |
+| [**seeked**](./seek.md#onseeked)                               | 시킹(Seek) 동작이 완료된 직후, 즉 플레이어가 새 위치로 이동하고 재생 가능한 상태로 복귀했을 때 호출 |
+| [**time**](./seek.md#ontime)                                   | 플레이어가 재생 중일 때, 매 프레임(또는 일정 주기) 마다 호출                                        |
 
 <br>
 
