@@ -651,23 +651,91 @@ player.on('play', (e) => {
 
 ## .on('playAttemptFailed')
 
+Fires when playback is aborted or blocked
+
+A failed play attempt does not result in a play. Pausing the video or changing the media results in play attempts being aborted. In mobile browsers play attempts are blocked when not started by a user gesture.
+
 ### 호출시점
+
+- 플레이어가 **재생을 시도했으나(`play()` 실행됨)**
+  **브라우저 또는 플랫폼 정책, 미디어 문제 등으로 인해 재생이 시작되지 못했을 때** 발생합니다.
+- 즉, `play` 이벤트가 **성공적으로 완료되지 못한 시점**에서 트리거됩니다.
+- 주로 다음과 같은 경우에 발생합니다:
+  1. 브라우저 자동재생 정책으로 인해 재생 거부됨
+  2. 사용자 상호작용 없이 `play()` 호출됨
+  3. 코덱 불일치, 미디어 파일 로드 실패, DRM 오류 등으로 실제 재생이 시작되지 못함
+  4. iOS Safari에서 음소거되지 않은 자동재생 시도
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "code": 303016,
+  "error": "play() request was interrupted by a call to pause().",
+  "playReason": "autostart",
+  "type": "playAttemptFailed"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                   | Description                                                            |
+| :---------------------- | :--------------------------------------------------------------------- |
+| **code** (number)       | JW Player 내부 오류 코드 (예: `303016`, `303220`)                      |
+| **error** (string)      | 브라우저나 플랫폼이 반환한 오류 메시지                                 |
+| **playReason** (string) | 재생 시도 원인 (`"autostart"`, `"interaction"`, `"external"`, `"api"`) |
 
 ### 활용
 
+#### 1. 자동재생 실패 대응 (Fallback)
+
+- **자동재생 실패 시 음소거 재시도 또는 UI 버튼 표시**로 사용자 경험 유지.
+
+```javascript
+player.on('playAttemptFailed', (e) => {
+  console.warn('재생 시도 실패:', e.error);
+  if (e.playReason === 'autostart') {
+    player.setMute(true);
+    player.play(); // 음소거 상태로 재시도
+  } else {
+    showPlayButton(); // 사용자 수동재생 유도
+  }
+});
+```
+
+#### 2. 오류 로깅 및 정책 분석
+
+- 브라우저·디바이스·플랫폼별 자동재생 실패율 추적.
+- `error` 문자열을 로그에 남겨 **정책 변경(Chrome/Safari)** 대응에 활용.
+
+#### 3. 재생 정책 테스트
+
+- 사내 QA나 A/B 테스트 환경에서 “자동재생 성공률” 측정용 트리거로 사용 가능.
+
 ### 주의사항
 
+- `playAttemptFailed`는 `play` **이벤트가 발생하지 않은 경우에만 호출됩니다.**
+  즉, 실제 재생이 시작되지 않았음을 의미.
+
+- 오류 코드(`code`)는 브라우저 환경·JW Player 버전에 따라 다를 수 있으므로,
+  **정확한 원인 분류는 `error` 문자열 기반으로 처리하는 것이 안전**합니다.
+- `autostartNotAllowed` 와 유사하지만, 다음과 같이 구분됩니다:
+
+| 비교항목  | `autostartNotAllowed`    | `playAttemptFailed`            |
+| :-------- | :----------------------- | :----------------------------- |
+| 발생 시점 | 자동재생 시도 즉시 차단  | 재생 시도 중 실제 실패 감지    |
+| 대상      | `autostart` 설정 시 전용 | 모든 `play()` 시도 (수동 포함) |
+| 공통점    | 재생 불가 상황을 알림    | 재생 불가 상황을 알림          |
+
+- 모바일(iOS, Android WebView 등)에서는 시스템 제약(오디오 정책, 화면 포커스 등)으로
+  예측 불가능하게 발생할 수 있습니다 → UI fallback 필수.
+
 ### 특징
+
+- **재생 시도가 실패한 유일한 감지 이벤트.**
+- `autostartNotAllowed`보다 더 광범위하게 적용되며,
+  **자동재생 + 수동재생** 실패 모두를 커버합니다.
+- 브라우저 정책 변화나 미디어 포맷 오류 등 **재생 실패 원인 진단의 핵심 이벤트.**
+- 에러 객체(`error`, `code`, `playReason`)가 상세해 디버깅·분석 용도로 매우 유용.
+- 특히 프리롤 광고 또는 미디어 로딩 도중 중단되는 케이스에서도 감지 가능.
 
 <br>
 

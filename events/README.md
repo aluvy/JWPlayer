@@ -161,7 +161,7 @@
 | [**idle**](./playback.md#onidle)                               | 플레이어가 재생 가능한 미디어가 없거나, 현재 재생이 완전히 종료되어 대기 상태로 전환될 때 호출                                                     |
 | [**pause**](./playback.md#onpause)                             | 재생 중이던 영상이 일시정지(Pause) 상태로 전환될 때 호출                                                                                           |
 | [**play**](./playback.md#onplay)                               | 플레이어가 실제 재생 상태(playing)로 전환될 때 호출                                                                                                |
-| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     |                                                                                                                                                    |
+| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     | 플레이어가 재생을 시도했으나(play() 실행됨) 브라우저 또는 플랫폼 정책, 미디어 문제 등으로 인해 재생이 시작되지 못했을 때 호출                      |
 | [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |                                                                                                                                                    |
 | [**warning**](./playback.md#onwarning)                         |                                                                                                                                                    |
 
