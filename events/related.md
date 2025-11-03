@@ -268,21 +268,131 @@ Triggers when the recommendations interface is closed
 
 ### 호출시점
 
-### 이벤트 객체 구조 (콜백 파라미터)
+- `relatedClose` 이벤트는 **추천(related) 콘텐츠 오버레이가 닫힐 때** 발생합니다.
 
-```json
+- 즉, `relatedOpen`을 통해 표시된 **추천 목록 UI가 사라지는 시점**입니다.
+
+#### 주요 트리거 조건
+
+1. 사용자가 **“닫기(X)” 버튼을 클릭**했을 때
+
+2. 사용자가 **추천 썸네일을 클릭하여 새 콘텐츠 재생이 시작될 때**
+
+3. 또는 `player.playlistItem(...)`, `load()` 등을 호출해 새 재생이 시작될 때
+
+4. `autoplay`로 다음 영상이 자동 재생되어 오버레이가 닫힐 때
+
+#### 일반적인 이벤트 흐름
+
+```
+complete
+→ relatedReady (추천 데이터 로드)
+→ relatedOpen  (추천 오버레이 표시)
+→ relatedClick (사용자가 추천 항목 클릭)
+→ relatedClose (오버레이 닫힘)
+→ playlistItem / play (새 영상 재생 시작)
 
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+### 이벤트 객체 구조 (콜백 파라미터)
+
+```json
+{
+  "method": "click",
+  "type": "relatedClose"
+}
+```
+
+| Value               | Description                                                             |
+| :------------------ | :---------------------------------------------------------------------- |
+| **method** (string) | 오버레이가 닫힌 원인 (`"click"`, `"autoplay"`, `"playlist"`, `"close"`) |
+
+- `"click"` → 추천 썸네일 클릭으로 닫힘 (다음 영상 재생 시작)
+- `"autoplay"` → 자동재생으로 닫힘
+- `"playlist"` → 수동 playlistItem 변경으로 닫힘
+- `"close"` → 사용자가 닫기 버튼을 눌러 직접 닫음
 
 ### 활용
 
+#### 1. 추천 오버레이 종료 후 UI 복원
+
+- 추천 창이 닫힐 때 페이지 레이아웃, 컨트롤러, 배경 블러 등을 원래 상태로 되돌림.
+
+```javascript
+player.on('relatedClose', (e) => {
+  document.body.classList.remove('related-active');
+  console.log(`추천 오버레이 닫힘 (원인: ${e.method})`);
+});
+```
+
+#### 2. 사용자 행동 분석
+
+- 어떤 이유로 추천 콘텐츠가 닫혔는지 추적 가능:
+- → 예:
+  - `method: "click"` → 추천 영상 클릭 → 재방문 유도 성공
+  - `method: "close"` → 사용자가 닫기만 함 → 추천 콘텐츠 무시
+
+```javascript
+player.on('relatedClose', (e) => {
+  sendAnalytics('related_close', { reason: e.method });
+});
+```
+
+#### 3. 추천 세션 관리
+
+- 추천 영역이 열리고 닫히는 주기를 기록해,  
+  사용자 세션 내 추천 노출률·체류 시간 분석 가능:
+
+```javascript
+let openTime;
+player.on('relatedOpen', () => (openTime = Date.now()));
+player.on('relatedClose', () => {
+  const duration = (Date.now() - openTime) / 1000;
+  sendAnalytics('related_view_duration', { seconds: duration });
+});
+```
+
+#### 4. 자동재생 전환 처리
+
+- `autoplay`로 닫힐 경우, 다음 영상 재생에 맞춰 애니메이션이나  
+  카운트다운 UI를 제거:
+
+```javascript
+player.on('relatedClose', (e) => {
+  if (e.method === 'autoplay') removeCountdownUI();
+});
+```
+
 ### 주의사항
 
+- `relatedClose`는 `relatedOpen` **이후에만 호출**됩니다.  
+  (`related` 플러그인이 로드되지 않으면 이벤트 발생 X)
+
+- `relatedClose`는 **추천 오버레이 UI가 완전히 사라진 후**에 트리거되므로,  
+  애니메이션과 맞물릴 경우 타이밍 차이가 있을 수 있습니다.
+
+- **광고(Ad)와 동시에 닫힘이 발생**하면,  
+  광고 SDK에 의해 `relatedClose` 호출이 지연될 가능성이 있습니다.
+
+- `method` 값은 사용자의 행동을 직접적으로 나타내므로
+  **로그 및 분석 시 필수적으로 함께 수집**해야 합니다.
+
+- 모바일(iOS Safari)에서는 `relatedClose` 이벤트가  
+  전체화면 모드 종료와 거의 동시에 발생할 수 있어,  
+  UI 복원 로직은 `resize` 이벤트와 함께 처리하는 것이 안정적입니다.
+
 ### 특징
+
+- `related` 플러그인에서 **“추천 화면 종료” 시점을 명확히 알려주는 유일한 이벤트.**
+
+- `relatedOpen`과 한 쌍으로 동작하며,  
+  두 이벤트를 조합하면 추천 노출의 **전체 세션 단위**를 파악할 수 있음.
+
+- 특히 **사용자 전환 행동(추천 클릭 vs 닫기)** 을 구분할 수 있는 점이 핵심.
+
+- UI 및 UX 상태 전환, 분석, 다음 재생 시나리오 연결에 유용.
+
+- 광고·추천 통합 플레이어에서 **UX 일관성 유지 및 세션 분석의 기준 이벤트.**
 
 <br>
 <br>
