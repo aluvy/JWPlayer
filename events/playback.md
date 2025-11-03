@@ -216,23 +216,98 @@ player.on('complete', () => {
 
 ## .on('error')
 
+Signals a critical error in the playback process
+
 ### 호출시점
+
+- 플레이어가 **재생 중 오류를 감지했을 때 발생**합니다.
+- 즉, 미디어 로드·디코딩·재생 중 네트워크나 포맷 관련 문제로 인해 **정상적인 재생이 중단될 때 즉시 트리거**됩니다.
+- `setupError` 가 초기화 실패 시점의 에러라면, `error 는 재생 도중 발생하는 런타임 오류입니다.
+
+#### 발생 예시 상황:
+
+- 스트리밍 URL이 만료되거나 404 응답을 반환
+- 네트워크 끊김, HLS 세그먼트 손상
+- 브라우저 디코딩 불가(코덱 미지원)
+  D- RM 또는 광고 SDK 오류 등
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "code": 232011,
+  "message": "A network error caused the media download to fail part-way.",
+  "sourceError": {
+    "code": 4,
+    "message": "MEDIA_ERR_NETWORK"
+  },
+  "type": "error"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                            | Description                                  |
+| :------------------------------- | :------------------------------------------- |
+| **code** (number)                | JW Player 내부 에러 코드 (2~6자리 숫자)      |
+| **message** (string)             | 사람이 읽을 수 있는 오류 설명                |
+| **sourceError** (object \| null) | 브라우저·네트워크·디코더 등의 원본 오류 객체 |
+
+[jw8-player-errors-reference](https://docs.jwplayer.com/players/docs/jw8-player-errors-reference)
 
 ### 활용
 
+#### 1. 오류 메시지 표시 / 사용자 안내
+
+```javascript
+player.on('error', (e) => {
+  console.error(`JW Error ${e.code}: ${e.message}`);
+  showErrorUI('영상을 재생할 수 없습니다. 네트워크 상태를 확인해주세요.');
+});
+```
+
+#### 2. 자동 복구 / 재시도 로직
+
+- 네트워크 일시 오류(code `232011`) 발생 시 재시도:
+
+```javascript
+player.on('error', (e) => {
+  if (e.code === 232011) {
+    setTimeout(() => player.play(true), 3000);
+  }
+});
+```
+
+#### 3. 품질 모니터링 / 로그 수집
+
+- `code` + `message` + `sourceError` 를 서버로 전송 → CDN/네트워크 품질 분석.
+- `error` 발생 빈도를 기준으로 스트리밍 품질 또는 사용자 환경 진단 가능.
+
+#### 4. 광고·DRM 환경 분리 대응
+
+- 광고 모듈 에러(`adError`)와 재생 에러(`error`)를 구분하여 별도 처리.
+
 ### 주의사항
 
+- error 발생 후 플레이어는 일반적으로 **재생 불가 상태(idle)** 로 전환됩니다.
+  재생을 이어가려면 `load()` 나 `setup()` 으로 다시 초기화해야 합니다.
+
+- 특정 브라우저(특히 iOS Safari)에서는 `MEDIA_ERR_DECODE` 가 자주 발생할 수 있으며,
+  실제 네트워크 문제보다 디바이스 정책/형식 제약에 의한 경우가 많습니다.
+
+- 동일한 에러가 반복 발생할 수 있으므로, 로그 중복 필터링 필요.
+
+- 광고, DRM, HLS, DASH 등 각 모듈에서 발생한 내부 오류도
+  `error` 로 래핑되어 전달되므로, `sourceError` 확인 필수.
+
+- `setupError` 와 구분:
+  - `setupError` → 초기화 실패 시점
+  - `error` → 재생 중(런타임) 오류
+
 ### 특징
+
+- **재생 중 발생하는 모든 오류의 통합 포인트.**
+- `setupError` 와 함께 플레이어 오류 처리의 두 축 중 하나.
+- `code` 와 `sourceError` 의 병합 구조로, JW 내부·브라우저 내부 원인을 모두 확인 가능.
+- 사용자가 오류 후 “다시 시도”하거나 “다음 콘텐츠로 이동”하도록 안내하는 트리거로 가장 많이 활용됨.
 
 <br>
 
