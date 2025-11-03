@@ -184,11 +184,11 @@
 
 영상/오디오의 품질과 관련된 이벤트 그룹
 
-| Event                                             | Description |
-| :------------------------------------------------ | :---------- |
-| [**levels**](./quality.md#onlevels)               |             |
-| [**levelsChanged**](./quality.md#onlevelsChanged) |             |
-| [**visualQuality**](./quality.md#onvisualQuality) |             |
+| Event                                             | Description                                                                                 |
+| :------------------------------------------------ | :------------------------------------------------------------------------------------------ |
+| [**levels**](./quality.md#onlevels)               | 플레이어가 영상의 화질(quality) 정보를 로드하고, 선택 가능한 레벨 목록이 준비되었을 때 호출 |
+| [**levelsChanged**](./quality.md#onlevelsChanged) | 플레이어의 재생 화질(quality level)이 변경될 때마다 호출                                    |
+| [**visualQuality**](./quality.md#onvisualQuality) | 플레이어의 실제 비디오 렌더링 품질(Visual Quality) 이 실시간으로 변경될 때 호출             |
 
 <br>
 
