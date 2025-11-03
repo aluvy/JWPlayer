@@ -1,8 +1,9 @@
 # Volume Events
 
 <br>
+<br>
 
-## .on('mute')
+# .on('mute')
 
 Fires when the player has gone in or out of a mute state
 
@@ -93,8 +94,9 @@ player.on('mute', (e) => {
 - 광고 환경(특히 프리롤)에서 **정책적 음소거 자동 적용 감지** 용도로 자주 활용됨.
 
 <br>
+<br>
 
-## .on('volume')
+# .on('volume')
 
 Fires when the player's volume is changed
 
