@@ -162,8 +162,8 @@
 | [**pause**](./playback.md#onpause)                             | 재생 중이던 영상이 일시정지(Pause) 상태로 전환될 때 호출                                                                                           |
 | [**play**](./playback.md#onplay)                               | 플레이어가 실제 재생 상태(playing)로 전환될 때 호출                                                                                                |
 | [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     | 플레이어가 재생을 시도했으나(play() 실행됨) 브라우저 또는 플랫폼 정책, 미디어 문제 등으로 인해 재생이 시작되지 못했을 때 호출                      |
-| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) |                                                                                                                                                    |
-| [**warning**](./playback.md#onwarning)                         |                                                                                                                                                    |
+| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) | 플레이어의 재생 속도(playbackRate) 가 변경될 때마다 호출                                                                                           |
+| [**warning**](./playback.md#onwarning)                         | 재생은 계속 진행되지만 경고성 문제(Warning)가 발생했을 때 호출                                                                                     |
 
 <br>
 

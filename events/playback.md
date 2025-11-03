@@ -741,42 +741,169 @@ player.on('playAttemptFailed', (e) => {
 
 ## .on('playbackRateChanged')
 
+Fires when the playback rate has been changed
+
 ### 호출시점
+
+- 플레이어의 **재생 속도(playbackRate)** 가 변경될 때마다 발생합니다.
+- 즉, 사용자가 속도 조절 메뉴(예: 1.5x, 2x)를 바꾸거나,
+  스크립트로 `player.setPlaybackRate(rate)` 호출했을 때 트리거됩니다.
+- 일반적인 호출 흐름:
+
+```
+ready → play → playbackRateChanged (사용자 조작 시)
+```
+
+- 속도 변경 시점마다 **_즉시 발생_**하며, 동일한 값으로 다시 설정해도 중복 호출되지 않습니다.
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "playbackRate": 1.5,
+  "type": "playbackRateChanged"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                     | Description                                         |
+| :------------------------ | :-------------------------------------------------- |
+| **playbackRate** (number) | 현재 적용된 재생 속도 (예: 0.5, 1, 1.25, 1.5, 2 등) |
 
 ### 활용
 
+#### 1. UI 동기화
+
+- 사용자가 재생 속도를 바꿀 때 UI에 실시간 표시.
+
+```javascript
+player.on('playbackRateChanged', (e) => {
+  document.querySelector('#rateDisplay').textContent = `${e.playbackRate}x`;
+});
+```
+
+#### 2. 사용자 환경 저장 (Persistence)
+
+- 다음 영상에서도 동일한 속도로 재생되도록 사용자 선호도 저장.
+
+```javascript
+player.on('playbackRateChanged', (e) => {
+  localStorage.setItem('lastPlaybackRate', e.playbackRate);
+});
+```
+
+#### 3. 분석 및 트래킹
+
+- 어떤 속도가 가장 많이 사용되는지 트래킹하여 UX 개선에 활용.
+  (예: 평균 재생 속도, 2배속 이용률 등)
+
+#### 4. 특수 콘텐츠 제어
+
+- 교육·강의 콘텐츠 등에서 **속도 제한** 정책 구현:
+
+```javascript
+player.on('playbackRateChanged', (e) => {
+  if (e.playbackRate > 2.0) player.setPlaybackRate(2.0);
+});
+```
+
 ### 주의사항
 
+- 일부 브라우저(특히 iOS Safari)는 **속도 변경을 완전히 지원하지 않거나, 오디오·자막 동기 문제**가 발생할 수 있습니다.
+  → 실제 적용 가능한 값(`player.getPlaybackRates()`)을 미리 확인하는 것이 안전합니다.
+- 같은 속도로 반복 설정(`setPlaybackRate(1.0)` → 다시 `1.0`) 시에는 이벤트가 발생하지 않습니다.
+- 광고 재생 중(`adPlaying`)에는 속도 변경이 비활성화될 수 있으며, 이벤트가 호출되지 않을 수도 있습니다.
+- 이벤트는 **변경 직후 단 한 번**만 호출되므로, 지속적인 추적에는 별도 상태 관리가 필요합니다.
+- `setPlaybackRate()` 로 프로그램matically 변경해도 동일하게 발생합니다 (사용자 조작 구분 없음).
+
 ### 특징
+
+- **재생 속도 변경을 감지하는 유일한 이벤트.**
+- 간단한 구조지만, UX 개선(속도 표시·저장·제한)이나 **학습 콘텐츠 분석** 등에 매우 자주 활용됨.
+- `baseSetup.playbackRates` 와 함께 설정하면 사용자 경험 일관성 유지에 용이.
+- playbac`kRate 값은 실시간으로 `player.getPlaybackRate()` 에서도 확인 가능.
 
 <br>
 
 ## .on('warning')
 
+Signals a failure that is not critical to the setup or playback process
+
 ### 호출시점
+
+- **재생은 계속 진행되지만 경고성 문제(Warning)가 발생했을 때** 호출됩니다.
+- 즉, **치명적 오류(`error`)는 아니지만, 품질 저하나 기능 제한**이 감지된 시점입니다.
+- 플레이어 동작은 유지되나, 내부적으로 다음과 같은 상황에서 트리거될 수 있습니다:
+  - 비정상적인 네트워크 응답 (일부 세그먼트 손상 등)
+  - 자막 파싱 실패 또는 일부 트랙 누락
+  - 광고 SDK 경고 (타임아웃, fallback 발생 등)
+  - 품질 전환 실패 후 기본 스트림으로 복귀
+  - 미디어 메타데이터 오류 또는 손상된 HLS manifest 감지
+- 즉, `warning`은 “경미한 문제”를 알려주는 **비치명적 에러 알림 이벤트**입니다.
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "code": 332002,
+  "message": "The captions track could not be loaded.",
+  "sourceError": null,
+  "type": "warning"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+| Value                            | Description                                         |
+| :------------------------------- | :-------------------------------------------------- |
+| **code** (number)                | 경고 코드 (JW Player 내부 코드, 300000~399999 범위) |
+| **message** (string)             | 경고 내용 - 경미한 문제 설명                        |
+| **sourceError** (object \| null) | 브라우저 또는 네트워크 수준의 실제 오류 정보        |
 
 ### 활용
 
+#### 1. 비정상 상황 로깅
+
+- 치명적 에러는 아니지만, 스트리밍 품질 문제나 기능 실패를 서버 로그에 기록하여 추적.
+
+```javascript
+player.on('warning', (e) => {
+  console.warn(`[JW Warning] ${e.code}: ${e.message}`);
+  sendLog('jw_warning', e);
+});
+```
+
+#### 2. 사용자 알림 (필요 시)
+
+- 일반 사용자는 대부분 무시해도 되지만,
+  HLS나 광고 시스템을 사용하는 관리자 화면에서는 경고 팝업 표시 가능.
+
+```javascript
+player.on('warning', (e) => {
+  if (e.code >= 332000 && e.code < 333000) {
+    showToast('일부 자막을 불러오지 못했습니다.');
+  }
+});
+```
+
+#### 3. 진단/모니터링
+
+- `error`와 함께 수집하면 **정상 재생 중 발생한 경고**를 별도로 통계화 가능.
+- 네트워크 품질 모니터링, 광고 SDK 성능 분석, 자막 파일 상태 점검 등에 활용.
+
 ### 주의사항
 
+- `warning`은 **재생 중단을 유발하지 않으며, 대부분 자동 복구됩니다.**
+  따라서 사용자에게 직접적인 오류 메시지를 노출할 필요는 없습니다.
+- 단, 동일한 원인으로 연속 발생 시 네트워크·콘텐츠 품질 이슈일 수 있으므로
+  로그 수집 및 빈도 제한(throttling) 처리 권장.
+- 광고·자막·스트리밍 모듈 등 **다양한 서브시스템에서 발생**할 수 있으므로,
+  `code` 범위로 구분 관리하는 것이 좋습니다.
+- 예를 들어:
+  - **332xxx** : captions 관련 경고
+  - **334xxx** : 광고 관련 경고
+  - **336xxx** : HLS/DASH 관련 경고
+
 ### 특징
+
+- **재생을 중단하지 않는 비치명적 문제 감지 이벤트.**
+- `error` 이벤트와 구조는 동일하지만, 영향도 낮은 이슈에 사용됨.
+- 스트리밍 품질 모니터링, 자막/광고 디버깅 등 **운영 환경 진단용 이벤트**로 유용.
+- 로그 기반으로 품질 분석(QoE: Quality of Experience) 지표를 보완하는 데 적합.
