@@ -266,5 +266,3 @@ player.on('ready', function (event) {
 | :--------------------------------- | :--------------------------------------------- |
 | [**mute**](./volume.md#onmute)     | 플레이어의 음소거 상태(Muted)가 변경될 때 호출 |
 | [**volume**](./volume.md#onvolume) | 플레이어의 볼륨(Volume) 크기가 변경될 때 호출  |
-
-.
