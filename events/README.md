@@ -108,10 +108,10 @@
 
 크롬캐스트(Chromecast)나 AirPlay 같은 외부 기기로의 영상 송출(cast)과 관련된 이벤트 그룹
 
-| Event                                              | Description |
-| :------------------------------------------------- | :---------- |
-| [**cast**](./cast.md#oncast)                       |             |
-| [**castIntercepted**](./cast.md#oncastIntercepted) |             |
+| Event                                              | Description                                                                                                                                 |
+| :------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| [**cast**](./cast.md#oncast)                       | 플레이어의 Cast 상태(Chromecast, AirPlay 등) 가 시작되거나 종료될 때 호출                                                                   |
+| [**castIntercepted**](./cast.md#oncastIntercepted) | 사용자가 브라우저(Chrome)의 네이티브 Cast 버튼을 직접 클릭했을 때, JWPlayer가 그 Cast 요청을 가로채서 자사 플레이어 세션으로 처리할 때 호출 |
 
 <br>
 
