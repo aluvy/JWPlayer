@@ -119,10 +119,10 @@
 
 플레이어 제어 UI(재생/일시정지/음량/전체화면/트랙변경 등)와 관련된 이벤트 그룹
 
-| Event                                            | Description |
-| :----------------------------------------------- | :---------- |
-| [**controls**](./controls.md#oncontrols)         |             |
-| [**displayClick**](./controls.md#ondisplayClick) |             |
+| Event                                            | Description                                                                                |
+| :----------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| [**controls**](./controls.md#oncontrols)         | 플레이어 컨트롤(Play/Pause 버튼, 시킹바, 볼륨, 설정 버튼 등) 의 표시 상태가 변경될 때 호출 |
+| [**displayClick**](./controls.md#ondisplayClick) | 사용자가 플레이어의 메인 비디오 영역(Display Area) 을 클릭했을 때 호출                     |
 
 <br>
 
