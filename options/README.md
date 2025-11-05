@@ -91,7 +91,7 @@
 
 ## Skin
 
-- Color Customization
+- [Color Customization](./skin.md#colorcustomization)
 
 ## Time slider
 
