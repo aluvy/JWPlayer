@@ -78,5 +78,5 @@
 
 ## Playlists
 
-- [playlist](./Playlists.md#playlist)
-- [playlist[]](./Playlists.md#playlist-1)
+- [playlist](./playlists.md#playlist)
+- [playlist[]](./playlists.md#playlist-1)
