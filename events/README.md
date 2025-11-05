@@ -176,7 +176,7 @@
 | [**nextClick**](./playlist.md#onnextClick)               | 사용자가 플레이어 UI의 “다음(next)” 버튼을 클릭했을 때 호출    |
 | [**playlist**](./playlist.md#onplaylist)                 | 완전히 새로운 플레이리스트가 플레이어에 로드되었을 때 1회 호출 |
 | [**playlistItem**](./playlist.md#onplaylistItem)         | 플레이리스트 내에서 현재 재생 항목이 바뀌는 순간 호출          |
-| [**playlistComplete**](./playlist.md#onplaylistComplete) |                                                                |
+| [**playlistComplete**](./playlist.md#onplaylistComplete) | 플레이리스트의 모든 항목이 끝까지 재생된 직후 한 번만 호출     |
 
 <br>
 

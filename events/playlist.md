@@ -387,20 +387,117 @@ player.on('playlistItem', (e) => {
 
 Fires when the following occurs:
 
+- The player has completed playing all items in the playlist
+- The repeat option is set to `false`
+
 ### 호출시점
+
+- `playlistComplete` 이벤트는 **플레이리스트의 모든 항목이 끝까지 재생된 직후** 한 번만 호출됩니다.
+
+- 즉, 마지막 아이템(`playlist[lastIndex]`)의 재생이 완료(`complete`)되고,  
+  더 이상 재생할 항목이 없을 때 트리거됩니다.
+
+#### 대표적인 발생 흐름
+
+```
+playlistItem (N번째 아이템 로드)
+→ play / firstFrame
+→ complete (해당 영상 종료)
+→ playlistComplete (마지막 영상 종료로 전체 재생 종료)
+```
+
+#### 핵심 개념
+
+> `complete`: “하나의 영상”이 끝날 때  
+> `playlistComplete`: “플레이리스트 전체”가 끝날 때
 
 ### 이벤트 객체 구조 (콜백 파라미터)
 
 ```json
-
+{
+  "type": "playlistComplete"
+}
 ```
 
-| Value | Description |
-| :---- | :---------- |
-|       |             |
+- 별도의 `index`, `item` 등은 제공되지 않습니다
+- 마지막 아이템은 `player.getPlaylistIndex()` 또는 `player.getPlaylistItem()` 으로 확인 가능합니다.
 
 ### 활용
 
+#### 1. 자동재생 종료 처리 (UI 전환)
+
+- 전체 콘텐츠가 끝나면 엔드 스크린 표시 또는 추천 영상 노출.
+
+```javascript
+player.on('playlistComplete', () => {
+  document.querySelector('.end-screen').classList.add('show');
+  console.log('플레이리스트 전체 재생 종료');
+});
+```
+
+#### 2. 세션 종료/로그 전송
+
+- 사용자의 전체 시청 세션 종료 시점으로 활용.
+
+```javascript
+player.on('playlistComplete', () => {
+  sendAnalytics('playlist_complete', {
+    endedAt: new Date().toISOString(),
+    totalItems: player.getPlaylist().length,
+  });
+});
+```
+
+#### 3. 자동 루프 재생 (Custom Loop)
+
+- JW Player 설정에서 `repeat: true` 가 아니더라도 수동 루프 가능:
+
+```javascript
+player.on('playlistComplete', () => {
+  console.log('다시 재생 시작');
+  player.playlistItem(0); // 첫 아이템부터 재생
+});
+```
+
+#### 4. 추천 콘텐츠 자동 전환
+
+- 전체 시청이 끝나면 Related API 또는 외부 추천 데이터 호출:
+
+```javascript
+player.on('playlistComplete', async () => {
+  const data = await fetch('/api/next-recommendation').then((r) => r.json());
+  player.load(data.playlist);
+});
+```
+
 ### 주의사항
 
+- `playlistComplete`는 **플레이리스트의 마지막 아이템 재생 완료 후 단 1회**만 호출됩니다.  
+  (`complete`는 각 아이템마다 호출)
+
+- `repeat: true` 옵션을 사용하면 **루프 재생 중에는 호출되지 않습니다.**  
+  → 이 경우 `complete` 이벤트만 반복적으로 발생.
+
+- `autoplay` 설정(`autostart: true`) 또는 `nextClick` 등으로 다음 아이템이 로드되면,  
+  아직 마지막 항목이 아니므로 호출되지 않습니다.
+
+- `playlist`가 동적으로 변경(`player.load()`)되면,  
+  기존 플레이리스트의 `playlistComplete` 이벤트는 더 이상 발생하지 않습니다.  
+  (새 리스트의 종료 시점에 다시 발생)
+
+- 광고 삽입이 있는 경우, 광고 `complete` 이후 본편이 모두 끝난 시점에 호출됩니다.
+
+- iOS Safari에서는 마지막 영상이 네이티브 전체화면으로 재생될 때  
+  `playlistComplete`가 지연 호출될 수 있습니다 (fullscreen 해제 후 트리거).
+
 ### 특징
+
+- **플레이리스트 전체 종료 감지용 이벤트.**
+
+- 단일 영상(`playlist.length = 1`)인 경우에도, 영상 종료 시 동일하게 발생.
+
+- `complete`보다 상위 레벨의 종료 감지이며,  
+  전체 시청 세션, 자동 추천, 엔드 스크린 처리의 기준점으로 사용됨.
+
+- JW Player의 기본 동작에서는 마지막 영상 종료 후  
+  자동으로 정지(`idle` 상태)되며, `playlistComplete` 이벤트로 그 전환 시점을 알려줍니다.
