@@ -80,3 +80,19 @@
 
 - [playlist](./playlists.md#playlist)
 - [playlist[]](./playlists.md#playlist-1)
+
+## Related
+
+- [Related](./related.md)
+
+## Sharing
+
+- [Sharing](./sharing.md)
+
+## Skin
+
+- Color Customization
+
+## Time slider
+
+- Time slider
