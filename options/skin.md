@@ -3,6 +3,8 @@
 JW Player는 **기본적으로 11가지 스킨 구성 옵션(skin configuration options)** 을 제공합니다.
 브랜드 아이덴티티를 세밀하게 제어할 수 있어, 플레이어를 보다 **쉽게 맞춤화(customize)** 할 수 있습니다.
 
+<br>
+
 ## 색상 사용자 정의 (Color Customization)
 
 색상은 **16진수(hex), RGBA 색상 값**, 또는 **색상 이름(color name)** 으로 지정할 수 있습니다. (8.0+ 지원)
@@ -10,6 +12,8 @@ JW Player는 **기본적으로 11가지 스킨 구성 옵션(skin configuration 
 - [hex 값](https://www.w3schools.com/colors/colors_picker.asp)
 - [RGBA 색상 값](https://www.w3schools.com/css/css3_colors.asp)
 - [색상 이름](https://www.w3schools.com/colors/colors_names.asp)
+
+<br>
 
 ## 예시: Skin 구성
 
