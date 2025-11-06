@@ -3,6 +3,8 @@
 아래 옵션들은 **플레이어의 레이아웃과 재생 동작(playback behavior)** 을 설정하는 항목입니다.  
 각 옵션은 플레이어의 **setup 구성 객체**에 직접 포함됩니다.
 
+---
+
 <br>
 
 ## Appearance
@@ -21,7 +23,7 @@
 
 <br>
 
-### **controls** (boolean)
+### controls (boolean)
 
 **비디오 컨트롤(재생바 및 표시 아이콘)** 을 표시할지 여부를 설정합니다.
 
@@ -29,7 +31,7 @@
 
 <br>
 
-### **displaydescription** (boolean)
+### displaydescription (boolean)
 
 미디어 파일의 **설명(description)** 을 표시할지 여부를 설정합니다.
 
@@ -37,7 +39,7 @@
 
 <br>
 
-### **displayHeading** (boolean) <sup>8.6.0+</sup>
+### displayHeading (boolean) <sup>8.6.0+</sup>
 
 **(Outstream 전용)**
 Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합니다.
@@ -51,7 +53,7 @@ Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합�
 
 <br>
 
-### **displayPlaybackLabel** (boolean) <sup>8.6.0+</sup>
+### displayPlaybackLabel (boolean) <sup>8.6.0+</sup>
 
 플레이어 **대기 화면(idle screen)** 의 재생 버튼 아래에 **콜투액션(call-to-action)** 문구를 표시합니다.
 
@@ -62,7 +64,7 @@ Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합�
 
 <br>
 
-### **displaytitle** (boolean)
+### displaytitle (boolean)
 
 미디어 파일의 **제목(title)** 을 표시할지 여부를 설정합니다.
 
@@ -70,7 +72,7 @@ Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합�
 
 <br>
 
-### **height** (number)
+### height (number)
 
 비디오 플레이어의 **세로 크기(px)** 를 지정합니다.
 `aspectratio`가 정의되어 있을 경우에는 이 속성을 생략해야 합니다.
@@ -79,7 +81,7 @@ Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합�
 
 <br>
 
-### **horizontalVolumeSlider** (boolean) <sup>8.18.4+</sup>
+### horizontalVolumeSlider (boolean) <sup>8.18.4+</sup>
 
 컨트롤 바 안에 **볼륨 슬라이더를 가로 방향으로 표시**합니다.  
 오디오 모드일 경우, 항상 가로 슬라이더가 표시됩니다.  
@@ -89,7 +91,7 @@ Outstream 플레이어 상단에 표시되는 **헤딩(heading)** 을 제어합�
 
 <br>
 
-### **livePause** (boolean) <sup>8.38.1+</sup>
+### livePause (boolean) <sup>8.38.1+</sup>
 
 **DASH 및 HLS 스트림**에서 실시간 재생 중 **일시정지 버튼**을 표시합니다.
 
@@ -100,13 +102,13 @@ DASH 스트림의 경우, 재생이 마지막 프레임에서 멈춥니다.
 
 <br>
 
-### **nextUpDisplay** (boolean)
+### nextUpDisplay (boolean)
 
 "Next Up" 모달 창을 표시할지 여부를 설정합니다.
 
 <br>
 
-### **qualityLabels** (array)
+### qualityLabels (array)
 
 기본적으로 JW Player는 매니페스트 파일의 정보를 기반으로 화질 단계를 설정합니다.  
 이 옵션을 사용하면 특정 **대역폭(kbps)** 에 사용자 지정 **화질 라벨(quality label)** 을 적용할 수 있습니다.  
@@ -121,7 +123,7 @@ qualityLabels: {
 
 <br>
 
-### **renderCaptionsNatively** (boolean) <sup>8.0.1+</sup>
+### renderCaptionsNatively (boolean) <sup>8.0.1+</sup>
 
 **(Chrome 및 Safari 전용)**  
 자막(captions)을 **브라우저 렌더러** 또는 **플레이어 렌더러** 중 어떤 것으로 표시할지를 결정합니다.
@@ -135,7 +137,7 @@ qualityLabels: {
 
 <br>
 
-### **stretching** (string)
+### stretching (string)
 
 이미지 및 비디오를 **플레이어 크기에 맞게 조정하는 방식**을 설정합니다.
 
@@ -148,7 +150,7 @@ qualityLabels: {
 
 <br>
 
-### **width** (number \| string)
+### width (number \| string)
 
 비디오 플레이어의 **가로 크기(px 또는 %)** 를 지정합니다.
 
@@ -162,7 +164,7 @@ qualityLabels: {
 
 <br>
 
-### **aboutlink** (string)
+### aboutlink (string)
 
 플레이어의 **우클릭(right-click) 메뉴**에서 클릭 시 연결될 **사용자 지정 URL**을 설정합니다.
 
@@ -170,13 +172,13 @@ qualityLabels: {
 
 <br>
 
-### **abouttext** (string)
+### abouttext (string)
 
 우클릭 메뉴에 표시될 **사용자 지정 텍스트**를 설정합니다.
 
 <br>
 
-### **allowFullscreen** (boolean) <sup>8.22.0+</sup>
+### allowFullscreen (boolean) <sup>8.22.0+</sup>
 
 false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비활성화합니다.  
 (탭, 클릭, 키보드 단축키, API 접근 포함)
@@ -187,7 +189,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **autostart** (boolean \| string)
+### autostart (boolean \| string)
 
 페이지가 로드될 때 플레이어가 자동으로 재생을 시도할지 여부를 설정합니다.
 
@@ -199,7 +201,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **defaultBandwidthEstimate** (number) <sup>8.3.0+</sup>
+### defaultBandwidthEstimate (number) <sup>8.3.0+</sup>
 
 새 방문자에게 사용할 초기 **대역폭 추정치(bps)** 를 지정하여 플레이어의 기본 추정치를 재정의합니다.
 
@@ -211,7 +213,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **fullscreenOrientationLock** (string) <sup>8.28.0+</sup>
+### fullscreenOrientationLock (string) <sup>8.28.0+</sup>
 
 **(Android 전용)**  
 사용자가 모바일 기기를 회전할 때, **모바일 웹뷰 내에서 플레이어 회전을 제어**합니다.
@@ -224,7 +226,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **generateSEOMetadata** (boolean) <sup>8.26.1+</sup>
+### generateSEOMetadata (boolean) <sup>8.26.1+</sup>
 
 **Google SEO 최적화** 메타데이터 생성을 활성화합니다.
 
@@ -232,7 +234,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **liveSyncDuration** (number) <sup>8.12.0+</sup>
+### liveSyncDuration (number) <sup>8.12.0+</sup>
 
 라이브 스트림의 **라이브 엣지(live edge)** 와의 시간 간격(초 단위)을 정의합니다.  
 다음 상황에서 적용됩니다:
@@ -247,7 +249,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **mute** (boolean)
+### mute (boolean)
 
 재생 중 **플레이어 음소거 여부**를 정의합니다.
 
@@ -258,7 +260,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **nextupoffset** (number \| string) <sup>8.9.0+</sup>
+### nextupoffset (number \| string) <sup>8.9.0+</sup>
 
 "Next Up" 카드가 재생 중 표시되는 **시점을 설정**합니다.
 
@@ -269,7 +271,7 @@ false로 설정하면 **플레이어의 전체화면 기능**을 완전히 비�
 
 <br>
 
-### **pipIcon** (string) <sup>8.21.0+</sup>
+### pipIcon (string) <sup>8.21.0+</sup>
 
 **Picture-in-Picture(PiP)** 아이콘을 제어합니다.
 
@@ -284,7 +286,7 @@ CSS를 통해 아이콘을 숨길 수도 있습니다.
 
 <br>
 
-### **playbackRateControls** (boolean)
+### playbackRateControls (boolean)
 
 **재생 속도 조절 메뉴** 표시 여부를 설정합니다.  
 true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 표시됩니다.  
@@ -295,7 +297,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **playbackRates** (array)
+### playbackRates (array)
 
 **설정 메뉴에 표시될 재생 속도 옵션 배열**을 지정합니다.
 
@@ -303,14 +305,14 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **playlist** (array \| string)
+### playlist (array \| string)
 
 플레이어에서 재생할 **미디어 리스트(playlist)** 를 지정합니다.  
 참고: [Playlists](https://docs.jwplayer.com/players/reference/playlists)
 
 <br>
 
-### **playlistIndex** (number) <sup>8.15.0+</sup>
+### playlistIndex (number) <sup>8.15.0+</sup>
 
 재생을 시작할 **플레이리스트 항목의 인덱스**를 지정합니다.  
 플레이리스트의 첫 번째 인덱스는 0입니다.  
@@ -320,7 +322,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **repeat** (boolean)
+### repeat (boolean)
 
 플레이리스트가 완료된 후 콘텐츠를 **반복 재생(loop)** 할지 여부를 결정합니다.
 
@@ -334,7 +336,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **base** (string)
+### base (string)
 
 스킨(skins)과 프로바이더(providers)에 사용할 **대체 기본 경로(base path)** 를 설정합니다.
 
@@ -342,7 +344,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **flashplayer** (string) <sup>< 8.19.0</sup>
+### flashplayer (string) <sup>< 8.19.0</sup>
 
 **Adobe의 공지에 따라 Flash Player는 더 이상 지원되지 않습니다.**  
 이 옵션은 `jwplayer.flash.swf`의 **대체 디렉터리 경로**를 지정합니다.
@@ -351,7 +353,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **hlsjsdefault** (boolean)
+### hlsjsdefault (boolean)
 
 **Chrome for Android** 환경에서 **HLS.js를 기본 프로바이더**로 사용하도록 설정합니다.  
 이 속성을 비활성화하면 **브라우저의 기본 HLS 프로바이더**를 사용합니다.
@@ -360,7 +362,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **liveTimeout** (number) <sup>8.1.9+</sup>
+### liveTimeout (number) <sup>8.1.9+</sup>
 
 **라이브 스트림(manifest) 갱신이 중단(stalled)** 되었을 때의 처리 방식을 설정합니다.
 
@@ -382,7 +384,7 @@ true로 설정 시, 기본 메뉴 옵션으로 `0.5x`, `1x`, `1.25x`, `2x`가 �
 
 <br>
 
-### **loadAndParseHlsMetadata** (boolean)
+### loadAndParseHlsMetadata (boolean)
 
 Safari에서도 Chrome과 동일한 HLS 메타데이터 이벤트를 트리거하기 위해 사용합니다.
 
@@ -395,7 +397,7 @@ Safari에서도 Chrome과 동일한 HLS 메타데이터 이벤트를 트리거�
 
 <br>
 
-### **preload** (string)
+### preload (string)
 
 재생 전에 콘텐츠를 미리 로드할지 여부를 지정합니다.  
 빠른 재생 시작이나, 재생 전 메타데이터 로딩이 필요한 경우 유용합니다.
@@ -408,7 +410,7 @@ Safari에서도 Chrome과 동일한 HLS 메타데이터 이벤트를 트리거�
 
 <br>
 
-### **showUIWhen** (string) <sup>8.32.0+</sup>
+### showUIWhen (string) <sup>8.32.0+</sup>
 
 플레이어 UI를 **언제 표시할지 시점**을 설정합니다.
 

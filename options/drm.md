@@ -22,45 +22,62 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
 
 **PlayReady DRM은 Windows 8.1 이상 운영체제의 Internet Explorer 11 및 Microsoft Edge** 브라우저에 특화된 DRM 방식입니다.
 
-- **url\*** (string)
+<br>
 
-  - PlayReady **라이선스 서버의 URL**을 지정합니다.
+### url\* (string)
 
-- **audioRobustness** (string) <sup>< 8.18.0+</sup>
+PlayReady 라이선스 서버의 URL을 지정합니다.
 
-  - 오디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
-  - 가능한 값:
-    - `HW_SECURE_ALL`
-    - `HW_SECURE_CRYPTO`
-    - `HW_SECURE_DECODE`
-    - `SW_SECURE_CRYPTO`
-    - `SW_SECURE_DECODE`
+<br>
 
-- **headers** (array)
+### audioRobustness (string) <sup>< 8.18.0+</sup>
 
-  - PlayReady 라이선스 서버로 전송할 **사용자 정의 HTTP 헤더**를 지정합니다.
-  - 자세한 내용은 [`headers`](https://docs.jwplayer.com/players/reference/drm#headers) 항목을 참고하세요.
+오디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
 
-- **licenseRequestFilter** (function)
+가능한 값:
 
-  - 하나의 `request` 인자를 받는 함수를 지정합니다.
-  - 이 함수는 **라이선스 요청이 전송되기 전에** 요청을 가로채어 수정할 수 있습니다.  
-    (`licenseRequestHeaders`가 추가되기 전에 실행됩니다.)
+- `HW_SECURE_ALL`
+- `HW_SECURE_CRYPTO`
+- `HW_SECURE_DECODE`
+- `SW_SECURE_CRYPTO`
+- `SW_SECURE_DECODE`
 
-- **licenseResponseFilter** (function)
+<br>
 
-  - 하나의 `response` 인자를 받는 **함수**를 지정합니다.
-  - 이 함수는 **라이선스 응답이 세션에 적용되기 전에** 응답을 가로채어 수정할 수 있습니다.
+### headers (array)
 
-- **videoRobustness** (string) <sup>< 8.18.0+</sup>
+PlayReady 라이선스 서버로 전송할 **사용자 정의 HTTP 헤더**를 지정합니다.  
+자세한 내용은 [`headers`](https://docs.jwplayer.com/players/reference/drm#headers) 항목을 참고하세요.
 
-  - 비디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
-  - 가능한 값:
-    - `HW_SECURE_ALL`
-    - `HW_SECURE_CRYPTO`
-    - `HW_SECURE_DECODE`
-    - `SW_SECURE_CRYPTO`
-    - `SW_SECURE_DECODE`
+<br>
+
+### licenseRequestFilter (function)
+
+하나의 `request` 인자를 받는 함수를 지정합니다.
+
+이 함수는 **라이선스 요청이 전송되기 전에** 요청을 가로채어 수정할 수 있습니다.  
+(`licenseRequestHeaders`가 추가되기 전에 실행됩니다.)
+
+<br>
+
+### licenseResponseFilter (function)
+
+하나의 `response` 인자를 받는 **함수**를 지정합니다.  
+이 함수는 **라이선스 응답이 세션에 적용되기 전에** 응답을 가로채어 수정할 수 있습니다.
+
+<br>
+
+### videoRobustness (string) <sup>< 8.18.0+</sup>
+
+비디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
+
+가능한 값:
+
+- `HW_SECURE_ALL`
+- `HW_SECURE_CRYPTO`
+- `HW_SECURE_DECODE`
+- `SW_SECURE_CRYPTO`
+- `SW_SECURE_DECODE`
 
 <br><br>
 
@@ -69,49 +86,68 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
 **Widevine DRM**은 **iOS를 제외한 기기에서의 Google Chrome 브라우저**에 특화된 DRM 방식입니다.  
 또한 **데스크톱 환경의 Firefox 브라우저**에서도 동작합니다.
 
-- **url\*** (string)
+<br>
 
-  - Widevine **라이선스 서버의 URL**을 지정합니다.
+### url\* (string)
 
-- **audioRobustness** (string) <sup>< 8.18.0+</sup>
+Widevine **라이선스 서버의 URL**을 지정합니다.
 
-  - 오디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
-  - 가능한 값:
-    - `HW_SECE_ALL`
-    - `HW_SECUR_CRIPTO`
-    - `HW_SECE_DECODE`
-    - `SW_SECUR_CRIPTO`
-    - `SW_SECE_DECODE`
+<br>
 
-- **headers** (array)
+### audioRobustness (string) <sup>< 8.18.0+</sup>
 
-  - Widevine 라이선스 서버 요청에 포함될 **사용자 정의 HTTP 헤더**를 지정합니다.
-  - 자세한 내용은 [`headers`](https://docs.jwplayer.com/players/reference/drm#headers) 항목을 참고하세요.
+오디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
 
-- **licenseRequestFilter** (function)
+가능한 값:
 
-  - 단일 인자 `request`를 받는 함수를 지정합니다.
-  - 이 함수는 **라이선스 요청이 전송되기 전에 요청을 가로채어 수정할 수 있는 필터**입니다.  
-    (`licenseRequestHeaders`가 추가되기 전에 실행됩니다.)
+- `HW_SECE_ALL`
+- `HW_SECUR_CRIPTO`
+- `HW_SECE_DECODE`
+- `SW_SECUR_CRIPTO`
+- `SW_SECE_DECODE`
 
-- **licenseResponseFilter** (function)
+<br>
 
-  - 단일 인자 `response`를 받는 함수를 지정합니다.
-  - 이 함수는 **라이선스 응답이 세션에 적용되기 전에 응답을 가로채어 수정할 수 있는 필터**입니다.
+### headers (array)
 
-- **serverCertificateUrl** (string)
+Widevine 라이선스 서버 요청에 포함될 **사용자 정의 HTTP 헤더**를 지정합니다.  
+자세한 내용은 [`headers`](https://docs.jwplayer.com/players/reference/drm#headers) 항목을 참고하세요.
 
-  - Widevine **서비스 인증서(service certificate)** 의 URL을 지정합니다.
+<br>
 
-- **videoRobustness** (string) <sup>< 8.18.0+</sup>
+### licenseRequestFilter (function)
 
-  - 비디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
-  - 가능한 값:
-    - `HW_SECE_ALL`
-    - `HW_SECUR_CRIPTO`
-    - `HW_SECE_DECODE`
-    - `SW_SECUR_CRIPTO`
-    - `SW_SECE_DECODE`
+단일 인자 `request`를 받는 함수를 지정합니다.
+
+이 함수는 **라이선스 요청이 전송되기 전에 요청을 가로채어 수정할 수 있는 필터**입니다.  
+(`licenseRequestHeaders`가 추가되기 전에 실행됩니다.)
+
+<br>
+
+### licenseResponseFilter (function)
+
+단일 인자 `response`를 받는 함수를 지정합니다.  
+이 함수는 **라이선스 응답이 세션에 적용되기 전에 응답을 가로채어 수정할 수 있는 필터**입니다.
+
+<br>
+
+### serverCertificateUrl (string)
+
+Widevine **서비스 인증서(service certificate)** 의 URL을 지정합니다.
+
+<br>
+
+### videoRobustness (string) <sup>< 8.18.0+</sup>
+
+비디오 스트림의 **보안 강도(robustness level)** 를 설정합니다.
+
+가능한 값:
+
+- `HW_SECE_ALL`
+- `HW_SECUR_CRIPTO`
+- `HW_SECE_DECODE`
+- `SW_SECUR_CRIPTO`
+- `SW_SECE_DECODE`
 
 <br><br>
 
@@ -149,13 +185,17 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
 }
 ```
 
-- **name** (string)
+<br>
 
-  - 요청에 포함될 **HTTP 헤더의 이름**을 지정합니다.
+### \*name (string)
 
-- **value** (string)
+요청에 포함될 **HTTP 헤더의 이름**을 지정합니다.
 
-  - 요청에 포함될 **HTTP 헤더의 값**을 지정합니다.
+<br>
+
+### value (string)
+
+요청에 포함될 **HTTP 헤더의 값**을 지정합니다.
 
 <br><br>
 
@@ -164,71 +204,98 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
 JW Player는 **맞춤형 FairPlay 통합(custom FairPlay integrations)** 을 위한 구성 옵션을 제공합니다.
 맞춤 FairPlay DRM 통합에 대한 자세한 정보와 예시는 JW Player [지원 문서](https://docs.jwplayer.com/players/reference/drm#drmfairplay)를 참고하세요.
 
-- **certificateUrl\*** (string)
+<br>
 
-  - keySession을 초기화할 때 사용되는 **세션 데이터의 일부인 인증서(certificate)의 경로**를 지정합니다.
-  - certificateUrl 속성은 FairPlay 인증서 파일의 URL을 의미합니다.
+### certificateUrl\* (string)
 
-- **processSpcUrl\*** (function \| string)
+keySession을 초기화할 때 사용되는 **세션 데이터의 일부인 인증서(certificate)의 경로**를 지정합니다.  
+certificateUrl 속성은 FairPlay 인증서 파일의 URL을 의미합니다.
 
-  - **CKC(Content Key Context)** 를 제공하는 **라이선스 서버(Server Playback Context)** 의 경로를 지정합니다.  
-    서버의 직접 URL을 기대하며,  
-    만약 URL을 동적으로 생성해야 하는 경우에는 URL을 반환하는 **사용자 정의 함수**를 이 옵션에 전달할 수 있습니다.
+<br>
 
-- **extractContentId** (function)
+### processSpcUrl\* (function \| string)
 
-  - 이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
-    - `needkey` 이벤트로부터 전달된 **initData URI(문자열로 변환된 값)** 를 인자로 받아,
-    - `keySession` 초기화에 사용되는 **세션 데이터의 일부인 contentId** 를 반환하는 함수입니다.
+**CKC(Content Key Context)** 를 제공하는 **라이선스 서버(Server Playback Context)** 의 경로를 지정합니다.
 
-- **extractKey** (function)
+서버의 직접 URL을 기대하며,  
+만약 URL을 동적으로 생성해야 하는 경우에는 URL을 반환하는 **사용자 정의 함수**를 이 옵션에 전달할 수 있습니다.
 
-  - 이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
-    - 라이선스 서버에서 반환된 **CKC** 를 인자로 받아,  
-      활성 키 세션을 갱신하는 데 사용되는 **키(key)** 를 반환하는 함수입니다.
-    - 키를 비동기적으로 추출해야 하는 경우(예: blob 응답에서 바이트 데이터를 읽는 경우),  
-      이 함수는 **Promise** 를 반환할 수 있습니다.
+<br>
 
-- **licenseRequestFilter** (function)
+### extractContentId (function)
 
-  - 단일 인자 `request`를 받는 함수를 기대합니다.  
-    라이선스 요청 필터는 **`licenseRequestHeaders`가 추가되기 전에**  
-    라이선스 요청을 가로채어 수정하거나 확인할 수 있습니다.
+이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
 
-- **licenseRequestHeaders** (array)
+- `needkey` 이벤트로부터 전달된 **initData URI(문자열로 변환된 값)** 를 인자로 받아,
+- `keySession` 초기화에 사용되는 **세션 데이터의 일부인 contentId** 를 반환하는 함수입니다.
 
-  - 라이선스 서버 요청에 포함될 헤더 정보를 지정합니다.  
-    **헤더 이름(name)** 과 **값(value)** 속성을 가진 객체의 배열을 기대합니다.
+<br>
 
-  ```javascript
-  licenseRequestHeaders: [
-    { name: 'Authorization', value: 'Bearer token' },
-    { name: 'X-Custom-Header', value: 'example' },
-  ];
-  ```
+### extractKey (function)
 
-- **licenseRequestMessage** (function)
+이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
 
-  - 이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
-    - 라이선스 키 메시지를 인자로 받아,  
-      라이선스 서버로 전송할 메시지를 반환하는 함수입니다.
-    - 기본값인 `licenseResponseType: "arraybuffer"` 설정에서는  
-      이 함수가 `keymessage` 이벤트의 `message` 속성을 그대로 전달합니다.
+- 라이선스 서버에서 반환된 **CKC** 를 인자로 받아,  
+  활성 키 세션을 갱신하는 데 사용되는 **키(key)** 를 반환하는 함수입니다.
+- 키를 비동기적으로 추출해야 하는 경우(예: blob 응답에서 바이트 데이터를 읽는 경우),  
+  이 함수는 **Promise** 를 반환할 수 있습니다.
 
-- **licenseResponseFilter** (function)
+<br>
 
-  - 단일 인자 `response`를 받는 함수를 기대합니다.  
-    라이선스 응답 필터는 **세션에 라이선스 키를 적용하기 전**  
-    응답을 가로채어 수정하거나 검사할 수 있습니다.
+### licenseRequestFilter (function)
 
-- **licenseResponseType** (string)
+단일 인자 `request`를 받는 함수를 기대합니다.
 
-  - 라이선스 서버로부터의 **XHR 요청 응답 데이터 형식**을 지정합니다.
-  - 기본값은 `arraybuffer`이며, 다음과 같은 형식을 사용할 수 있습니다.
-    - `blob`
-    - `json`
-    - `text`
-  - 이 옵션은 `licenseRequestMessage`의 처리 방식에도 영향을 미칩니다.
+라이선스 요청 필터는 **`licenseRequestHeaders`가 추가되기 전에**  
+라이선스 요청을 가로채어 수정하거나 확인할 수 있습니다.
+
+<br>
+
+### licenseRequestHeaders (array)
+
+라이선스 서버 요청에 포함될 헤더 정보를 지정합니다.  
+**헤더 이름(name)** 과 **값(value)** 속성을 가진 객체의 배열을 기대합니다.
+
+```javascript
+licenseRequestHeaders: [
+  { name: 'Authorization', value: 'Bearer token' },
+  { name: 'X-Custom-Header', value: 'example' },
+];
+```
+
+<br>
+
+### licenseRequestMessage (function)
+
+이 옵션은 다음 조건을 만족하는 함수를 기대합니다.
+
+- 라이선스 키 메시지를 인자로 받아,  
+  라이선스 서버로 전송할 메시지를 반환하는 함수입니다.
+- 기본값인 `licenseResponseType: "arraybuffer"` 설정에서는  
+  이 함수가 `keymessage` 이벤트의 `message` 속성을 그대로 전달합니다.
+
+<br>
+
+### licenseResponseFilter (function)
+
+단일 인자 `response`를 받는 함수를 기대합니다.
+
+라이선스 응답 필터는 **세션에 라이선스 키를 적용하기 전**  
+응답을 가로채어 수정하거나 검사할 수 있습니다.
+
+<br>
+
+### licenseResponseType (string)
+
+라이선스 서버로부터의 **XHR 요청 응답 데이터 형식**을 지정합니다.
+
+기본값은 `arraybuffer`이며, 다음과 같은 형식을 사용할 수 있습니다.
+
+- `blob`
+- `json`
+- `text`
+
+이 옵션은 `licenseRequestMessage`의 처리 방식에도 영향을 미칩니다.
 
 <br><br>
 
@@ -242,10 +309,14 @@ JW Player는 **맞춤형 FairPlay 통합(custom FairPlay integrations)** 을 위
 
 ClearKey는 **Chrome**과 **Firefox** 브라우저에서 지원됩니다.
 
-- **key\*** (string)
+<br>
 
-  - DRM 콘텐츠를 복호화하기 위해 필요한 **키 값**을 지정합니다.
+### key\* (string)
 
-- **keyId\*** (string)
+DRM 콘텐츠를 복호화하기 위해 필요한 **키 값**을 지정합니다.
 
-  - `mpd` 파일의 `default_KID` 값으로 지정된 **키 식별자(Key ID)** 를 설정합니다.
+<br>
+
+### keyId\* (string)
+
+`mpd` 파일의 `default_KID` 값으로 지정된 **키 식별자(Key ID)** 를 설정합니다.

@@ -1,10 +1,22 @@
 # Casting
 
-캐스팅을 통해 시청자는 Google Cast 또는 Apple AirPlay 기술을 사용하여 비디오 및 오디오 콘텐츠를 호환되는 TV 또는 사운드 시스템으로 스트리밍할 수 있습니다. 플레이어의 캐스팅 기능을 활성화하면 시청자는 컨트롤 바의 아이콘을 탭하여 캐스트 호환 장치에서 콘텐츠를 스트리밍할 수 있습니다. 플레이어에서 호환되는 장치가 감지되지 않으면 캐스트 아이콘이 표시되지 않습니다.
+**캐스팅(Casting)** 기능을 사용하면 시청자가 **Google Cast** 또는 **Apple AirPlay** 기술을 이용해  
+비디오 및 오디오 콘텐츠를 **호환되는 TV 또는 사운드 시스템으로 스트리밍**할 수 있습니다.
 
-참고: [FAQ](https://docs.jwplayer.com/players/docs/players-enable-casting-and-airplay#faqs)
+플레이어에서 캐스팅 기능을 활성화하면, 시청자는 **컨트롤 바의 캐스트 아이콘**을 눌러  
+콘텐츠를 캐스트 호환 기기에서 재생할 수 있습니다.
 
-캐스팅을 활성화하려면 설정에 빈 캐스트 객체를 추가합니다.
+플레이어가 **호환 기기를 감지하지 못한 경우, 캐스트 아이콘은 표시되지 않습니다.**
+
+> 참고: [FAQs](https://docs.jwplayer.com/players/docs/players-enable-casting-and-airplay#faqs) 도 함께 확인하세요.
+
+<br>
+
+---
+
+## 캐스팅 활성화 방법
+
+플레이어 설정(`setup()`)에 빈 **cast 객체**를 추가합니다.
 
 ```javascript
 player.setup({
@@ -15,7 +27,12 @@ player.setup({
 });
 ```
 
-사용자 지정 수신기를 사용하는 경우, 사용자 지정 수신기의 식별자를 `cast.appid` 속성에 할당합니다.
+<br>
+
+## 커스텀 리시버(Custom Receiver) 사용 시
+
+커스텀 리시버를 사용하는 경우, **리시버 앱의 식별자(identifier)** 를  
+`cast.appid` 속성에 지정합니다.
 
 ```javascript
 player.setup({
@@ -29,12 +46,28 @@ player.setup({
 });
 ```
 
-- **appid** (string)
+## <br>
 
-  - 사용자 지정 수신기를 사용할 때 수신기 앱의 식별자
+<br>
 
-- **interceptCast** (boolean)
+### **appid** (string)
 
-  - 기본 크롬캐스트 동작을 비활성화합니다
-  - 캐스팅 아이콘을 클릭하면 더 이상 작동하지 않습니다. 플레이어는 캐스트 인터셉티드 이벤트를 트리거합니다.
-  - > 이 구성이 설정되면 사용자는 콘텐츠 캐스팅을 시작하려면 `requestCast`를 호출하거나 콘텐츠 캐스팅을 중지하려면 `stopCasting`를 호출해야 합니다.
+커스텀 리시버를 사용할 때, **리시버 앱의 식별자(identifier)** 를 지정합니다.
+
+<br>
+
+### **interceptCast** (boolean)
+
+**기본 Chromecast 동작을 비활성화**합니다.
+
+이 설정이 활성화되면, **캐스트 아이콘 클릭 시 기본 전송 동작은 실행되지 않으며**,  
+대신 플레이어에서 `castIntercepted` 이벤트가 트리거됩니다.
+
+---
+
+<br>
+
+> 참고: 이 구성이 설정된 경우, **사용자는 직접 API를 호출해야 합니다.**
+>
+> - 캐스팅 시작: `requestCast()`
+> - 캐스팅 중지: `stopCasting()`

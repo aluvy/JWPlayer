@@ -4,7 +4,11 @@
 
 이 옵션 블록은 JWP 웹 및 iOS 플레이어용 자막(Closed Captions) 의 스타일(모양) 을 구성합니다.
 
+<br>
+
 ---
+
+<br>
 
 **참고할 만한 두 가지 자막 설정 팁**
 
@@ -14,67 +18,83 @@
 2. **iOS 및 Android**에서는 **FCC(미 연방통신위원회)** 규정에 따라  
    사용자가 **시스템 설정을 통해 자막 스타일을 직접 제어**할 수도 있습니다.
 
+<br>
+
 ---
 
 <br>
 
 ### backgroundColor (string)
 
-- 캡션 문자의 배경 색
-- Default: `#000000`
+자막 문자 **배경의 색상**을 16진수(hex)로 지정합니다.
+
+- 기본값: `#000000`
 
 <br>
 
-### **backgroundOpacity** (number)
+### backgroundOpacity (number)
 
-- 캡션 문자 배경의 투명도
-- Default: `75`
+자막 문자 **배경의 불투명도(투명도%)** 를 설정합니다.
 
-<br>
-
-### **color** (string)
-
-- 캡션 문자 색
-- Default: `#ffffff`
+- 기본값: `75`
 
 <br>
 
-### **edgeStyle** (string)
+### color (string)
 
-- 캡션 문자의 테두리/외곽 효과
-- Default: `none`
+자막 **텍스트 색상**을 16진수(hex)로 지정합니다.
 
-<br>
-
-### **fontFamily** (string)
-
-- 캡션의 폰트 패밀리
-- Default: `sans`
+- 기본값: #ffffff
 
 <br>
 
-### **fontOpacity** (number)
+### edgeStyle (string)
 
-- 캡션 폰트의 투명도
-- Default: `100`
+자막 문자가 **배경과 구분되는 방식(테두리 스타일)** 을 설정합니다.
 
-<br>
-
-### **fontSize** (number)
-
-- 캡션 텍스트의 크기(브라우저를 통해 캡션을 렌더링할 때 텍스트 크기에는 영향을 미치지 않음)
-- Default: `15`
+- 기본값: `none`
 
 <br>
 
-### **windowColor** (string)
+### fontFamily (string)
 
-- 전체 캡션 영역의 배경 색
-- Default: `#000000`
+자막 **텍스트의 폰트 패밀리(Font Family)** 를 지정합니다.
+
+- 기본값: `sans`
 
 <br>
 
-### **windowOpacity** (number)
+### fontOpacity (number)
 
-- 전체 캡션 영역의 배경 투명도
-- Default: `0`
+자막 **텍스트의 불투명도(투명도%)** 를 설정합니다.
+
+- 기본값: `100`
+
+<br>
+
+### fontSize (number)
+
+자막 **텍스트 크기(px)** 를 지정합니다.  
+단, 브라우저가 자막을 렌더링하는 경우에는 크기에 영향을 주지 않습니다.
+
+- 기본값: `15`
+
+<br>
+
+### windowColor (string)
+
+자막 전체 영역의 **배경색**을 16진수(hex)로 지정합니다.
+
+- 기본값: `#000000`
+
+<br>
+
+### windowOpacity (number)
+
+자막 전체 영역의 **배경 불투명도(투명도%)** 를 설정합니다.
+
+- 기본값: `0`
+
+<br>
+
+> 참고: 자막 스타일을 설정할 때, color 값은 반드시 **16진수(hex 형식)** 로 지정해야 합니다.

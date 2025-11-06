@@ -7,6 +7,8 @@
 기본적으로, 빈 `autoPause` 객체를 추가하면 **자동 일시정지 기능**이 활성화되며,  
 `viewability: true`가 기본으로 설정됩니다.
 
+<br>
+
 ```javascript
 player.setup({
   "playlist": "https://example.com/myVideo.mp4",
@@ -19,9 +21,11 @@ player.setup({
 
 ```
 
+---
+
 <br>
 
-### **pauseAds** (boolean) <sup>8.10.0+</sup>
+### pauseAds (boolean) <sup>8.10.0+</sup>
 
 플레이어가 더 이상 화면에 보이지 않을 때 **광고 재생을 일시정지할지 여부**를 제어합니다.
 
@@ -34,7 +38,7 @@ player.setup({
 
 <br>
 
-### **viewability** (boolean)
+### viewability (boolean)
 
 - 플레이어가 화면에 더 이상 표시되지 않을 때 **비디오 재생을 중지할지 여부**를 제어합니다.
 
