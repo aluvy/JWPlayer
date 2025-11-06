@@ -1,10 +1,17 @@
 # Skin
 
-JW Player는 11가지 스킨 구성 옵션을 즉시 제공합니다. 브랜드 아이덴티티를 세밀하게 제어할 수 있어 플레이어를 그 어느 때보다 쉽게 커스터마이징할 수 있습니다.
+JW Player는 **기본적으로 11가지 스킨 구성 옵션(skin configuration options)** 을 제공합니다.
+브랜드 아이덴티티를 세밀하게 제어할 수 있어, 플레이어를 보다 **쉽게 맞춤화(customize)** 할 수 있습니다.
 
-## Color Customization
+## 색상 사용자 정의 (Color Customization)
 
-색상은 [hex 값](https://www.w3schools.com/colors/colors_picker.asp), [RGBA 색상 값](https://www.w3schools.com/css/css3_colors.asp) 또는 [색상 이름](https://www.w3schools.com/colors/colors_names.asp)으로 지정할 수 있습니다.<sup>8.0+</sup>
+색상은 **16진수(hex), RGBA 색상 값**, 또는 **색상 이름(color name)** 으로 지정할 수 있습니다. (8.0+ 지원)
+
+- [hex 값](https://www.w3schools.com/colors/colors_picker.asp)
+- [RGBA 색상 값](https://www.w3schools.com/css/css3_colors.asp)
+- [색상 이름](https://www.w3schools.com/colors/colors_names.asp)
+
+## 예시: Skin 구성
 
 ```json
 player.setup({
@@ -33,109 +40,157 @@ player.setup({
 });
 ```
 
-- **controlbar** (object)
-
-  - 컨트롤 바의 색상 사용자 지정
-  - 참조: [controlbar](https://docs.jwplayer.com/players/reference/skin#controlbar)
-
-- **menus** (object)
-
-  - 메뉴의 색상 사용자 지정
-  - 참조: [menus](https://docs.jwplayer.com/players/reference/skin#menus)
-
-- **name** (string)
-
-  - 레이어 스타일링에 사용할 사용자 지정 스킨의 이름
-  - `skin.url`를 지정하는 경우 CSS 파일의 클래스 이름과 일치하는 `skin.name` 을 지정해야 합니다.
-  - 맞춤 스킨에 대한 자세한 내용은 [브랜딩](https://docs.jwplayer.com/players/docs/jw8-styling-and-behavior) 문서를 참조하세요.
-
-- **timeslider** (object)
-
-  - 시간 슬라이더의 색상 사용자 지정
-  - 참조: [timeslider](https://docs.jwplayer.com/players/reference/skin#timeslider)
-
-- **tooltips** (object)
-
-  - 도구 팁을 위한 색상 사용자 지정
-  - 참조: [tooltips](https://docs.jwplayer.com/players/reference/skin#tooltips)
-
-- **url** (string)
-
-  - 플레이어를 스타일링할 외부 CSS 파일을 지정합니다
-  - `skin.url`를 지정하는 경우 CSS 파일의 클래스 이름과 일치하는 `skin.name` 을 지정해야 합니다.
-  - 맞춤 스킨에 대한 자세한 내용은 [브랜딩](https://docs.jwplayer.com/players/docs/jw8-styling-and-behavior) 문서를 참조하세요.
+---
 
 <br>
 
-### controlbar
+### controlbar (object)
 
-- **background** (string)
+컨트롤 바(Control Bar)의 색상 구성 옵션
 
-  - 컨트롤 바와 볼륨 슬라이더의 배경 색상
-  - 기본 배경은 투명합니다.
-  - Default: `"rgba(0,0,0,0)"`
-
-- **icons** (string)
-
-  - 컨트롤 바에 있는 모든 아이콘의 기본 비활성 색상
-  - 이 옵션은 비활성 상태와 완료 상태에서 재생, 일시 중지 및 재생 아이콘의 색상도 제어합니다.
-  - Default: `"rgba(255,255,255,0.8)"`
-
-- **iconsActive** (string)
-
-  - 컨트롤 바에서 호버링되거나 선택된 아이콘의 색상
-  - Default: `#ffffff`
-
-- **text** (string)
-
-  - 컨트롤 바에 있는 일반 텍스트의 색상(예: 시간)
-  - Default: `#ffffff`
+참고: [controlbar](https://docs.jwplayer.com/players/reference/skin#controlbar)
 
 <br>
 
-### menus
+### menus (object)
 
-- **background** (string)
+메뉴의 색상 구성 옵션
 
-  - 메뉴의 배경 색상과 다음 단계 오버레이
-  - Default: `#333333`
-
-- **text** (string)
-
-  - 메뉴의 비활성 기본 텍스트 색상과 다음 위로 오버레이
-  - Default: `"rgba(255,255,255,0.8)"`
-
-- **textActive** (string)
-
-  - 메뉴에서 검색되거나 선택된 텍스트의 색상
-  - 이 옵션은 또한 Discover 오버레이의 텍스트 색상과 Next Up 오버레이의 호버 상태 텍스트 색상을 제어합니다.
-  - Default: `"#FFFFFF"`
+참고: [menus](https://docs.jwplayer.com/players/reference/skin#menus)
 
 <br>
 
-### timeslider
+### name (string)
 
-- **progress** (string)
+플레이어 스타일링에 사용할 **커스텀 스킨 이름**을 지정합니다.  
+만약 `skin.url` 을 지정한다면, **반드시 `skin.name` 도 함께 지정**해야 하며,  
+해당 값은 CSS 파일 내 클래스 이름과 일치해야 합니다.
 
-  - 비디오 시작부터 현재 위치까지 채워진 시간 슬라이더의 막대 색상
-  - 컨트롤 바의 버퍼 영역은 이 색상의 불투명도의 50%입니다. 볼륨 슬라이더의 색상도 이 옵션에 의해 제어됩니다.
-  - Default: `"#F2F2F2"`
-
-- **rail** (string)
-
-  - 타임 슬라이더의 밑면 색상, 레일이라고 함
-  - Default: `"rgba(255,255,255,0.3)"`
+자세한 내용은 [Branding](https://docs.jwplayer.com/players/docs/jw8-styling-and-behavior) 문서를 참고하세요.
 
 <br>
 
-### tooltips
+### timeslider (object)
 
-- **background** (string)
+타임 슬라이더(Time Slider)의 색상 구성 옵션
 
-  - 도구 팁의 배경 색상
-  - Default: `"#000000"`
+참고: [timeslider](https://docs.jwplayer.com/players/reference/skin#timeslider)
 
-- **text** (string)
+<br>
 
-  - 도구 팁의 텍스트 색상
-  - default: `"#000000"`
+### tooltips (object)
+
+툴팁(Tooltip)의 색상 구성 옵션
+
+참고: [tooltips](https://docs.jwplayer.com/players/reference/skin#tooltips)
+
+<br>
+
+### url (string)
+
+플레이어를 스타일링하기 위한 **외부 CSS 파일의 경로**를 지정합니다.  
+`skin.url`을 지정하는 경우, 반드시 `skin.name`도 지정해야 하며,  
+CSS 파일의 클래스 이름과 일치해야 합니다.
+
+자세한 내용은 [Branding](https://docs.jwplayer.com/players/docs/jw8-styling-and-behavior) 문서를 참고하세요.
+
+<br>
+
+## controlbar
+
+### background (string)
+
+컨트롤 바 및 볼륨 슬라이더의 **배경색**을 설정합니다.  
+기본 배경은 투명입니다.
+
+- 기본값: `"rgba(0,0,0,0)"`
+
+<br>
+
+### icons (string)
+
+컨트롤 바 내 **모든 아이콘의 기본(비활성) 색상**을 설정합니다.
+이 옵션은 **재생(play), 일시정지(pause), 리플레이(replay)** 아이콘의 비활성 및 완료 상태 색상에도 적용됩니다.
+
+- 기본값: `"rgba(255,255,255,0.8)"`
+
+<br>
+
+### iconsActive (string)
+
+컨트롤 바에서 **호버(hover)** 또는 **선택된 아이콘**의 색상을 설정합니다.
+
+- 기본값: `"#FFFFFF"`
+
+<br>
+
+### text (string)
+
+컨트롤 바의 **일반 텍스트(예: 시간 표시)** 색상을 설정합니다.
+
+- 기본값: `"#FFFFFF"`
+
+<br>
+
+## menus
+
+### background (string)
+
+**메뉴와 Next Up 오버레이의 배경색**을 설정합니다.
+
+- 기본값: `"#333333"`
+
+<br>
+
+### text (string)
+
+메뉴 및 Next Up 오버레이의 **비활성 텍스트(기본 텍스트) 색상**을 설정합니다.
+
+- 기본값: `"rgba(255,255,255,0.8)"`
+
+<br>
+
+### textActive (string)
+
+메뉴에서 **호버되거나 선택된 텍스트의 색상**을 설정합니다.
+이 옵션은 **Discover 오버레이의 텍스트 색상 및 Next Up 오버레이의 호버 상태 텍스트 색상**에도 적용됩니다.
+
+- 기본값: `"#FFFFFF"`
+
+<br>
+
+## timeslider
+
+### progress (string)
+
+비디오 시작 지점부터 현재 위치까지 채워진 **타임 슬라이더 바 색상**을 설정합니다.
+컨트롤 바의 버퍼 영역은 이 색상의 **불투명도 50%** 로 표시됩니다.
+또한 **볼륨 슬라이더 색상**도 이 옵션으로 제어됩니다.
+
+- 기본값: `"#F2F2F2"`
+
+<br>
+
+### rail (string)
+
+타임 슬라이더의 **기본 베이스 색상(rail)** 을 설정합니다.
+
+- 기본값: `"rgba(255,255,255,0.3)"`
+
+<br>
+
+## tooltips
+
+### background (string)
+
+툴팁의 **배경색**을 설정합니다.
+
+- 기본값: `"#000000"`
+
+<br>
+
+### text (string)
+
+툴팁의 **텍스트 색상**을 설정합니다.
+
+- 기본값: `"#000000"`
