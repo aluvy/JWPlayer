@@ -11,7 +11,7 @@
 
 <br>
 
-### **aspectratio** (string)
+### aspectratio (string)
 
 플레이어의 `width`가 백분율(%)로 지정된 경우, **비율(aspect ratio)** 을 유지합니다.
 플레이어가 **고정 크기(static size)** 인 경우에는 적용되지 않습니다.
