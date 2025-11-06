@@ -48,11 +48,11 @@
 
 ## DRM
 
-- drm.playready
-- drm.widevine
-- drm.widevine/playready.headers
-- drm.fairplay
-- drm.clearkey
+- [drm.playready](./drm.md#drm.playready)
+- [drm.widevine](./drm.md#drm.widevine)
+- [drm.widevine/playready.headers](./drm.md#drm.widevine/playready.headers)
+- [drm.fairplay](./drm.md#drm.fairplay)
+- [drm.clearkey](./drm.md#drm.clearkey)
 
 ## Float on scroll
 
@@ -95,4 +95,4 @@
 
 ## Time slider
 
-- Time slider
+- [Time slider](./time-slider.md)
