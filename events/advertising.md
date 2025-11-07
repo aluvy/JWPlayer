@@ -1042,10 +1042,368 @@ VAST
 
 # .on('adComplete')
 
+광고 재생이 **완전히 종료될 때마다 발생**합니다.
+
+DAI
+
+```json
+{
+  "client": "dai",
+  "viewable": 1,
+  "id": "822vxuovefq0",
+  "adPlayId": "g56ap7bne8u0",
+  "adtitle": "External NCA1C1L1 Preroll",
+  "adsystem": "GDFP",
+  "creativetype": "application/x-mpegURL",
+  "linear": "linear",
+  "adposition": "pre",
+  "type": "adComplete"
+}
+```
+
+FreeWheel
+
+```json
+{
+  "client": "freewheel",
+  "tag": "placeholder_preroll",
+  "freewheel": {
+    "ad": {
+      "adId": "17302931"
+    }
+  },
+  "adposition": "pre",
+  "id": "17302931",
+  "linear": "linear",
+  "creativetype": "video/mp4",
+  "viewable": 1,
+  "sequence": 1,
+  "podcount": 2,
+  "skipoffset": 3,
+  "type": "adComplete"
+}
+```
+
+IMA
+
+```json
+{
+    "client": "googima",
+    "placement": 1,
+    "viewable": 1,
+    "adposition": "pre",
+    "tag": "//playertest-cdn.longtailvideo.com/vast-30s-ad.xml",
+    "adBreakId": "lkjkoc1j7e5q",
+    "adPlayId": "lkjkoc1j7e5q",
+    "id": "lkjkoc1j7e5q",
+    "ima": {...},
+    "adtitle": "",
+    "adsystem": "Alex_Vast",
+    "creativetype": "video/mp4",
+    "duration": 30,
+    "linear": "linear",
+    "description": "",
+    "creativeAdId": "",
+    "adId": "232859236",
+    "universalAdId": [],
+    "advertiser": "",
+    "dealId": "",
+    "mediaFile": {
+        "file": "//content.jwplatform.com/videos/AEhg3fFb-bPwArWA4.mp4"
+    },
+    "type": "adComplete"
+}
+```
+
+VAST
+
+```json
+{
+    "client": "vast",
+    "placement": 1,
+    "adBreakId": "a87pfdzx2s35",
+    "adPlayId": "a87pfdzx2s35",
+    "offset": 10,
+    "id": "c2mx5xekbclh",
+    "tag": "//playertest-cdn.longtailvideo.com/mid.xml",
+    "adposition": "mid",
+    "sequence": 1,
+    "witem": 1,
+    "wcount": 1,
+    "adsystem": "Alex_Vast",
+    "skipoffset": 5,
+    "adschedule": {...},
+    "adtitle": "",
+    "description": "",
+    "adId": "232859236",
+    "adVerifications": null,
+    "advertiser": "",
+    "advertiserId": "",
+    "creativeId": "",
+    "creativeAdId": "",
+    "dealId": "",
+    "request": {},
+    "response": {...},
+    "conditionalAdOptOut": false,
+    "vastversion": 2,
+    "clickThroughUrl": "//jwplayer.com/",
+    "mediaFileCompliance": false,
+    "nonComplianceReasons": [
+        "video/mp4 has only 2 qualities"
+    ],
+    "mediafile": {
+        "file": "//content.bitsontherun.com/videos/tafrxQYx-bPwArWA4.mp4"
+    },
+    "viewable": 0,
+    "creativetype": "video/mp4",
+    "categories": [],
+    "type": "adComplete"
+}
+```
+
+- **adBreakId** (string)
+
+  - 각 광고 구간(ad break)의 고유 ID.
+  - 동일한 광고 구간 내 여러 광고가 존재할 경우, 모든 광고는 동일한 **adBreakId**를 가집니다.
+
+- **adId** (string)
+
+  - 광고 XML에서 제공된 **광고 서버의 크리에이티브 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adPlayId** (string)
+
+  - 각 광고의 고유 ID.
+  - 동일한 광고 구간 내 여러 광고가 있을 경우, 각각 다른 **adPlayId**를 가집니다.
+
+- **adposition** (string)
+
+  - 광고의 위치.
+  - **가능한 값:**
+    - `mid`
+    - `post`
+    - `pre`
+
+- **adschedule** (object)
+
+  - 광고 구간 설정 정보
+
+- **adsystem** (string)
+
+  - 광고 XML에 정의된 **광고 서버 이름**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adtitle** (string)
+
+  - 광고 XML에 정의된 **광고의 일반 이름(Common Name)**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adVerifications** (object)
+
+  - 광고 XML에서 정의된 **제3자 검증 코드 실행을 위한 리소스 및 메타데이터 목록**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiser** (string)
+
+  - 광고 XML에서 정의된 **광고주 이름**.
+  - 광고 제공 주체(ad serving party)에 의해 정의됨.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiserId** (string)
+
+  - 광고 XML에서 제공된 **선택적 광고주 식별자**, 광고 서버가 제공.
+  - 출처: _IAB Tech Lab Definition_
+
+- **categories** (array)
+
+  - 광고 XML에서 제공된 **광고 콘텐츠 카테고리 코드 또는 라벨 목록**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **clickThroughUrl** (string)
+
+  - 광고 XML에서 제공된 **광고 클릭 시 이동하는 광고주의 사이트 URI**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **client** (string)
+
+  - 현재 사용 중인 광고 클라이언트.
+  - **가능한 값:**
+    - `dai`
+    - `freewheel`
+    - `googima`
+    - `vast`
+
+- **conditionalAdOptOut** (boolean)
+
+  - (**VPAID 전용**) VAST 응답 내 `conditionalAd` 속성이 포함된 광고를 **재생하지 않도록** 설정
+
+- **creativeAdId** (string)
+
+  - 광고 XML에서 정의된 **광고 서버의 고유 크리에이티브 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativeId** (string)
+
+  - 광고 XML에서 정의된 **크리에이티브를 제공하는 광고 서버 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativetype** (string)
+
+  - VAST XML에서 지정된 **현재 미디어 파일의 MIME 타입**
+
+- **dealId** (string)
+
+  - 광고 XML에서 **현재 광고의 래퍼(wrapper) 체인 상단부터 발견된 첫 번째 딜 ID** 반환.
+  - 출처: _Google Definition_
+
+- **description** (string)
+
+  - 광고 XML에서 제공된 **광고의 상세 설명**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **duration** (number)
+
+  - 광고 XML에서 제공된 **선형 광고(linear ad)**의 재생 시간.
+  - 형식: `HH:MM:SS.mmm`
+  - 출처: _IAB Tech Lab Definition_
+
+- **freewheel** (object)
+
+  - `ad.adId` 속성 내에 **고유 광고 식별자**를 포함
+
+- **id** (string)
+
+  - 고유한 광고 식별자
+
+- **ima** (object)
+
+  - **IMA SDK의 현재 재생 광고 인스턴스** 및 JWP가 광고 요청 시 전달하는 **userRequestContext** 포함
+
+- **linear** (string)
+
+  - 광고 XML의 `linear` 속성 값.
+  - **가능한 값:**
+  - `linear`: 콘텐츠 재생을 중단하고 재생되는 **비디오 광고**
+  - `nonlinear`: 플레이어 일부에 오버레이되는 **정적 디스플레이 광고**, 콘텐츠 재생은 중단되지 않음
+
+- **mediafile** \| **mediaFile** (object)
+
+  - 광고 XML에서 가져온 **선형 광고의 비디오 파일 정보**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **mediaFileCompliance** (boolean)
+
+  - 광고가 **mediaFile 규격 준수 여부**를 나타냅니다.
+  - 다음 중 하나라도 충족하면 준수로 간주됩니다:
+    - `.m3u8` 파일
+    - `VPAID` 형식
+    - MIME 타입당 최소 3개의 화질 레벨
+
+- **nonComplianceReasons** (array)
+
+  - `mediaFileCompliance` 검증 실패 이유 목록
+
+- **offset** (number \| string)
+
+  - 광고 위치.
+  - **가능한 값:**
+    - (Midroll) `{number in seconds}`
+    - `post`
+    - `pre`
+
+- **placement** (number)
+
+  - IAB 디지털 비디오 가이드라인에 따라 **플레이어의 위치를 식별하기 위해 입찰 요청에 포함되는 값**.
+  - **가능한 값:**
+    - `1`: Instream
+    - `2`: Accompanying Content
+    - `3`: Interstitials
+    - `4`: No Content / Standalone<br>이 값은 `Object:Video` 내 `plcmt` 속성으로 전송됩니다. 자세한 내용은 _List: Plcmt Subtypes - Video_ 참조.
+
+- **podcount** (number)
+
+  - **광고 팟(pod)** 내 전체 광고 수
+
+- **request** (object)
+
+  - **광고 태그 URL로 전송된 XMLHttpRequest 객체**
+
+- **response** (object)
+
+  - **요청에 대한 XML 응답 객체**
+
+- **sequence** (number)
+
+  - 광고가 속한 **시퀀스 번호**
+
+- **skipoffset** (number)
+
+  - VAST 파일에 `skipoffset`이 없는 경우, **정적 VAST 광고에 추가되는 건너뛰기 오프셋 값**
+
+- **tag** (string)
+
+  - 광고 태그의 URL
+
+- **type** (string)
+
+  - 플레이어 이벤트 유형.
+  - 이 값은 항상 **adComplete** 입니다.
+
+- **universalAdId** (object)
+
+  - 광고 XML에서 제공된 **시스템 간 광고 크리에이티브 추적용 고유 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **vastversion** (number)
+
+  - VAST XML 내 **VAST 버전 참조 값**
+
+- **viewable** (boolean)
+
+  - 플레이어의 **가시성(Viewability)**.
+  - **가능한 값:**
+    - `0`: 플레이어가 화면에 표시되지 않음
+    - `1`: 플레이어가 화면에 표시됨
+
+- **wcount** (number)
+
+  - 워터폴(Waterfall) 카운트
+
+- **witem** (number)
+
+  - 워터폴(Waterfall) 인덱스
+
 <br>
 <br>
 
 # .on('adError')
+
+광고 재생을 **방해하는 오류가 발생할 때마다** 트리거됩니다.
+
+> Google IMA가 사용 중인 경우, **단일 광고 태그(ad tag)** 에 대해 이 이벤트가 **여러 번 발생할 수 있습니다.**
+
+### 반환 객체 (최소 포함 항목\*)
+
+- **message** (string)
+
+  - 광고 오류 메시지.
+  - **가능한 값:** 아래의 표 참조.
+
+- **tag** (string)
+
+  - 오류를 발생시킨 광고 태그의 URL
+
+- 추가 정보 가능 시 함께 반환될 수 있습니다.
+
+### 가능한 오류 메시지 및 원인
+
+| **Possible Error Messages** | **Causes**                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------------- |
+| `ad tag empty`              | 래핑된 광고 태그를 모두 검색한 후에도 **사용 가능한 광고가 없음**                                 |
+| `error playing creative`    | **크리에이티브 파일 404 오류**                                                                    |
+| `error loading ad tag`      | 기타 **광고 로드 중 발생한 모든 오류**                                                            |
+| `invalid ad tag`            | **잘못된 XML** 또는 **형식이 올바르지 않은 VAST 구문**                                            |
+| `no compatible creatives`   | **FLV 동영상 크리에이티브** 또는 **VPAID SWF** 파일이 **HTML5 플레이어에서 재생을 시도**하는 경우 |
 
 <br>
 <br>
