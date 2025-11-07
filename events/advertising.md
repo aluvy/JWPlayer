@@ -78,35 +78,964 @@ Fired when header bidding starts requesting for bids.
 
 # .on('adBidResponse')
 
+헤더 비딩(Header Bidding) 응답이 반환될 때 발생합니다.
+
+아래와 같은 속성을 포함한 객체를 반환합니다.
+
+- **bidders** (array)
+
+  - 현재 입찰 요청에 포함된 모든 비더(bidder)의 배열
+
+- **bidTimeout** (number)
+
+  - 사용자가 재생을 클릭한 후, 입찰 응답을 기다리는 시간(밀리초)
+
+- **client** (string)
+
+  - 현재 사용 중인 클라이언트
+  - **가능한 값:**
+    - `dai`
+    - `freewheel`
+    - `googima`
+    - `vast`
+
+- **floorPriceCents** (number)
+
+  - 반환된 입찰이 이 금액(센트 단위)을 초과해야 재생됨
+  - ※ `dfp` 중재 계층(mediation layer)을 사용할 경우 반환되지 않음
+
+- **floorPriceCurrency** (string)
+
+  - floorPriceCents 값의 통화 단위
+  - Facebook의 경우 `usd` 여야 하며, 중재 계층이 `jwp`로 설정된 경우에만 사용됨
+
+- **mediationLayerAdServer** (string)
+
+  - 어떤 광고를 재생할지를 결정하는 **중재 계층 (mediation layer)**
+  - **가능한 값:**
+    - `dfp`
+    - `jwp`
+    - `jwpdfp`
+    - `jwpspotx`
+
+- **offset** (string)
+
+  - 광고의 오프셋(재생 시점)
+
+- **placement** (string)
+
+  - 플레이어의 위치를 식별하기 위해 입찰 요청에 전송되는 값
+  - **가능한 값:**
+    - `article`
+    - `banner`
+    - `feed`
+    - `floating`
+    - `instream`
+    - `interstitial`
+    - `slider`
+
+- **type** (string)
+
+  - 이벤트의 유형<br>이 값은 항상 **adBidResponse**
+
+- **viewable** (number)
+
+  - 플레이어가 뷰어블(Viewable) 상태인지 여부
+  - **가능한 값:**
+    - `0` (비표시 상태)
+    - `1` (표시 상태)
+
+<br>
+
+### Bidder Object
+
+각 비더 객체에는 다음 속성이 포함됩니다.
+
+- **id** (number)
+
+  - 각 비더에 대해 헤더 비딩에 사용되는 퍼블리셔 ID
+
+- **name** (string)
+
+  - 비더의 이름
+  - 참조: [advertising.bids.bidders[].name](#)
+
+- **priceInCents** (number)
+
+  - 입찰 금액 (센트 단위)
+  - JWP가 중재 계층인 경우에만 사용됨
+
+- **result** (string)
+
+  - 해당 비더의 입찰 결과
+  - **가능한 값:**
+    - `bid`
+    - `noBid`
+    - `timeout`
+
+- **tagKey** (number)
+
+  - 반환된 입찰의 tagKey
+  - SpotX 비더에 대해서만 사용됨
+
+- **timeForBidResponse** (number)
+
+  - 입찰 응답이 반환되기까지 걸린 시간 (밀리초 단위)
+
+- **winner** (boolean)
+
+  - 이 비더가 낙찰자인 경우 `true` 로 설정됨
+  - **가능한 값:**
+    - `false`
+    - `true`
+
 <br>
 <br>
 
 # .on('adBlock')
+
+이 이벤트는 JWP 설정 내에서 **광고 플러그인(VAST 또는 Google IMA)** 이 구성되어 있고,  
+시청자의 브라우저에서 **광고 차단기(Ad Blocker)** 가 감지되었을 때 발생합니다.
+
+이 이벤트를 통해 사용자가 광고 차단기를 비활성화하도록 요청할 수 있습니다.
 
 <br>
 <br>
 
 # .on('adBreakEnd')
 
+광고가 종료되고, **플레이어로 제어권이 다시 넘어올 때** 발생합니다.
+
+아래와 같은 속성을 포함한 객체를 반환합니다.
+
+- **adposition** (string)
+
+  - 광고의 위치
+  - **가능한 값:**
+    - `mid`
+    - `post`
+    - `pre`
+
+- **client** (string)
+
+  - 광고 구간(ad break)에 사용된 광고 클라이언트
+  - **가능한 값:**
+    - `dai`
+    - `freewheel`
+    - `googima`
+    - `vast`
+
+- **type** (string)
+
+  - 발생한 이벤트의 유형<br>이 값은 항상 **adBreakEnd**
+
+- **viewable** (number)
+
+  - 플레이어가 뷰어블(Viewable) 상태인지 여부
+  - **가능한 값:**
+    - `0`: 플레이어가 50% 미만 표시되거나 비활성 탭에 있음
+    - `1`: 플레이어가 50% 이상 표시되고 활성 탭에 있음
+
 <br>
 <br>
 
 # .on('adBreakIgnored')
+
+**(VAST 전용)**
+이 이벤트는 **이전 광고 구간(ad break)을 완전히 시청한 후, 다음 광고 구간이 재생되기까지의 경과 시간**이
+`advertising.rules.timeBetweenAds` 에서 정의된 값보다 짧을 때 발생합니다.
+
+adBreakIgnored
+
+```json
+{
+  "id": "adbreak2",
+  "tag": "{ad_tag_url}",
+  "offset": 6,
+  "timeSinceLastAd": 3.256,
+  "type": "adBreakIgnored"
+}
+```
+
+- **id** (string)
+
+  - 광고 구간의 설명용 이름
+
+- **offset** (number / string)
+
+  - 광고의 위치
+  - **가능한 값:**
+    - `{number in seconds}` — 미드롤(mid-roll) 광고 구간에서 발생
+    - `post`
+    - `pre`
+
+- **tag** (string)
+
+  - 광고 태그의 URL
+
+- **timeSinceLastAd** (number)
+
+  - 현재 광고 구간과 마지막 광고 구간 사이의 경과 시간(초 단위)
+  - 이 값은 항상 `advertising.rules.timeBetweenAds` 값보다 작습니다.
+
+- **type** (string)
+
+  - 발생한 이벤트의 유형
+  - 이 값은 항상 **adBreakIgnored**
 
 <br>
 <br>
 
 # .on('adBreakStart')
 
+이 이벤트는 **광고 요청(ad request)** 후, 광고가 플레이어에 로드되기 **직전**에 발생합니다.  
+단, **광고 구간(ad break)** 내 첫 번째 광고가 재생되기 전에만 발생합니다.
+
+### 반환 객체
+
+다음 속성들을 포함합니다:
+
+- **adposition** (string)
+
+  - 광고의 위치
+  - **가능한 값:**
+    - `mid`
+    - `post`
+    - `pre`
+
+- **client** (string)
+
+  - 광고 구간에 사용된 광고 클라이언트
+  - **가능한 값:**
+    - `dai`
+    - `freewheel`
+    - `googima`
+    - `vast`
+
+- **type** (string)
+
+  - 발생한 이벤트의 유형<br>이 값은 항상 **adBreakStart**
+
+- **viewable** (number)
+
+  - 플레이어의 가시성(Viewability) 상태
+  - **가능한 값:**
+    - `0`: 플레이어가 50% 미만 표시되었거나 비활성 탭에 있음
+    - `1`: 플레이어가 50% 이상 표시되고 활성 탭에 있음
+
 <br>
 <br>
 
 # .on('adClick')
 
+사용자가 광고를 클릭하여 랜딩 페이지로 리디렉션될 때마다 발생합니다.
+
+DAI
+
+```json
+{
+  "client": "dai",
+  "viewable": 1,
+  "id": "cfau4gxh3q00",
+  "adPlayId": "of0i8kj1tkp0",
+  "adtitle": "External NCA1C1L1 Preroll",
+  "adsystem": "GDFP",
+  "creativetype": "application/x-mpegURL",
+  "linear": "linear",
+  "adposition": "pre",
+  "type": "adClick"
+}
+```
+
+FreeWheel
+
+```json
+{
+  "client": "freewheel",
+  "tag": "placeholder_preroll",
+  "freewheel": {
+    "ad": {
+      "adId": "17302931"
+    }
+  },
+  "adposition": "pre",
+  "id": "17302931",
+  "linear": "linear",
+  "creativetype": "video/mp4",
+  "viewable": 1,
+  "sequence": 1,
+  "podcount": 2,
+  "skipoffset": 3,
+  "type": "adClick"
+}
+```
+
+IMA
+
+```json
+{
+    "client": "googima",
+    "placement": 1,
+    "viewable": 0,
+    "adposition": "pre",
+    "tag": "//playertest-cdn.longtailvideo.com/pre.xml",
+    "adBreakId": "1fuk7qd71j5p",
+    "adPlayId": "1fuk7qd71j5p",
+    "id": "1fuk7qd71j5p",
+    "ima": {...},
+    "adtitle": "JW Test Preroll",
+    "adsystem": "Alex_Vast",
+    "creativetype": "video/mp4",
+    "duration": 0,
+    "linear": "linear",
+    "description": "",
+    "creativeAdId": "",
+    "adId": "232859236",
+    "universalAdId": [],
+    "advertiser": "",
+    "dealId": "",
+    "mediaFile": {
+        "file": "//content.bitsontherun.com/videos/1EI2jHpo-52qL9xLP.mp4"
+    },
+    "type": "adClick"
+}
+```
+
+VAST
+
+```json
+{
+  "client": "vast",
+  "placement": 1,
+  "adBreakId": "1bzytku1wlz6",
+  "adPlayId": "1bzytku1wlz6",
+  "offset": "pre",
+  "id": "1jnyb7aup1ya",
+  "tag": "//playertest-cdn.longtailvideo.com/pre-60s.xml",
+  "adposition": "pre",
+  "sequence": 1,
+  "witem": 1,
+  "wcount": 1,
+  "adsystem": "Alex_Vast",
+  "skipoffset": 5,
+  "adschedule": {
+    "item": 1,
+    "breakid": "adbreak1",
+    "tags": ["//playertest-cdn.longtailvideo.com/pre-60s.xml"],
+    "offset": "pre"
+  },
+  "adtitle": "JW Test Preroll",
+  "description": "",
+  "adId": "232859236",
+  "adVerifications": null,
+  "advertiser": "",
+  "advertiserId": "",
+  "creativeId": "",
+  "creativeAdId": "",
+  "dealId": "",
+  "request": {},
+  "response": {
+    "location": null
+  },
+  "conditionalAdOptOut": false,
+  "vastversion": 2,
+  "clickThroughUrl": "//jwplayer.com/",
+  "mediaFileCompliance": false,
+  "nonComplianceReasons": ["video/mp4 has only 2 qualities"],
+  "mediafile": {
+    "file": "//content.jwplatform.com/videos/zz4Abp0Z-bPwArWA4.mp4"
+  },
+  "viewable": 1,
+  "creativetype": "video/mp4",
+  "categories": [],
+  "type": "adClick"
+}
+```
+
+<br>
+
+- **adBreakId** (string)
+
+  - 각 광고 구간(ad break)에 대한 고유 ID.
+  - 동일한 광고 구간 내의 모든 광고는 같은 **adBreakId**를 가집니다.
+
+- **adId** (string)
+
+  - 광고 XML 내 정의된 **광고 서버의 크리에이티브 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adPlayId** (string)
+
+  - 각 개별 광고에 대한 고유 ID.
+  - 동일한 광고 구간 내 여러 광고가 있을 경우, 각각 고유한 **adPlayId**를 가집니다.
+
+- **adposition** (string)
+
+  - 광고의 위치
+  - **가능한 값:**
+    - `mid`
+    - `post`
+    - `pre`
+
+- **adschedule** (object)
+
+  - 해당 광고 구간의 설정 정보
+
+- **adsystem** (string)
+
+  - 광고 XML에서 반환된 **광고 서버 이름**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adtitle** (string)
+
+  - 광고 XML에 정의된 **광고의 일반 이름(Common Name)**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adVerifications** (object)
+
+  - 광고 XML에서 정의된 **제3자 검증 코드 실행을 위한 리소스 및 메타데이터 목록**.
+  - 이는 크리에이티브 재생 검증용입니다.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiser** (string)
+
+  - 광고 XML에 정의된 **광고주 이름**.
+  - 광고 제공 측(ad serving party)에 의해 정의됨.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiserId** (string)
+
+  - 광고 XML 내 **광고주 식별자(선택적)**.
+  - 광고 서버에서 제공.
+  - 출처: _IAB Tech Lab Definition_
+
+- **categories** (array)
+
+  - 광고 XML에서 가져온 **광고 콘텐츠 카테고리**를 식별하는 **카테고리 코드 또는 라벨 목록**
+  - 출처: _IAB Tech Lab Definition_
+
+- **clickThroughUrl** (string)
+
+  - 광고 XML에서 가져온 **광고주 사이트의 URI**.<br>시청자가 광고를 클릭했을 때 미디어 플레이어가 여는 URL.
+  - 출처: _IAB Tech Lab Definition_
+
+- **client** (string)
+
+  - 현재 사용 중인 광고 클라이언트
+  - **가능한 값:**
+    - `dai`
+    - `freewheel`
+    - `googima`
+    - `vast`
+
+- **conditionalAdOptOut** (boolean)
+
+  - (**VPAID 전용**) VAST 응답 내 `conditionalAd` 속성을 가진 광고를 **재생하지 않도록** 지시
+
+- **creativeAdId** (string)
+
+  - 광고 XML에서 가져온 **광고 서버의 고유 크리에이티브 식별자**
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativeId** (string)
+
+  - 광고 XML에서 가져온 **크리에이티브를 제공하는 광고 서버 식별자**
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativetype** (string)
+
+  - VAST XML에 지정된 **현재 미디어 파일의 MIME 유형**
+
+- **dealId** (string)
+
+  - 광고 XML에서 가져온 **현재 광고의 상위 래퍼(wrapper) 체인에서 발견된 첫 번째 딜 ID**
+  - 출처: _Google Definition_
+
+- **description** (string)
+
+  - 광고 XML에서 제공하는 **광고의 상세 설명**
+  - 출처: _IAB Tech Lab Definition_
+
+- **duration** (number)
+
+  - 광고 XML에서 제공하는 **선형 광고(linear ad)**의 지속 시간.
+  - 형식: `HH:MM:SS.mmm`
+  - 출처: _IAB Tech Lab Definition_
+
+- **freewheel** (object)
+
+  - `ad.adId` 속성 내에 **고유 광고 식별자**를 포함
+
+- **id** (string)
+
+  - 고유한 광고 식별자
+
+- **ima** (object)
+
+  - IMA SDK에서 **현재 재생 중인 광고 인스턴스**와 JWP가 IMA SDK에 광고 요청 시 전달하는 **userRequestContext** 포함
+
+- **linear** (string)
+
+  - 광고 XML의 `linear` 속성 값
+  - **가능한 값:**
+    - `linear`: 영상 재생을 중단하고 재생되는 **비디오 광고**
+    - `nonlinear`: 플레이어의 일부 영역에 오버레이되는 **정적 디스플레이 광고**로, 재생을 중단하지 않음
+
+- **mediafile** \| **mediaFile** (object)
+
+  - 광고 XML에서 가져온 **선형 광고의 비디오 파일 정보**
+  - 출처: _IAB Tech Lab Definition_
+
+- **mediaFileCompliance** (boolean)
+
+  - 광고가 **mediaFile 규격 준수 여부**를 나타냄.
+  - 다음 중 하나라도 충족하면 준수로 간주됩니다:
+    - `.m3u8` 파일
+    - `VPAID` 형식
+    - MIME 유형당 최소 3개의 화질 레벨
+
+- **nonComplianceReasons** (array)
+
+  - `mediaFileCompliance` 검증 실패 시의 **이유 목록**
+
+- **offset** (number \| string)
+
+  - 광고의 위치
+  - **가능한 값:**
+    - (미드롤) `{number in seconds}`
+    - `post`
+    - `pre`
+
+- **placement** (number)
+
+  - IAB 디지털 비디오 가이드라인에 따라, **플레이어의 위치를 식별하기 위해 입찰 요청에 전송되는 값**
+  - **가능한 값:**
+    - `1`: Instream
+    - `2`: Accompanying Content
+    - `3`: Interstitials
+    - `4`: No Content / Standalone
+  - 이 값은 `Object:Video` 내의 `plcmt` 속성으로 전송됩니다. 자세한 내용은 _List: Plcmt Subtypes - Video_ 참조.
+
+- **podcount** (number)
+
+  - **광고 팟(pod)** 내 전체 광고 수
+
+- **request** (object)
+
+  - **광고 태그 URL에 대한 XMLHttpRequest 객체**
+
+- **response** (object)
+
+  - 요청에 대한 **XML 응답 객체**
+
+- **sequence** (number)
+
+  - 광고가 속한 **시퀀스 번호** 반환
+
+- **skipoffset** (number)
+
+  - VAST 파일에 `skipoffset`이 없을 경우, **정적 VAST 광고에 추가되는 건너뛰기 오프셋 값**
+
+- **tag** (string)
+
+  - 광고 태그의 URL
+
+- **type** (string)
+
+  - 플레이어 이벤트의 유형.
+  - 이 값은 항상 **adClick** 입니다.
+
+- **universalAdId** (object)
+
+  - 광고 XML에서 가져온 **시스템 간 광고 크리에이티브 추적용 고유 식별자**
+  - 출처: _IAB Tech Lab Definition_
+
+- **vastversion** (number)
+
+  - VAST XML 내 **VAST 버전 참조 값**
+
+- **viewable** (boolean)
+
+  - 플레이어의 **가시성(Viewability)**
+  - **가능한 값:**
+    - `0`: 플레이어가 화면에 보이지 않음
+    - `1`: 플레이어가 화면에 표시됨
+
+- **wcount** (number)
+
+  - 워터폴(waterfall) 카운트
+
+- **witem** (number)
+
+  - 워터폴(waterfall) 인덱스
+
 <br>
 <br>
 
 # .on('adCompanions')
+
+**(VAST, IMA)**
+광고에 **컴패니언(Companion Ads)** 이 포함되어 있을 때마다 발생합니다.
+
+IMA
+
+```json
+{
+  "client": "googima",
+  "placement": 1,
+  "viewable": 1,
+  "adposition": "pre",
+  "tag": "<AD_TAG_URL>",
+  "adBreakId": "h3utj61mmce1",
+  "adPlayId": "h3utj61mmce1",
+  "id": "h3utj61mmce1",
+  "ima": {},
+  "adtitle": "IAB Vast Samples Skippable",
+  "adsystem": "GDFP",
+  "creativetype": "video/webm",
+  "duration": 51,
+  "linear": "linear",
+  "description": "IAB Vast Samples Skippable ad",
+  "creativeAdId": "",
+  "adId": "24283604",
+  "universalAdId": [
+    {
+      "universalAdIdRegistry": "AD-ID",
+      "universalAdIdValue": "ABCD1234567"
+    }
+  ],
+  "advertiser": "",
+  "dealId": "",
+  "mediaFile": {
+    "file": "file.webm"
+  },
+  "companions": [
+    {
+      "width": 300,
+      "height": 250,
+      "type": "html",
+      "resource": "<a target=\"_blank\" id=\"32948875244\" href=\"<URL>\"><div class=\"overlayContainer\"><img src=\"<IMAGE_URL>\" height=\"250\" width=\"300\"><div class=\"overlayTextAttribution\"></div></div><iframe frameborder=\"0\" src=\"<IFRAME_URL>\" height=\"0\" width=\"0\" id=\"iframe734645111\" style=\"border: 0px; vertical-align: bottom; display: block; height: 0px; width: 0px;\"></iframe></a>"
+    },
+    {
+      "width": 728,
+      "height": 90,
+      "type": "html",
+      "resource": "<a target=\"_blank\" id=\"32948875364\" href=\"<URL>\"><div class=\"overlayContainer\"><img src=\"<IMAGE_URL>\" height=\"90\" width=\"728\"><div class=\"overlayTextAttribution\"></div></div><iframe frameborder=\"0\" src=\"<IFRAME_URL>\" height=\"0\" width=\"0\" id=\"iframe849947827\" style=\"border: 0px; vertical-align: bottom; display: block; height: 0px; width: 0px;\"></iframe></a>"
+    }
+  ],
+  "type": "adCompanions"
+}
+```
+
+VAST
+
+```json
+{
+    "client": "vast",
+    "placement": 1,
+    "adBreakId": "1wn8z1bf6tas",
+    "adPlayId": "1wn8z1bf6tas",
+    "offset": "pre",
+    "id": "31d1d4yumxpo",
+    "tag": "//playertest-cdn.longtailvideo.com/pre.xml",
+    "adposition": "pre",
+    "sequence": 1,
+    "witem": 1,
+    "wcount": 1,
+    "adsystem": "Alex_Vast",
+    "skipoffset": 5,
+    "adschedule": {...},
+    "adtitle": "JW Test Preroll",
+    "description": "",
+    "adId": "232859236",
+    "adVerifications": null,
+    "advertiser": "",
+    "advertiserId": "",
+    "creativeId": "",
+    "creativeAdId": "",
+    "dealId": "",
+    "request": {},
+    "response": {
+        "location": null
+    },
+    "conditionalAdOptOut": false,
+    "vastversion": 2,
+    "clickThroughUrl": "//jwplayer.com/",
+    "mediaFileCompliance": false,
+    "nonComplianceReasons": [
+        "video/mp4 has only 1 qualities",
+        "video/webm has only 1 qualities"
+    ],
+    "mediafile": {
+        "file": "//content.bitsontherun.com/videos/1EI2jHpo-52qL9xLP.mp4"
+    },
+    "viewable": 1,
+    "creativetype": "video/mp4",
+    "companions": [
+        {
+            "width": 300,
+            "height": 250,
+            "type": "static",
+            "resource": "//s3.amazonaws.com/qa.jwplayer.com/~alex/300x250_companion_1.swf",
+            "creativeview": [
+                "http://myTrackingURL/firstCompanion"
+            ],
+            "click": "http://jwplayer.com/"
+        },
+        {
+            "width": 300,
+            "height": 250,
+            "type": "static",
+            "resource": "//s3.amazonaws.com/qa.jwplayer.com/~alex/pre_300X250.jpg",
+            "click": "http://jwplayer.com/"
+        },
+        {
+            "width": 728,
+            "height": 90,
+            "type": "static",
+            "resource": "//s3.amazonaws.com/qa.jwplayer.com/~alex/pre_728X90.jpg",
+            "click": "http://jwplayer.com/"
+        }
+    ],
+    "type": "adCompanions"
+}
+```
+
+<br>
+
+- **adBreakId** (string)
+
+  - 각 광고 구간(ad break)의 고유 ID.
+  - 동일한 광고 구간 내 여러 광고가 존재할 경우, 모두 같은 **adBreakId**를 가집니다.
+
+- **adId** (string)
+
+  - 광고 XML에서 제공되는 **광고 서버의 크리에이티브 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adPlayId** (string)
+
+  - 각 광고의 고유 ID.
+  - 동일한 광고 구간 내 여러 광고가 있을 경우, 각각 다른 **adPlayId**를 가집니다.
+
+- **adposition** (string)
+
+  - 광고의 위치.
+  - **가능한 값:**
+    - `mid`
+    - `post`
+    - `pre`
+
+- **adschedule** (object)
+
+  - 광고 구간의 설정 정보
+
+- **adsystem** (string)
+
+  - 광고 XML에 정의된 **광고 서버 이름**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adtitle** (string)
+
+  - 광고 XML에 정의된 **광고의 일반 이름(Common Name)**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **adVerifications** (object)
+
+  - 광고 XML에서 정의된 **제3자 검증 코드 실행에 필요한 리소스 및 메타데이터 목록**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiser** (string)
+
+  - 광고 XML에서 정의된 **광고주 이름**.
+  - 광고 제공 주체에 의해 정의됨.
+  - 출처: _IAB Tech Lab Definition_
+
+- **advertiserId** (string)
+
+  - 광고 XML에서 제공된 **선택적 광고주 ID**, 광고 서버에 의해 제공됨.
+  - 출처: _IAB Tech Lab Definition_
+
+- **clickThroughUrl** (string)
+
+  - 광고 XML에서 정의된 **광고 클릭 시 이동할 광고주의 사이트 URI**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **client** (string)
+
+  - 현재 사용 중인 광고 클라이언트.
+  - **가능한 값:**
+    - `googima`
+    - `vast`
+
+- **companions** (array)
+
+  - 사용 가능한 **컴패니언 광고 정보 목록**.
+  - 참조: [companions[]](#companions)
+
+- **conditionalAdOptOut** (boolean)
+
+  - (**VPAID 전용**) VAST 응답에 포함된 `conditionalAd` 속성을 가진 광고를 **재생하지 않도록** 설정
+
+- **creativeAdId** (string)
+
+  - 광고 XML에서 정의된 **광고 서버의 고유 크리에이티브 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativeId** (string)
+
+  - 광고 XML에서 정의된 **크리에이티브를 제공하는 광고 서버 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **creativetype** (string)
+
+  - VAST XML에서 지정된 **현재 미디어 파일의 MIME 유형**
+
+- **dealId** (string)
+
+  - 광고 XML에서 **현재 광고의 래퍼(wrapper) 체인 상단부터 발견된 첫 번째 딜 ID** 반환.
+  - 출처: _Google Definition_
+
+- **description** (string)
+
+  - 광고 XML에서 제공하는 **광고 설명(긴 형태)**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **duration** (number)
+
+  - 광고 XML에서 정의된 **선형 광고(linear ad)**의 재생 시간.
+  - 형식: `HH:MM:SS.mmm`
+  - 출처: _IAB Tech Lab Definition_
+
+- **id** (string)
+
+  - 고유 광고 식별자
+
+- **ima** (object )
+- **IMA SDK의 현재 재생 광고 인스턴스**와 JWP가 광고 요청 시 전달하는 **userRequestContext** 포함
+
+- **linear** (string)
+
+  - 광고 XML의 `linear` 속성 값.
+  - **가능한 값:**
+    - `linear`: 비디오 콘텐츠 재생을 중단하고 표시되는 **비디오 광고**
+    - `nonlinear`: 플레이어 위에 오버레이되는 **정적 디스플레이 광고**, 콘텐츠 재생을 중단하지 않음
+
+- **mediafile** | **mediaFile** (object)
+
+  - 광고 XML에서 가져온 **선형 광고의 비디오 파일 정보**.
+  - 출처: _IAB Tech Lab Definition_ |
+
+- **mediaFileCompliance** (boolean)
+
+  - 광고가 **mediaFile 표준을 준수하는지 여부**.
+  - 다음 조건 중 하나를 충족해야 합니다:
+    - `.m3u8` 파일
+    - `VPAID` 형식
+    - MIME 유형당 최소 3개의 품질 레벨 존재
+
+- **nonComplianceReasons** (array)
+
+  - `mediaFileCompliance` 검증 실패 사유 목록
+
+- **offset** (number)
+
+  - string
+
+  - 광고 위치.
+  - **가능한 값:**
+    - (Midroll) `{number in seconds}`
+    - `post`
+    - `pre`
+
+- **placement** (number)
+
+  - IAB 디지털 비디오 가이드라인에 따라 **플레이어의 위치를 식별하기 위해 입찰 요청에 전송되는 값**.
+  - **가능한 값:**
+    - `1`: Instream
+    - `2`: Accompanying Content
+    - `3`: Interstitials
+    - `4`: No Content / Standalone
+  - 이 값은 `Object:Video` 내 `plcmt` 속성으로 전송됩니다. 자세한 내용은 _List: Plcmt Subtypes - Video_ 참조.
+
+- **request** (object)
+
+- **광고 태그 URL로 전송된 XMLHttpRequest 객체**
+
+- **response** (object)
+
+- **광고 서버에서 반환된 XML 응답**
+
+- **sequence** (number)
+
+  - 광고가 속한 **시퀀스 번호**
+
+- **skipoffset** (number)
+
+  - VAST 파일에 `skipoffset`이 없는 경우, **정적 VAST 광고에 추가되는 건너뛰기 오프셋 값**
+
+- **tag** (string)
+
+  - 광고 태그의 URL
+
+- **type** (string)
+
+  - 플레이어 이벤트 유형.
+  - 이 값은 항상 **adCompanions** 입니다.
+
+- **universalAdId** (object)
+
+  - 광고 XML에서 제공된 **시스템 간 광고 크리에이티브 추적용 고유 식별자**.
+  - 출처: _IAB Tech Lab Definition_
+
+- **vastversion** (number)
+
+  - VAST XML 내 **VAST 버전 참조 값**
+
+- **viewable** (boolean)
+
+  - 플레이어의 **가시성(Viewability)**.
+  - **가능한 값:**
+    - `0`: 플레이어가 화면에 표시되지 않음
+    - `1`: 플레이어가 화면에 표시됨
+
+- **wcount** (number)
+
+  - 워터폴(Waterfall) 카운트
+
+- **witem** (number)
+
+  - 워터폴(Waterfall) 인덱스
+
+<br>
+
+### companions[]
+
+- **click** (string)
+
+  - **컴패니언 광고 클릭 시 이동할 링크 URL**.
+  - `type`이 `static`인 경우에만 사용 가능.
+
+- **creativeview** (array)
+
+  - **creativeview 이벤트 트래킹 픽셀 목록**
+
+- **height** (number)
+
+  - **컴패니언 광고의 높이(px)**
+
+- **resource** (string)
+
+  - **정적(static)/iframe 리소스의 URL** 또는 **HTML 원본 콘텐츠**
+
+- **type** (string)
+
+  - **크리에이티브의 유형**.
+  - **가능한 값:** `html`, `iframe`, `static`
+
+- **width** (number)
+
+  - **컴패니언 광고의 너비(px)**
 
 <br>
 <br>
