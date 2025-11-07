@@ -64,13 +64,13 @@
 
 ## Internationalization
 
-- intl.{lang}.advertising object
-- intl.{lang}.captionsStyles object
-- intl.{lang}.errors object
-- intl.{lang}.related object
-- intl.{lang}.sharing object
-- intl.{lang}.shortcuts object
-- Transition table
+- [intl.{lang}.advertising object](./intl.md#intllangadvertising-object)
+- [intl.{lang}.captionsStyles object](./intl.md#intllangcaptionsStyles-object)
+- [intl.{lang}.errors object](./intl.md#intllangerrors-object)
+- [intl.{lang}.related object](./intl.md#intllangrelated-object)
+- [intl.{lang}.sharing object](./intl.md#intllangsharing-object)
+- [intl.{lang}.shortcuts object](./intl.md#intllangshortcuts-object)
+- [Transition table](./intl.md#Transition-table)
 
 ## Logo
 
