@@ -8,23 +8,21 @@
 
 ## Advertising
 
-- advertising.bids
-- advertising.bids.bidders[]
-- advertising.bids.bidders[].optionalParams
-- advertising.bids.ortbParams
-- advertising.bids.settings
-- advertising.bids.settings.buckets[]
-- advertising.bids.settings.consentManagement
-- advertising.bids.settings.consentManagement.gdpr
-- advertising.bids.settings.consentManagement.gdpr.rules
-- advertising.bids.settings.consentManagement.usp
-- advertising.companiondiv
-- advertising.enablePPS
-- advertising.freewheel
-- advertising.rules
-- advertising.schedule
-- Ad Schedules with VMAP Files
-- Embedded Ad Schedules with JSON
+- [advertising.bids](/advertising.md#advertisingbids)
+- [advertising.bids.bidders[]](/advertising.md#advertisingbidsbidders)
+- [advertising.bids.bidders[].optionalParams](/advertising.md#advertisingbidsbiddersoptionalparams)
+- [advertising.bids.ortbParams](/advertising.md#advertisingbidsortbparams)
+- [advertising.bids.settings](/advertising.md#advertisingbidssettings)
+- [advertising.bids.settings.buckets[]](/advertising.md#advertisingbidssettingsbuckets)
+- [advertising.bids.settings.consentManagement](/advertising.md#advertisingbidssettingsconsentmanagement)
+- [advertising.bids.settings.consentManagement.gdpr](/advertising.md#advertisingbidssettingsconsentmanagementgdpr)
+- [advertising.bids.settings.consentManagement.gdpr.rules](/advertising.md#advertisingbidssettingsconsentmanagementgdprrules)
+- [advertising.bids.settings.consentManagement.usp](/advertising.md#advertisingbidssettingsconsentmanagementusp)
+- [advertising.companiondiv](/advertising.md#advertisingcompaniondiv)
+- [advertising.enablePPS](/advertising.md#advertisingenablepps)
+- [advertising.freewheel](/advertising.md#advertisingfreewheel)
+- [advertising.rules](/advertising.md#advertisingrules)
+- [advertising.schedule](/advertising.md#advertisingschedule)
 
 ## Auto Pause
 
