@@ -140,10 +140,10 @@
 
 미디어 파일 내부에 포함된 메타데이터(e.g., ID3, timed-metadata, 트랙 길이·제작자 정보 등)와 관련된 이벤트 그룹
 
-| Event                                                      | Description |
-| :--------------------------------------------------------- | :---------- |
-| [**meta**](./metadata.md#onmeta)                           |             |
-| [**metadataCueParsed**](./metadata.md#onmetadataCueParsed) |             |
+| Event                                                      | Description                                                        |
+| :--------------------------------------------------------- | :----------------------------------------------------------------- |
+| [**meta**](./metadata.md#onmeta)                           | 재생이 새로운 메타데이터가 활성화되는 시간 범위에 진입할 때 트리거 |
+| [**metadataCueParsed**](./metadata.md#onmetadataCueParsed) | 메타데이터 큐 포인트(metadata cue point)가 버퍼링될 때 트리거      |
 
 <br>
 
