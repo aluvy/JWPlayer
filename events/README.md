@@ -76,10 +76,10 @@
 
 오디오 트랙과 관련된 이벤트 그룹
 
-| Event                                                          | Description |
-| :------------------------------------------------------------- | :---------- |
-| [**audioTrackChanged**](./audio-tracks.md#onaudioTrackChanged) |             |
-| [**audioTracks**](./audio-tracks.md#onaudioTracks)             |             |
+| Event                                                          | Description                                       |
+| :------------------------------------------------------------- | :------------------------------------------------ |
+| [**audioTrackChanged**](./audio-tracks.md#onaudiotrackchanged) | 활성화된 오디오 트랙이 변경될 때 발생             |
+| [**audioTracks**](./audio-tracks.md#onaudiotracks)             | 사용 가능한 오디오 트랙 목록이 업데이트될 때 발생 |
 
 <br>
 
