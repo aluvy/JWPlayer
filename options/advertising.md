@@ -334,7 +334,8 @@ jwplayer("myElement").setup({
 
 <br>
 
-### Azerion
+<details>
+<summary><strong>Azerion</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -360,9 +361,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Azerion Placement ID
 
+</details>
+
 <br>
 
-### Connatix
+<details>
+<summary><strong>Connatix</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -388,9 +392,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Connatix Placement ID
 
+</details>
+
 <br>
 
-### Criteo
+<details>
+<summary><strong>Criteo</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -421,9 +428,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Criteo Zone ID
 
+</details>
+
 <br>
 
-### Emodo
+<details>
+<summary><strong>Emodo</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -449,9 +459,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Emodo에서 제공하는 **공급 UUID(Supply UUID)**
 
+</details>
+
 <br>
 
-### EMX
+<details>
+<summary><strong>EMX</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -478,9 +491,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ 입찰이 수신되는 광고 파트너 이름 (`EMX`)
 
+</details>
+
 <br>
 
-### Equativ
+<details>
+<summary><strong>Equativ</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -521,9 +537,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Equativ Placement Site ID<br>Equativ에서 제공되지 않은 경우 임의의 문자열 사용 가능
 
+</details>
+
 <br>
 
-### iMDS
+<details>
+<summary><strong>iMDS</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -554,9 +573,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ iMDS Seat ID<br>모든 광고 유닛에 동일하게 적용됩니다.
 
+</details>
+
 <br>
 
-### Index Exchange
+<details>
+<summary><strong>Index Exchange</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -582,9 +604,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ 입찰이 수신되는 광고 파트너 이름 (`IndexExchange`)
 
+</details>
+
 <br>
 
-### Kargo
+<details>
+<summary><strong>Kargo</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -610,9 +635,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Kargo Placement ID
 
+</details>
+
 <br>
 
-### Magnite
+<details>
+<summary><strong>Magnite</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -648,9 +676,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Magnite 존(zone) ID
 
+</details>
+
 <br>
 
-### Media.net
+<details>
+<summary><strong>Media.net</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -681,9 +712,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Media.net `cid` Customer ID
 
+</details>
+
 <br>
 
-### OpenX
+<details>
+<summary><strong>OpenX</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -714,9 +748,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ 입찰이 수신되는 광고 파트너 이름 (`OpenX`)
 
+</details>
+
 <br>
 
-### PubMatic
+<details>
+<summary><strong>PubMatic</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -747,9 +784,12 @@ jwplayer("myElement").setup({
 
   - PubMatic 광고 슬롯 ID
 
+</details>
+
 <br>
 
-### Sonobi
+<details>
+<summary><strong>Sonobi</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -775,9 +815,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ 입찰이 수신되는 광고 파트너 이름 (`Sonobi`)
 
+</details>
+
 <br>
 
-### Sovrn
+<details>
+<summary><strong>Sovrn</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -803,9 +846,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Sovrn이 제공하는 광고 태그 ID
 
+</details>
+
 <br>
 
-### SpotX
+<details>
+<summary><strong>SpotX</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -831,9 +877,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ 입찰이 수신되는 광고 파트너 이름 (`SpotX`)
 
+</details>
+
 <br>
 
-### The MediaGrid
+<details>
+<summary><strong>The MediaGrid</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -864,9 +913,12 @@ jwplayer("myElement").setup({
 
   - 광고 파트너가 발급한 퍼블리셔 식별자
 
+</details>
+
 <br>
 
-### The Trade Desk
+<details>
+<summary><strong>The Trade Desk</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -902,9 +954,12 @@ jwplayer("myElement").setup({
 
   - 광고 유닛 이름
 
+</details>
+
 <br>
 
-### Unruly
+<details>
+<summary><strong>Unruly</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -930,9 +985,12 @@ jwplayer("myElement").setup({
 
   - _(필수)_ Unruly 사이트 ID
 
+</details>
+
 <br>
 
-### VideoByte
+<details>
+<summary><strong>VideoByte</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -968,9 +1026,12 @@ jwplayer("myElement").setup({
 
   - VideoByte Placement ID
 
+</details>
+
 <br>
 
-### Xandr
+<details>
+<summary><strong>Xandr</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -1011,9 +1072,12 @@ jwplayer("myElement").setup({
 
   - Xandr 퍼블리셔 ID<br>Placement ID가 없거나 `invCode` 오류 시 퍼블리셔 식별용으로 사용됩니다.
 
+</details>
+
 <br>
 
-### YahooSSP
+<details>
+<summary><strong>YahooSSP</strong></summary>
 
 ```javascript
 jwplayer("myElement").setup({
@@ -1048,6 +1112,8 @@ jwplayer("myElement").setup({
 - **siteId** (string)
 
   - YahooSSP 사이트 ID
+
+</details>
 
 <br><br>
 
