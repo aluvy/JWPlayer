@@ -1,13 +1,12 @@
 # all Events
 
-This singular API call can be used to gather all events from the player's API.
+<br><br>
 
-> This will output a large amount of information and may degrade browser performance if it is used for an extended period of time.
+## .on('all')
 
-<br>
-<br>
+이 단일 API 호출은 **플레이어의 모든 이벤트를 수집**하는 데 사용할 수 있습니다.
 
-# .on('all')
+> 이 메서드는 **매우 많은 정보를 출력**하므로, 장시간 사용 시 **브라우저 성능이 저하될 수 있습니다.**
 
 ### 호출시점
 
@@ -24,10 +23,15 @@ player.on('all', function (eventName, eventData) {
 });
 ```
 
-| Value                  | Description                                                      |
-| :--------------------- | :--------------------------------------------------------------- |
-| **eventName** (string) | 발생한 이벤트 이름 (예: `play`, `pause`, `buffer`, `setupError`) |
-| **eventData** (object) | 해당 이벤트의 데이터 객체 (이벤트별로 내용 다름)                 |
+- **eventName** (string)
+
+  - 발생한 이벤트 이름 (예: `play`, `pause`, `buffer`, `setupError`)
+
+- **eventData** (object)
+
+  - 해당 이벤트의 데이터 객체 (이벤트별로 내용 다름)
+
+<br>
 
 - `eventData.type` 은 항상 `eventName` 과 동일함.
 - 전달되는 내용은 각 이벤트(`play`, `ready`, `bufferChange` 등)의 고유 구조를 그대로 포함합니다.

@@ -1,15 +1,17 @@
 # Buffer Events
 
-These API calls are used to update clients with the percentage of a file that is buffered into the player.
+이 API 호출들은 **플레이어에 로드된 미디어 파일의 버퍼링(저장된 데이터) 진행 상태를 갱신**하는 데 사용됩니다.
 
-> This only applies to VOD media. Live streaming media (HLS/DASH) does not expose this behavior.
+> 참고  
+> 이 이벤트는 **VOD(주문형 비디오)**에만 적용됩니다.  
+> **라이브 스트리밍(HLS/DASH)**에서는 이 동작이 노출되지 않습니다.
 
 <br>
 <br>
 
 # .on('bufferChange')
 
-Fires when the currently playing item loads additional data into its buffer
+현재 재생 중인 항목이 **버퍼에 추가 데이터를 로드할 때마다** 호출됩니다.
 
 ### 호출시점
 
@@ -34,14 +36,42 @@ Fires when the currently playing item loads additional data into its buffer
 }
 ```
 
-| Value                                 | Description                                                                                         |
-| :------------------------------------ | :-------------------------------------------------------------------------------------------------- |
-| **bufferPercent** (number)            | 현재 미디어 전체 중 버퍼된 비율(%) (0–100 범위 아님: 0–100 대신 0–1 또는 퍼센트값 사용 버전에 따름) |
-| **position** (number)                 | 현재 재생 위치 (초)                                                                                 |
-| **duration** (number)                 | 전체 영상 길이(초)                                                                                  |
-| **currentTime** (number)              | 현재 시간(일부 환경에서는 `position`과 동일)                                                        |
-| **seekRange** (object)                | 탐색 가능한 시작·끝 범위(`start`, `end`)                                                            |
-| **absolutePosition** (number \| null) | 라이브 스트림일 경우 절대 시간 정보, VOD 에서는 `null`                                              |
+- **bufferPercent** (number)
+
+  - 현재 미디어 전체 중 버퍼된 비율(%) (0–100 범위 아님: 0–100 대신 0–1 또는 퍼센트값 사용 버전에 따름)
+
+- **position** (number)
+
+  - 현재 재생 위치 (초)
+
+- **duration** (number)
+
+  - 전체 영상 길이(초)
+
+- **currentTime** (number)
+
+  - 현재 시간(일부 환경에서는 `position`과 동일)
+  - 플레이어가 탐색(seek)하기 전의 스트림 위치 (초 단위)
+
+- **seekRange** (object)
+
+  - 탐색 가능한 시작·끝 범위(`start`, `end`)
+  - DVR 또는 라이브 스트림에서 **탐색 가능한 시간 범위** 또는 **버퍼링 가능한 구간 정보**
+
+  - **seekRange[]**
+
+    - **seekRange.start** (number)
+
+      - 스트림의 시작 지점 (초 단위, `currentTime` 기준)
+
+    - **seekRange.end** (number)
+
+      - 스트림의 종료 지점 (초 단위, `currentTime` 기준)
+
+- **absolutePosition** (number \| null)
+
+  - 라이브 스트림일 경우 절대 시간 정보, VOD 에서는 `null`
+  - 시청자의 **절대 위치** - 영상의 현재 재생 시간(`currentTime`)과 스트림의 `startDateTime`을 더한 값 (날짜 형식 기준)
 
 ### 활용
 

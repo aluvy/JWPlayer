@@ -1,14 +1,13 @@
 # Setup Events
 
-These API calls are used to create players and provide setup information.
+이 API 호출들은 **플레이어를 생성하고 초기 설정 정보를 제공**하는 데 사용됩니다.
 
-<br>
-<br>
+<br><br>
 
-# .on('ready')
+## .on('ready')
 
-Signifies when the player has been initialized and is ready for playback  
-This is the earliest point at which any API calls should be made.
+플레이어가 **초기화되어 재생 준비가 완료되었을 때** 발생합니다.  
+이 시점이 **가장 이른 API 호출 가능 시점**입니다.
 
 ### 호출시점
 
@@ -26,10 +25,13 @@ This is the earliest point at which any API calls should be made.
 }
 ```
 
-| Value                  | Description                                      |
-| :--------------------- | :----------------------------------------------- |
-| **setupTime** (number) | setup() → ready까지 걸린 시간 (ms)               |
-| **viewable** (number)  | 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임) |
+- **setupTime** (number)
+
+  - setup() → ready까지 걸린 시간 (ms)
+
+- **viewable** (number)
+
+  - 플레이어가 화면에 보이는 상태 (1=보임, 0=안보임)
 
 ### 활용
 
@@ -54,8 +56,9 @@ This is the earliest point at which any API calls should be made.
 
 # .on('remove')
 
-Triggered when the player is taken off of a page via `jwplayer().remove();`  
-No value returned
+`jwplayer().remove()`를 통해 **플레이어가 페이지에서 제거될 때** 호출됩니다.
+
+반환값은 없습니다.
 
 ### 호출시점
 
@@ -95,7 +98,7 @@ No value returned
 
 # .on('setupError')
 
-Fires when neither the player could be set up
+플레이어가 **정상적으로 설정되지 못했을 때** 호출됩니다.
 
 ### 호출시점
 
@@ -114,11 +117,17 @@ Fires when neither the player could be set up
 }
 ```
 
-| Value                            | Description                                                 |
-| :------------------------------- | :---------------------------------------------------------- |
-| **code** (number)                | JW Player 내부 에러 코드 (원인 식별용)                      |
-| **sourceError** (object \| null) | 하위 에러 객체 (브라우저 또는 네트워크 스택 오류 포함 가능) |
-| **message** (string)             | 오류 메시지 (사용자 또는 콘솔에 표시 가능)                  |
+- **code** (number)
+
+  - JW Player 내부 에러 코드 (원인 식별용)
+
+- **sourceError** (object \| null)
+
+  - 하위 에러 객체 (브라우저 또는 네트워크 스택 오류 포함 가능)
+
+- **message** (string)
+
+  - 오류 메시지 (사용자 또는 콘솔에 표시 가능)
 
 ### 활용
 
