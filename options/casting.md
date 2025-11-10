@@ -12,9 +12,7 @@
 
 <br>
 
----
-
-## 캐스팅 활성화 방법
+**캐스팅 활성화 방법**
 
 플레이어 설정(`setup()`)에 빈 **cast 객체**를 추가합니다.
 
@@ -29,7 +27,7 @@ player.setup({
 
 <br>
 
-## 커스텀 리시버(Custom Receiver) 사용 시
+**커스텀 리시버(Custom Receiver) 사용 시**
 
 커스텀 리시버를 사용하는 경우, **리시버 앱의 식별자(identifier)** 를  
 `cast.appid` 속성에 지정합니다.

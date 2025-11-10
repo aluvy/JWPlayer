@@ -3,7 +3,9 @@
 JW Player는 **기본적으로 11가지 스킨 구성 옵션(skin configuration options)** 을 제공합니다.
 브랜드 아이덴티티를 세밀하게 제어할 수 있어, 플레이어를 보다 **쉽게 맞춤화(customize)** 할 수 있습니다.
 
-<br>
+<br><br>
+
+---
 
 ## 색상 사용자 정의 (Color Customization)
 
@@ -80,8 +82,6 @@ player.setup({
 
 <br><br>
 
----
-
 ## controlbar
 
 - **background** (string)
@@ -108,8 +108,6 @@ player.setup({
 
 <br><br>
 
----
-
 ## menus
 
 - **background** (string)
@@ -131,8 +129,6 @@ player.setup({
 <br>
 <br>
 
----
-
 ## timeslider
 
 - **progress** (string)
@@ -148,8 +144,6 @@ player.setup({
   - 기본값: `"rgba(255,255,255,0.3)"`
 
 <br><br>
-
----
 
 ## tooltips
 

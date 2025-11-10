@@ -7,7 +7,9 @@
 - RSS 피드 또는 JSON 파일의 URL을 참조하는 **문자열(string)**
 - 여러 개의 미디어 객체를 포함하는 **배열(array)**
 
-<br>
+<br><br>
+
+---
 
 ## playlist
 
@@ -29,8 +31,6 @@ player.setup({
 
 <br>
 
----
-
 ### Dashboard
 
 다음 단계에 따라 **JWP 대시보드(JWP Dashboard)** 에서 JWP에 호스팅된 미디어를 포함한 **플레이리스트(playlist)** 를 생성할 수 있습니다.
@@ -42,8 +42,6 @@ player.setup({
 3. 플레이어 설정에서 `playlist` 속성에 해당 **JSON URL을 정의**합니다.
 
 <br>
-
----
 
 ### API
 
@@ -69,11 +67,9 @@ Playlist URL
 https://cdn.jwplayer.com/v2/playlists/{PLAYLIST_ID}
 ```
 
-<br>
+<br><br>
 
 ---
-
-<br>
 
 ## playlist[]
 
@@ -196,8 +192,6 @@ player.setup({
 
 <br><br>
 
----
-
 ### playlist[].adschedule
 
 `playlist[].adschedule` 속성은 **특정 플레이리스트 항목 내에서 광고 구간(ad break)을 예약(scheduling)** 하는 데 사용됩니다.
@@ -280,9 +274,7 @@ JSON 예시
 
 <br><br>
 
----
-
-### #playlist[].freewheel
+### playlist[].freewheel
 
 ```json
 "freewheel": {
@@ -330,8 +322,6 @@ JSON 예시
   - 주의: 동일한 미디어 항목 객체 내에서 `playlist[].streamtype` 과 함께 사용하지 마십시오.
 
 <br><br>
-
----
 
 ### playlist[].sources[]
 
@@ -501,8 +491,6 @@ Widevine
 > 자세한 내용은 [drm](https://docs.jwplayer.com/players/reference/drm) 섹션을 참조하십시오.
 
 <br><br>
-
----
 
 ### playlist[].tracks[]
 

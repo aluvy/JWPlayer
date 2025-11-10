@@ -21,8 +21,6 @@
 
 <br>
 
-#### JavaScript 예시
-
 ```javascript
 player.setup({
   ...

@@ -3,7 +3,9 @@
 아래 옵션들은 **플레이어의 레이아웃과 재생 동작(playback behavior)** 을 설정하는 항목입니다.  
 각 옵션은 플레이어의 **setup 구성 객체**에 직접 포함됩니다.
 
-<br>
+<br><br>
+
+---
 
 ## Appearance
 
@@ -109,6 +111,8 @@
   - 기본값: `640`
 
 <br><br>
+
+---
 
 ## Behavior
 
@@ -224,6 +228,8 @@
   - 기본값: `false`
 
 <br><br>
+
+---
 
 ## Rendering and Loading
 

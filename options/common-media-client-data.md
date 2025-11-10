@@ -24,8 +24,6 @@ player.setup({
 
 ```
 
----
-
 <br>
 
 - **contentId** (string)

@@ -3,6 +3,8 @@
 > JW Player의 **Studio DRM**을 사용 중이라면,  
 > JW Platform에서 [Studio DRM 적용하기(Apply Studio DRM with JW Platform)](https://docs.jwplayer.com/platform/docs/protection-studio-drm-jwp-web-player-integration) 문서를 참고하세요.
 
+<br>
+
 MPEG-DASH 스트림(PlayReady, Widevine, ClearKey) 및  
 HLS 스트림(FairPlay)에 대한 **DRM 관련 구성 옵션**이 제공됩니다.
 
@@ -17,6 +19,8 @@ JW Player는 개별 **플레이리스트 소스(playlist source)** 에 DRM을 �
 DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Article)](<(https://docs.jwplayer.com/platform/docs/protection-overview)>) 를 참고하세요.
 
 <br><br>
+
+---
 
 ## drm.playready
 
@@ -65,6 +69,8 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
     - `SW_SECURE_DECODE`
 
 <br><br>
+
+---
 
 ## drm.widevine
 
@@ -119,6 +125,8 @@ DRM에 대한 자세한 정보와 예시는 JW Player [지원 문서(Support Art
 
 <br><br>
 
+---
+
 ## drm.\[widevine\/playready\].headers
 
 `headers` 구성을 사용하면 **라이선스 요청(license request)에 사용자 정의 HTTP 헤더 데이터(customized HTTP header data)** 를 추가할 수 있습니다.  
@@ -164,6 +172,8 @@ DRM 구성 예시
   - 요청에 포함될 **HTTP 헤더의 값**을 지정합니다.
 
 <br><br>
+
+---
 
 ## drm.fairplay
 
@@ -238,6 +248,8 @@ JW Player는 **맞춤형 FairPlay 통합(custom FairPlay integrations)** 을 위
   - 이 옵션은 `licenseRequestMessage`의 처리 방식에도 영향을 미칩니다.
 
 <br><br>
+
+---
 
 ## drm.clearkey
 

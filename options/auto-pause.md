@@ -21,8 +21,6 @@ player.setup({
 
 ```
 
----
-
 <br>
 
 - **pauseAds** (boolean) <sup>8.10.0+</sup>
