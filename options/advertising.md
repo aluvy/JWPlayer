@@ -14,7 +14,7 @@
 - **client\*** (string)
 
   - (필수) 사용할 광고 클라이언트(ad client)를 지정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `dai`: Google IMA SDK를 사용한 동적 광고 삽입 (Dynamic Ad Insertion)
     - `freewheel`: FreeWheel 클라이언트 사용
     - `googima`: Google IMA SDK 사용 (일부 광고 태그에 필수)
@@ -23,7 +23,7 @@
 - **outstream\*** (boolean) <sup>8.6.0+</sup>
 
   - _(Outstream 전용 필수 속성)_ 아웃스트림 기능을 활성화합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `true`: 아웃스트림 기능 활성화
     - `false`: 비활성화
 
@@ -46,7 +46,7 @@
 - **allowedOmidVendors** (array) <sup>8.20.0+</sup>
 
   - _(VAST)_ 허용할 OMID 벤더를 정의합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - 설정되지 않거나 빈 배열(`[]`)일 경우, 모든 벤더 허용
     - 설정된 경우, 지정된 벤더만 검증 실행
   - 실패 시 해당 검증 실패 내역이 광고 서버에 기록됩니다.
@@ -63,7 +63,7 @@
 - **clearAdsOnComplete** (object)
 
   - 미디어 **재시작(replay)** 또는 **탐색(seek)** 시 광고 스케줄 블록을 유지할지 결정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `false`: (기본값) 광고 스케줄 유지
     - `true`: 재생 시 광고가 표시되지 않도록 광고 블록 제거
 
@@ -101,14 +101,14 @@
 - **enableVideoThumbnails** (boolean) <sup>8.38.4+</sup>
 
   - 대기 상태(idle)에서 **모션 썸네일(video thumbnails)** 을 표시할지 여부를 설정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `true`: (기본값) 자동 생성 또는 커스텀 모션 썸네일 표시
     - `false`: 정적 포스터 이미지만 표시
 
 - **endstate** (string) <sup>8.6.0+</sup>
 
   - _(Outstream 전용)_ 광고가 모두 재생된 후의 플레이어 동작을 정의합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `suspended`: (기본값) 회색 배경이 남고 컨트롤이 비활성화됨
     - `close`: 플레이어가 점차 닫힘
 
@@ -143,7 +143,7 @@
 - **omidSupport** (string) <sup>8.20.2+</sup>
 
   - _(IMA, VAST)_ OMID(Open Measurement Interface Definition) 지원을 구성합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `auto`: (VAST 기본값) VAST XML 내에 검증 노드가 있을 경우 OMID 스크립트를 로드
     - `disabled`: (IMA 기본값) OMID 스크립트를 절대 로드하지 않음
     - `enabled`: VAST 플러그인이 로드될 때 항상 OMID 스크립트를 로드
@@ -153,7 +153,7 @@
   - _(IMA, VAST)_ 광고 입찰 요청(bid request)에 포함되는 **플레이어의 위치 정보 값**
   - 광고주가 비디오 광고 기회를 평가할 때 참고하는 데이터입니다.
 
-  - **가능한 값:**
+  - 가능한 값:
     - `instream` (기본값) ｜ `article` (Outstream 기본값) ｜ `banner` ｜ `feed` ｜ `floating` ｜ `interstitial` ｜ `slider`
 
 - **podmessage** (string) <sup>< 8.6.0</sup>
@@ -176,7 +176,7 @@
 - **repeat** (boolean) <sup>8.6.0+</sup>
 
   - _(Outstream)_ 광고를 한 번만 재생할지, 계속 반복할지를 설정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `false`: (기본값) 모든 광고 재생 후 종료 상태로 전환
     - `true`: 광고를 계속 반복 재생 (사용자 또는 API 상호작용 시까지)
 
@@ -260,7 +260,7 @@
 - **vpaidmode** (string)
 
   - _(IMA - VPAID 전용)_ VPAID 기능 활성화 모드를 설정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `insecure`: (기본값) Friendly iframe 내에서 로드되어 사이트 접근 가능
     - `disabled`: VPAID 광고 비활성화 (요청 시 오류 반환)
     - `enabled`: Cross-domain iframe에서 VPAID 활성화 (사이트 접근 불가)
@@ -268,7 +268,7 @@
 - **withCredentials** (boolean) <sup>8.13.0+</sup>
 
   - 광고 태그에 대한 **Access-Control 요청 시 자격 증명(credentials)** 을 사용할지 여부를 지정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `true`: (기본값) 쿠키, 인증 헤더, TLS 클라이언트 인증서 등을 포함하여 요청
     - `false`: 단일 요청만 보내며 자격 증명은 포함되지 않음
 
@@ -1234,7 +1234,7 @@ jwplayer("myElement").setup({
 - **plcmt** (number)
 
   - **IAB 디지털 비디오 가이드라인**에 따라 정의된 비디오의 게재 유형입니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `1`: 인스트림(Instream)
     • `2`: 동반 콘텐츠(Accompanying Content)
     • `3`: 인터스티셜(Interstitial)
@@ -1245,7 +1245,7 @@ jwplayer("myElement").setup({
 - **pos** (number)
 
   - IAB에서 정의한 광고 위치 유형으로, **콘텐츠 내에서 광고가 표시되는 위치**를 나타냅니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `0`: 알 수 없음(Unknown)
     • `1`: 화면 상단(Above the Fold)
     • `2`: (사용 중단됨 — DEPRECATED)
@@ -1288,7 +1288,7 @@ jwplayer("myElement").setup({
 - **mediationLayerAdServer\*** (string)
 
   - (필수) 어떤 광고가 재생될지를 결정하는 **중재 계층(Mediation Layer)** 을 지정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     - `jwp` (VAST / IMA): 플레이어가 자체 경매를 수행합니다. 낙찰자가 선택되면 해당 광고를 호출하고, 낙찰자가 없으면 **대체 태그(fallback tag)** 가 호출됩니다. `floorPrice`를 반드시 지정해야 합니다.
     - `jwpspotx` (VAST): 플레이어가 경매를 수행하지 않습니다. SpotX에 입찰 요청을 보내고, 가격에 상관없이 반환된 광고 응답을 재생합니다. 이는 JW Player 중재에서 **$0.01 floor price** 를 사용하는 것과 동일합니다. SpotX 라인 아이템을 구성해야 합니다.
     - `dfp` (IMA): 플레이어가 경매를 수행하지 않습니다. 모든 입찰이 **Google Ad Manager(GAM)** 으로 전송되며, 라인 아이템으로 렌더링되어 다른 라인 아이템과 경쟁합니다. GAM이 낙찰된 라인 아이템을 제공합니다. GAM에서 생성해야 할 라인 아이템 수를 줄이기 위해 **가격 버킷(buckets)** 설정을 권장합니다.
@@ -1320,7 +1320,7 @@ jwplayer("myElement").setup({
 
   - **TCF API 함수** 존재 여부에 따라 Prebid GDPR 설정을 조정합니다.
   - `tcfapi()` 함수는 CMP(동의 관리 플랫폼)가 사용자의 동의 상태를 알리기 위해 사용하는 **표준화된 인터페이스**입니다. 이 함수는 사용자가 데이터 처리 및 광고 목적에 동의했는지를 확인하여 **GDPR 준**수를 보장합니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `false` (기본값): JWP가 퍼블리셔의 동의 관리 설정을 전달함
     • `true`:
     • `tcfapi()` 함수가 존재하면, `consentManagement` 설정은 퍼블리셔 정의대로 유지됨
@@ -1341,7 +1341,7 @@ jwplayer("myElement").setup({
 - **sendAllBids** (boolean)
 
   - 모든 입찰 데이터를 전송할지, 아니면 **최상위 입찰만 전송할지**를 결정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `true` (기본값): 모든 입찰자에 대한 키-값 쌍(KVP)을 전송하여 광고 서버가 낙찰자를 선택하고 과거 입찰가를 분석할 수 있도록 함.
     • `false`: 상위 입찰자 한 명의 KVP만 전송하여 광고 서버로의 데이터 전송량을 줄임.
 
@@ -1429,7 +1429,7 @@ GDPR 동의 관리 모듈(GDPR Consent Management Module)의 다음 매개변수
 - **purpose** (string)
 
   - 퍼블리셔가 재정의(override)할 수 있는 **특정 기본 동작**을 정의합니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `storage` (Purpose 1)
     • `basicAds` (Purpose 2)
     • `measurement` (Purpose 7)
@@ -1762,7 +1762,7 @@ jwplayer('myElement').setup({
 - **offset** (string \| number)
 
   - 광고 태그가 재생될 **시점**을 정의합니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `pre`: (기본값, string) 프리롤 광고로 재생
     • `post`: 포스트롤 광고로 재생
     • `xx%`: (string - VAST 전용) 콘텐츠의 xx% 진행 시점에 광고 재생
@@ -1785,7 +1785,7 @@ jwplayer('myElement').setup({
 - **type** (string)
 
   - 광고 구간 내에서 제공되는 광고의 **형식(format)** 을 지정합니다.
-  - **가능한 값:**
+  - 가능한 값:
     • `linear`: (기본값) 영상 재생을 중단하고 표시되는 **비디오 광고**
     • `nonlinear`: 영상 재생을 중단하지 않고 **플레이어 일부 위에 오버레이되는 광고**.
   - (이 경우 광고 큐 포인트가 표시되지 않음)

@@ -46,24 +46,17 @@ player.setup({
 });
 ```
 
-## <br>
-
 <br>
 
-### **appid** (string)
+- **appid** (string)
 
-커스텀 리시버를 사용할 때, **리시버 앱의 식별자(identifier)** 를 지정합니다.
+  - 커스텀 리시버를 사용할 때, **리시버 앱의 식별자(identifier)** 를 지정합니다.
 
-<br>
+- **interceptCast** (boolean)
 
-### **interceptCast** (boolean)
-
-**기본 Chromecast 동작을 비활성화**합니다.
-
-이 설정이 활성화되면, **캐스트 아이콘 클릭 시 기본 전송 동작은 실행되지 않으며**,  
-대신 플레이어에서 `castIntercepted` 이벤트가 트리거됩니다.
-
----
+  - **기본 Chromecast 동작을 비활성화**합니다.
+  - 이 설정이 활성화되면, **캐스트 아이콘 클릭 시 기본 전송 동작은 실행되지 않으며**,  
+    대신 플레이어에서 `castIntercepted` 이벤트가 트리거됩니다.
 
 <br>
 

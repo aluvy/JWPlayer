@@ -35,53 +35,36 @@ player.setup({
 });
 ```
 
----
-
 <br>
 
-### code (string)
+- **code** (string)
 
-**임베드 코드(embed code)** 를 표시할 필드의 내용을 지정합니다.  
-이 속성이 설정되지 않으면 해당 필드는 표시되지 않습니다.
+  - **임베드 코드(embed code)** 를 표시할 필드의 내용을 지정합니다.
+  - 이 속성이 설정되지 않으면 해당 필드는 표시되지 않습니다.
 
-<br>
+- **heading** (string) <sup>< 8.6.0</sup>
 
-### heading (string) <sup>< 8.6.0</sup>
+  - 공유 화면 상단에 표시되는 **간단한 안내 텍스트**를 지정합니다.
+  - 기본값: `Share Video`
+  - 주의: JWP 8.6.0 이상에서는 `intl.{lang}.sharing.heading` 을 사용해야 합니다.
 
-공유 화면 상단에 표시되는 **간단한 안내 텍스트**를 지정합니다.
+- **link** (string)
 
-- 기본값: `Share Video`
+  - 영상이 플레이어에서 공유될 때, **공유 대상자가 이동할 URL** 을 지정합니다.
+  - 기본값: `현재 페이지의 URL`
+  - 참고: `link` 는 **playlist item 단위**로도 설정할 수 있습니다.
 
-> 주의: JWP 8.6.0 이상에서는 `intl.{lang}.sharing.heading` 을 사용해야 합니다.
+- **sites** (array)
 
-<br>
-
-### link (string)
-
-영상이 플레이어에서 공유될 때, **공유 대상자가 이동할 URL** 을 지정합니다.
-
-- 기본값: `현재 페이지의 URL`
-
-> 참고: `link` 는 **playlist item 단위**로도 설정할 수 있습니다.
-
-<br>
-
-### sites (array)
-
-**공유 아이콘(social icons)** 을 사용자 정의할 수 있습니다.
-
-**가능한 값:**
-
-- `bluesky`
-- `email`
-- `facebook`
-- `linkedin`
-- `pinterest`
-- `reddit`
-- `tumblr`
-- `twitter` (X)
-- `whatsapp`
-
-  <br>
-
-- 기본값: `["facebook", "twitter", "email"]`
+  - **공유 아이콘(social icons)** 을 사용자 정의할 수 있습니다.
+  - 가능한 값:
+    - `bluesky`
+    - `email`
+    - `facebook`
+    - `linkedin`
+    - `pinterest`
+    - `reddit`
+    - `tumblr`
+    - `twitter` (X)
+    - `whatsapp`
+  - 기본값: `["facebook", "twitter", "email"]`

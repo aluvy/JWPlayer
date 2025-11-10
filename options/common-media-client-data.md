@@ -28,29 +28,24 @@ player.setup({
 
 <br>
 
-### contentId (string)
+- **contentId** (string)
 
-현재 미디어 항목의 **식별자(identifier)** 를 지정합니다.
-
-- 기본값: 플레이리스트 항목의 `media ID`
-
-<br>
-
-### sessionId (string)
-
-**세션(session)** 의 고유 식별자입니다.
-
-- 기본값: 무작위로 생성된 `UUID`
+  - 현재 미디어 항목의 **식별자(identifier)** 를 지정합니다.
+  - 기본값: 플레이리스트 항목의 `media ID`
 
 <br>
 
-### useHeaders (boolean)
+- **sessionId** (string)
 
-요청에 **CMCD 헤더를 추가할지 여부**를 설정합니다.
+  - **세션(session)** 의 고유 식별자입니다.
+  - 기본값: 무작위로 생성된 `UUID`
 
-가능한 값:
+<br>
 
-- `false`: (기본값) CMCD 정보가 **쿼리 스트링(query string)** 을 통해 전송됩니다.
-- `true`: CMCD 정보가 **HTTP 헤더(headers)** 를 통해 전송됩니다.
+- **useHeaders** (boolean)
 
-> ⚠️ 단, 서버가 이러한 추가 헤더를 **예상하고 허용하지 않는 경우, CORS 오류**가 발생할 수 있습니다.
+  - 요청에 **CMCD 헤더를 추가할지 여부**를 설정합니다.
+  - 가능한 값:
+    - `false`: (기본값) CMCD 정보가 **쿼리 스트링(query string)** 을 통해 전송됩니다.
+    - `true`: CMCD 정보가 **HTTP 헤더(headers)** 를 통해 전송됩니다.
+  - ⚠️ 단, 서버가 이러한 추가 헤더를 **예상하고 허용하지 않는 경우, CORS 오류**가 발생할 수 있습니다.

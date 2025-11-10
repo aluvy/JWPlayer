@@ -13,40 +13,33 @@
 
 ```json
 "ga":  {
-    "label": "mediaid",
-    "sendEnhancedEvents": true
+  "label": "mediaid",
+  "sendEnhancedEvents": true
 }
 ```
 
----
-
 <br>
 
-### label (string)
+- **label** (string)
 
-Google Analytics 이벤트의 **라벨(label)** 로 사용할 **플레이리스트 속성**을 정의합니다.  
-예: `title`, `mediaid`
+  - Google Analytics 이벤트의 **라벨(label)** 로 사용할 **플레이리스트 속성**을 정의합니다.
+  - 예: `title`, `mediaid`
+  - 기본값: `file`
 
-- 기본값: `file`
+- **sendEnhancedEvents** (boolean) <sup>8.27.0+</sup>
 
-<br>
-
-### sendEnhancedEvents (boolean) <sup>8.27.0+</sup>
-
-**(Google Analytics 4 전용)**
-이벤트에 대해 **향상된 측정(enhanced measurement)** 값과 **새로운 이벤트 네이밍 규칙**을 사용할지 여부를 지정합니다.
-
-가능한 값:
-
-- `false`: (기본값) 기존 이벤트 이름과 기존 매개변수로 JWP 이벤트 전송
-- `true`: 모든 JWP 이벤트가 `video_` 접두사로 시작하는 **새 이벤트 이름**으로 전송되며, 다음 **GA4 비디오 관련 매개변수**를 포함합니다:
-   • video_current_time
-   • video_duration
-   • video_percent
-   • video_provider
-   • video_title
-   • video_url
-   • visible
+  - **(Google Analytics 4 전용)**
+  - 이벤트에 대해 **향상된 측정(enhanced measurement)** 값과 **새로운 이벤트 네이밍 규칙**을 사용할지 여부를 지정합니다.
+  - 가능한 값:
+    - `false`: (기본값) 기존 이벤트 이름과 기존 매개변수로 JWP 이벤트 전송
+    - `true`: 모든 JWP 이벤트가 `video_` 접두사로 시작하는 **새 이벤트 이름**으로 전송되며, 다음 **GA4 비디오 관련 매개변수**를 포함합니다:
+       • video_current_time
+       • video_duration
+       • video_percent
+       • video_provider
+       • video_title
+       • video_url
+       • visible
 
 <br>
 

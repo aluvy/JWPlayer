@@ -18,10 +18,8 @@
 
 플로팅 플레이어의 스타일을 사용자 정의하려면 아래 CSS 클래스를 사용할 수 있습니다.
 
-```
-.jw-flag-floating .jw-wrapper
-.jw-float-icon
-```
+- .jw-flag-floating .jw-wrapper
+- .jw-float-icon
 
 또한 **Floating API** 메서드를 사용하면  
 **사용자 정의 플로팅 타이밍(floating timing)** 을 구현할 수 있습니다.
@@ -34,46 +32,34 @@
 
 ```javascript
 player.setup({
-    "playlist": "https://cdn.jwplayer.com/v2/playlists/{playlist_id}",
-    ...
-    "floating": {
-        "dismissible": true
-    }
+  "playlist": "https://cdn.jwplayer.com/v2/playlists/{playlist_id}",
+  ...
+  "floating": {
+    "dismissible": true
+  }
 });
 ```
 
----
-
 <br>
 
-### dismissible (boolean)
+- **dismissible** (boolean)
 
-시청자가 **플로팅 플레이어를 닫을 수 있는지 여부**를 제어합니다.
+  - 시청자가 **플로팅 플레이어를 닫을 수 있는지 여부**를 제어합니다.
+  - 가능한 값:
+    - `true`: (기본값) 시청자가 플로팅 플레이어를 닫을 수 있음
+    - `false`: 시청자가 플로팅 플레이어를 닫을 수 없음
 
-가능한 값:
+- **mode** (string) <sup>< 8.17.0+</sup>
 
-- `true`: (기본값) 시청자가 플로팅 플레이어를 닫을 수 있음
-- `false`: 시청자가 플로팅 플레이어를 닫을 수 없음
+  - **플로팅 동작 방식**을 설정합니다.
+  - 가능한 값:
+    - `notVisible`: (기본값) 플레이어가 화면에서 벗어나면 플로팅 시작, 다시 보이면 플로팅 종료
+    - `always`: 항상 플로팅 상태 유지
+    - `never`: 플로팅 기능 사용 안 함
 
-<br>
+- **showTitle** (boolean)
 
-### mode (string) <sup>< 8.17.0+</sup>
-
-**플로팅 동작 방식**을 설정합니다.
-
-가능한 값:
-
-- `notVisible`: (기본값) 플레이어가 화면에서 벗어나면 플로팅 시작, 다시 보이면 플로팅 종료
-- `always`: 항상 플로팅 상태 유지
-- `never`: 플로팅 기능 사용 안 함
-
-<br>
-
-### showTitle (boolean)
-
-**플로팅 플레이어 상단의 닫기(X) 버튼과 함께 동영상 제목을 표시할지 여부**를 설정합니다.
-
-가능한 값:
-
-- `false`: (기본값) 닫기 바에 동영상 제목 표시 안 함
-- `true`: 닫기 바에 동영상 제목 표시
+  - **플로팅 플레이어 상단의 닫기(X) 버튼과 함께 동영상 제목을 표시할지 여부**를 설정합니다.
+  - 가능한 값:
+    - `false`: (기본값) 닫기 바에 동영상 제목 표시 안 함
+    - `true`: 닫기 바에 동영상 제목 표시
