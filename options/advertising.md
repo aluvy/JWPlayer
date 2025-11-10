@@ -40,7 +40,7 @@
 - **admessage** (string) <sup>< 8.6.0</sup>
 
   - 광고 재생 중 표시되는 문구입니다.
-  - ⚠️ 주의: JWP 8.6.0 이상에서는 `intl` 객체를 사용해야 합니다.
+  - ⚠️주의: JWP 8.6.0 이상에서는 `intl` 객체를 사용해야 합니다.
   - 기본값: `The ad will end in xx seconds`
 
 - **allowedOmidVendors** (array) <sup>8.20.0+</sup>
@@ -85,7 +85,7 @@
 - **cuetext** (string) <sup>< 8.6.0</sup>
 
   - 사용자가 광고 예약 마커 위에 마우스를 올렸을 때 표시되는 텍스트
-  - 8.6.0 이상에서는 `intl` 객체 사용
+  - ⚠️ 8.6.0 이상에서는 `intl` 객체 사용
   - 기본값: `Advertisement`
 
 - **duration** (number)
@@ -160,7 +160,7 @@
 
   - _(VAST)_ 광고 팟(pod) 재생 중 표시되는 문구.
   - `__AD_POD_CURRENT__` = 현재 광고 번호, `__AD_POD_LENGTH__` = 총 광고 수
-  - 8.6.0 이상에서는 `intl` 객체 사용
+  - ⚠️ 8.6.0 이상에서는 `intl` 객체 사용
   - 기본값: `Ad xx of yy.`
 
 - **ppid** (string) <sup>8.13.3+</sup>
@@ -170,7 +170,7 @@
 - **preloadAds** (boolean)
 
   - (IMA, VAST) 광고 브레이크(ad break)에 대한 광고 응답을 미리 요청합니다.
-  - 주의: `true`로 설정하면 **프로그램매틱 광고의 충전율(fill rate)** 이 낮아질 수 있습니다.
+  - ⚠️주의: `true`로 설정하면 **프로그램매틱 광고의 충전율(fill rate)** 이 낮아질 수 있습니다.
   - 기본값: `false`
 
 - **repeat** (boolean) <sup>8.6.0+</sup>
@@ -211,7 +211,7 @@
 - **skipmessage** (string) <sup>< 8.6.0</sup>
 
   - _(FreeWheel, VAST)_ 사용자 정의 스킵 카운트다운 문구 설정
-  - JWP 8.6.0 이상에서는 `intl` 객체 사용
+  - ⚠️ JWP 8.6.0 이상에서는 `intl` 객체 사용
   - 기본값: `Skip ad in xx`
 
 - **skipoffset** (number)
@@ -221,7 +221,7 @@
 - **skiptext** (string) <sup>< 8.6.0</sup>
 
   - _(FreeWheel, VAST)_ 카운트다운 후 “Skip” 버튼에 표시할 텍스트
-  - JWP 8.6.0 이상에서는 `intl` 객체 사용
+  - ⚠️ JWP 8.6.0 이상에서는 `intl` 객체 사용
   - 기본값: `Skip`
 
 - **tag** (array \| string)
