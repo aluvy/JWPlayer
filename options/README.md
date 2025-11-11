@@ -8,6 +8,8 @@
 - [Behavior](./setup.md#Behavior)
 - [Rendering and Loading](./setup.md#RenderingandLoading)
 
+<br>
+
 ## Advertising
 
 이 객체는 JW Player의 비디오 광고 기능을 구성합니다.
@@ -28,17 +30,23 @@
 - [advertising.rules](/advertising.md#advertisingrules)
 - [advertising.schedule](/advertising.md#advertisingschedule)
 
+<br>
+
 ## Auto Pause
 
 플레이어가 특정 규칙에 따라 자동으로 일시정지되도록 설정합니다.
 
 - [Auto Pause](./auto-pause.md#AutoPause)
 
+<br>
+
 ## Captions
 
 이 옵션 블록은 JWP 웹 및 iOS 플레이어용 자막(Closed Captions) 의 스타일(모양) 을 구성합니다.
 
 - [Captions](./captions.md#captions)
+
+<br>
 
 ## Casting
 
@@ -47,6 +55,8 @@
 
 - [Casting](./casting.md)
 
+<br>
+
 ## Common Media Client Data
 
 공통 미디어 클라이언트 데이터, CMCD  
@@ -54,11 +64,15 @@
 
 - [Common Media Client Data](./common-media-client-data.md)
 
+<br>
+
 ## Do Not Save Cookies
 
 doNotSaveCookies 속성은 플레이어 내 데이터 수집을 제한합니다.
 
 - [Do Not Save Cookies](./do-not-save-cookies.md)
+
+<br>
 
 ## DRM
 
@@ -71,6 +85,8 @@ HLS 스트림(FairPlay)에 대한 DRM 관련 구성 옵션이 제공됩니다.
 - [drm.fairplay](./drm.md#drm.fairplay)
 - [drm.clearkey](./drm.md#drm.clearkey)
 
+<br>
+
 ## Float on scroll
 
 이 기능은 페이지를 스크롤할 때 원래 위치의 플레이어가 화면 밖으로 벗어나면,  
@@ -78,11 +94,15 @@ HLS 스트림(FairPlay)에 대한 DRM 관련 구성 옵션이 제공됩니다.
 
 - [Float on scroll](./float-on-scroll.md)
 
+<br>
+
 ## Google Analytics (ga)
 
 이 옵션은 Google Analytics(GA) 와의 내장 통합 기능(built-in integration) 을 구성합니다.
 
 - [Google Analytics (ga)](./google-analytics.md)
+
+<br>
 
 ## Internationalization
 
@@ -98,11 +118,15 @@ intl 객체는 새로운 언어 번역을 추가하거나,
 - [intl.{lang}.shortcuts object](./intl.md#intllangshortcuts-object)
 - [Transition table](./intl.md#Transition-table)
 
+<br>
+
 ## Logo
 
 이 옵션 블록은 비디오 위에 오버레이되는 클릭 가능한 워터마크(logo) 를 설정합니다.
 
 - [Logo](./logo.md)
+
+<br>
 
 ## Playlists
 
@@ -111,11 +135,15 @@ intl 객체는 새로운 언어 번역을 추가하거나,
 - [playlist](./playlists.md#playlist)
 - [playlist[]](./playlists.md#playlist-1)
 
+<br>
+
 ## Related
 
 이 객체는 추천(related) 플레이리스트의 표시 방식과 동작(behavior) 을 제어합니다.
 
 - [Related](./related.md)
+
+<br>
 
 ## Sharing
 
@@ -123,11 +151,15 @@ intl 객체는 새로운 언어 번역을 추가하거나,
 
 - [Sharing](./sharing.md)
 
+<br>
+
 ## Skin
 
 W Player는 기본적으로 11가지 스킨 구성 옵션(skin configuration options) 을 제공합니다.
 
 - [Color Customization](./skin.md#colorcustomization)
+
+<br>
 
 ## Time slider
 
