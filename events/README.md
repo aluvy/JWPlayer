@@ -14,13 +14,17 @@
 
 ## SETUP
 
-플레이어 셋업과 관련된 이벤트 그룹
+- [**ready**](./setup.md#onready)
 
-| Event                                     | Description                                             |
-| :---------------------------------------- | :------------------------------------------------------ |
-| [**ready**](./setup.md#onready)           | 플레이어 초기화가 완료되어 재생 준비가 끝난 시점에 호출 |
-| [**remove**](./setup.md#onremove)         | 플레이어 인스턴스가 DOM에서 제거될 때 호출              |
-| [**setupError**](./setup.md#onsetupError) | 플레이어 초기화가 실패했을 때 호출                      |
+  - 플레이어가 초기화되어 재생 준비가 완료되었을 때 발생합니다.
+
+- [**remove**](./setup.md#onremove)
+
+  - `jwplayer().remove()`를 통해 플레이어가 페이지에서 제거될 때 트리거됩니다.
+
+- [**setupError**](./setup.md#onsetupError)
+
+  - 플레이어를 정상적으로 설정할 수 없을 때 발생합니다.
 
 <br>
 
@@ -28,9 +32,9 @@
 
 모든 이벤트를 수집하는 이벤트 그룹
 
-| Event                     | Description                                                   |
-| :------------------------ | :------------------------------------------------------------ |
-| [**all**](./all.md#onall) | 플레이어 내부에서 발생하는 모든 이벤트가 트리거될 때마다 호출 |
+- [**all**](./all.md#onall)
+
+  - 플레이어 내부에서 발생하는 모든 이벤트가 트리거될 때마다 호출
 
 <br>
 
@@ -38,37 +42,132 @@
 
 광고 기능과 관련된 이벤트 그룹
 
-| Event                                                                       | Description                                                        |
-| :-------------------------------------------------------------------------- | :----------------------------------------------------------------- |
-| [**adBidRequest**](./advertising.md#onadBidRequest)                         | 광고 요청(bid request)을 보내기 직전에 호출                        |
-| [**adBidResponse**](./advertising.md#onadBidResponse)                       |                                                                    |
-| [**adBlock**](./advertising.md#onadBlock)                                   |                                                                    |
-| [**adBreakEnd**](./advertising.md#onadBreakEnd)                             |                                                                    |
-| [**adBreakIgnored**](./advertising.md#onadBreakIgnored)                     |                                                                    |
-| [**adBreakStart**](./advertising.md#onadBreakStart)                         |                                                                    |
-| [**adClick**](./advertising.md#onadClick)                                   |                                                                    |
-| [**adCompanions**](./advertising.md#onadCompanions)                         |                                                                    |
-| [**adComplete**](./advertising.md#onadComplete)                             |                                                                    |
-| [**adError**](./advertising.md#onadError)                                   |                                                                    |
-| [**adImpression**](./advertising.md#onadImpression)                         |                                                                    |
-| [**adItem**](./advertising.md#onadItem)                                     |                                                                    |
-| [**adLoaded**](./advertising.md#onadLoaded)                                 |                                                                    |
-| [**adManager**](./advertising.md#onadManager)                               |                                                                    |
-| [**adMeta**](./advertising.md#onadMeta)                                     |                                                                    |
-| [**adPause**](./advertising.md#onadPause)                                   |                                                                    |
-| [**adPlay**](./advertising.md#onadPlay)                                     |                                                                    |
-| [**adRequest**](./advertising.md#onadRequest)                               |                                                                    |
-| [**adRequestedContentResume**](./advertising.md#onadRequestedContentResume) |                                                                    |
-| [**adSchedule**](./advertising.md#onadSchedule)                             |                                                                    |
-| [**adLoadedXML**](./advertising.md#onadLoadedXML)                           |                                                                    |
-| [**adSkipped**](./advertising.md#onadSkipped)                               |                                                                    |
-| [**adStarted**](./advertising.md#onadStarted)                               |                                                                    |
-| [**adTime**](./advertising.md#onadTime)                                     |                                                                    |
-| [**adViewableImpression**](./advertising.md#onadViewableImpression)         |                                                                    |
-| [**adWarning**](./advertising.md#onadWarning)                               |                                                                    |
-| [**adsManager**](./advertising.md#onadsManager)                             |                                                                    |
-| [**beforeComplete**](./advertising.md#onbeforeComplete)                     | 현재 재생 중인 영상이 끝나기 직전(마지막 프레임 재생 직전) 에 호출 |
-| [**beforePlay**](./advertising.md#onbeforePlay)                             | 영상이 재생되기 직전, 즉 실제 `play()` 명령이 실행되기 직전에 호출 |
+- [**adBidRequest**](./advertising.md#onadBidRequest)
+
+  - 헤더 비딩(Header Bidding) 이 입찰 요청을 시작할 때 트리거됩니다.
+
+- [**adBidResponse**](./advertising.md#onadBidResponse)
+
+  - 헤더 비딩(Header Bidding) 응답이 반환될 때 트리거됩니다.
+
+- [**adBlock**](./advertising.md#onadBlock)
+
+  - 이 이벤트는 JWP 설정에 VAST 또는 Google IMA 광고 플러그인이 구성되어 있을 때, 시청자의 브라우저에서 광고 차단기(Ad Blocker) 가 감지되면 트리거됩니다.
+
+- [**adBreakEnd**](./advertising.md#onadBreakEnd)
+
+  - 광고 재생이 종료되고 플레이어로 제어권이 다시 넘어올 때 트리거됩니다.
+
+- [**adBreakIgnored**](./advertising.md#onadBreakIgnored)
+
+  - (VAST 전용) 이 이벤트는 이전에 완전히 재생된 광고 구간(ad break) 과 현재 광고 구간 사이의 경과 시간이 advertising.rules.timeBetweenAds 에 정의된 값보다 짧을 때 트리거됩니다.
+
+- [**adBreakStart**](./advertising.md#onadBreakStart)
+
+  - 광고 요청이 완료된 직후, 광고가 플레이어에 로드되기 직전에 트리거됩니다. 이 이벤트는 광고 구간(ad break) 내의 첫 번째 광고 이전에만 발생합니다.
+
+- [**adClick**](./advertising.md#onadClick)
+
+  - 광고를 클릭하여 랜딩 페이지로 이동할 때마다 트리거되는 이벤트입니다. 해당 이벤트는 DAI, FreeWheel, IMA, VAST 클라이언트에서 모두 지원됩니다.
+
+- [**adCompanions**](./advertising.md#onadCompanions)
+
+  - (VAST, IMA) 광고에 컴패니언(Companion) 이 포함되어 있을 때 트리거됩니다. IMA, VAST 두 광고 클라이언트 모두에서 지원됩니다.
+
+- [**adComplete**](./advertising.md#onadComplete)
+
+  - 광고가 완전히 재생을 마쳤을 때 트리거됩니다. 이 이벤트는 DAI, FreeWheel, IMA, VAST 클라이언트 모두에서 발생합니다.
+
+- [**adError**](./advertising.md#onadError)
+
+  - 광고 재생이 오류로 인해 중단될 때 트리거됩니다.
+
+- [**adImpression**](./advertising.md#onadImpression)
+
+  - IAB(Interactive Advertising Bureau) 정의에 따라 광고 노출(impression)이 발생할 때 트리거됩니다. 즉, 비디오 광고가 실제로 재생을 시작하는 순간 발생합니다.
+
+- [**adItem**](./advertising.md#onadItem)
+
+  - VAST XML이 파싱되고, 로드되며, 표시할 준비가 완료되었을 때 트리거됩니다. 적용 대상: IMA, VAST
+
+- [**adLoaded**](./advertising.md#onadLoaded)
+
+  - VAST XML이 파싱되어 로드되고, 표시할 준비가 완료되었을 때 트리거됩니다. 적용 대상: IMA, VAST
+
+- [**adManager**](./advertising.md#onadManager)
+
+  - FreeWheel 전용 이벤트로, 광고 매니저(ad manager) 가 플레이어에 로드될 때 트리거됩니다. 이 이벤트를 사용하면 광고 재생 전에 퍼블리셔가 FreeWheel 광고 매니저의 추가 기능을 통합할 수 있습니다.
+
+- [**adMeta**](./advertising.md#onadMeta)
+
+  - (VAST 전용) 플레이어가 광고로부터 새로운 메타데이터를 수신할 때마다 지속적으로 트리거되는 이벤트입니다. 값은 광고의 구성에 따라 달라질 수 있습니다.
+
+- [**adPause**](./advertising.md#onadPause)
+
+  - 광고가 일시정지(Pause) 될 때마다 트리거됩니다. 적용 대상: DAI, FreeWheel, IMA, VAST
+
+- [**adPlay**](./advertising.md#onadPlay)
+
+  - 광고가 재생을 시작하거나 또는 일시정지 상태에서 다시 재생될 때 트리거됩니다. 적용 대상: DAI, FreeWheel, IMA, VAST
+
+- [**adRequest**](./advertising.md#onadRequest)
+
+  - 플레이어가 광고를 요청할 때마다 트리거됩니다. 적용 대상: FreeWheel, IMA, VAST
+
+- [**adRequestedContentResume**](./advertising.md#onadRequestedContentResume)
+
+  - (IMA, VAST) 다음 중 하나의 이벤트가 발생할 때 트리거됩니다:
+    - 광고가 완료되었을 때
+    - 오류가 발생했을 때
+    - 광고가 건너뛰기(skipped) 되었을 때
+  - 이 이벤트는 광고 재생이 끝나고 콘텐츠 재생으로 전환되는 시점을 나타냅니다.
+
+- [**adSchedule**](./advertising.md#onadSchedule)
+
+  - (VAST) 광고 스케줄이 플러그인에 의해 로드되고 파싱될 때 트리거됩니다.
+
+- [**adLoadedXML**](./advertising.md#onadLoadedXML)
+
+  - VAST 전용 이벤트 VAST 광고 클라이언트가 광고 태그를 로드할 때 트리거됩니다.
+
+- [**adSkipped**](./advertising.md#onadSkipped)
+
+  - 광고가 건너뛰기(skipped) 되었을 때마다 트리거됩니다.
+
+- [**adStarted**](./advertising.md#onadStarted)
+
+  - (VAST [VPAID], FreeWheel [VPAID], IMA [모든 광고]) 광고 크리에이티브가 JWP 플레이어에 재생 시작을 알릴 때 트리거됩니다.
+
+- [**adTime**](./advertising.md#onadTime)
+
+  - 광고 재생이 진행 중일 때 주기적으로 발생하는 이벤트입니다. (DAI, FreeWheel, IMA, VAST 클라이언트에서 지원됨)
+
+- [**adViewableImpression**](./advertising.md#onadViewableImpression)
+
+  - VAST 및 IMA에서 사용됩니다. 다음 두 가지 조건이 모두 충족될 때만 트리거됩니다:
+    - 광고가 연속 2초 이상 재생된 경우
+    - 플레이어의 50% 이상이 뷰포트(viewport)에 표시된 경우
+
+- [**adWarning**](./advertising.md#onadWarning)
+
+  - VAST 전용 이벤트입니다.
+  - 광고 재생에는 치명적이지 않지만 비정상적인 경고(non-fatal warning) 가 발생했음을 나타냅니다.
+  - 광고의 재생은 계속되지만, 일부 트래킹 이벤트나 구성 요소가 누락되었을 때 발생할 수 있습니다.
+
+- [**adsManager**](./advertising.md#onadsManager)
+
+  - 플레이어에 광고 관리자(ad manager) 가 로드될 때 발생하는 이벤트입니다.
+  - 이 이벤트는 광고 재생 전에 게시자가 추가적인 광고 관리자 기능을 통합할 수 있도록 합니다.
+
+- [**beforeComplete**](./advertising.md#onbeforeComplete)
+
+  - 플레이어가 재생을 완료하기 직전에 발생하는 이벤트입니다.
+
+- [**beforePlay**](./advertising.md#onbeforePlay)
+
+  - 다음 중 어느 하나가 발생하기 직전에 호출되는 이벤트입니다.
+    - 단일 미디어 또는 재생목록(playlist)의 개별 항목이 처음 재생되기 전
+    - 일시 정지된 상태에서 시청자 또는 다른 메커니즘에 의해 재생이 다시 시작되기 전
 
 <br>
 
@@ -76,10 +175,13 @@
 
 오디오 트랙과 관련된 이벤트 그룹
 
-| Event                                                          | Description                                       |
-| :------------------------------------------------------------- | :------------------------------------------------ |
-| [**audioTrackChanged**](./audio-tracks.md#onaudiotrackchanged) | 활성화된 오디오 트랙이 변경될 때 발생             |
-| [**audioTracks**](./audio-tracks.md#onaudiotracks)             | 사용 가능한 오디오 트랙 목록이 업데이트될 때 발생 |
+- [**audioTracks**](./audio-tracks.md#onaudiotracks)
+
+  - 사용 가능한 오디오 트랙 목록이 업데이트될 때 트리거됩니다.
+
+- [**audioTrackChanged**](./audio-tracks.md#onaudiotrackchanged)
+
+  - 활성 오디오 트랙이 변경될 때 트리거됩니다.
 
 <br>
 
@@ -87,9 +189,9 @@
 
 플레이어 버퍼링과 관련된 이벤트 그룹
 
-| Event                                          | Description                                                       |
-| :--------------------------------------------- | :---------------------------------------------------------------- |
-| [**bufferChange**](./buffer.md#onbufferChange) | 현재 재생 중인 미디어의 버퍼(로딩된 데이터 양)가 변할 때마다 호출 |
+- [**bufferChange**](./buffer.md#onbufferChange)
+
+  - 현재 재생 중인 항목이 버퍼에 추가 데이터를 로드할 때 트리거됩니다.
 
 <br>
 
@@ -97,10 +199,13 @@
 
 자막과 관련된 이벤트 그룹
 
-| Event                                                  | Description                                                              |
-| :----------------------------------------------------- | :----------------------------------------------------------------------- |
-| [**captionsChanged**](./captions.md#oncaptionsChanged) | 자막 트랙을 변경했을 때 호출                                             |
-| [**captionsList**](./captions.md#oncaptionsList)       | 사용 가능한 자막 트랙(caption tracks)을 처음 인식하거나 갱신했을 때 호출 |
+- [**captionsList**](./captions.md#oncaptionsList)
+
+  - 사용 가능한 자막 트랙 목록이 변경될 때 트리거됩니다.
+
+- [**captionsChanged**](./captions.md#oncaptionsChanged)
+
+  - 활성 자막 트랙이 수동으로 또는 API를 통해 변경될 때마다 트리거됩니다.
 
 <br>
 
@@ -108,10 +213,13 @@
 
 크롬캐스트(Chromecast)나 AirPlay 같은 외부 기기로의 영상 송출(cast)과 관련된 이벤트 그룹
 
-| Event                                              | Description                                                                                                                                 |
-| :------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| [**cast**](./cast.md#oncast)                       | 플레이어의 Cast 상태(Chromecast, AirPlay 등) 가 시작되거나 종료될 때 호출                                                                   |
-| [**castIntercepted**](./cast.md#oncastIntercepted) | 사용자가 브라우저(Chrome)의 네이티브 Cast 버튼을 직접 클릭했을 때, JWPlayer가 그 Cast 요청을 가로채서 자사 플레이어 세션으로 처리할 때 호출 |
+- [**cast**](./cast.md#oncast)
+
+  - 캐스트 속성이 변경될 때 트리거됩니다.
+
+- [**castIntercepted**](./cast.md#oncastIntercepted)
+
+  - `interceptCast`가 활성화된 상태에서 사용자가 콘텐츠를 캐스트하려고 시도할 때 발생합니다.
 
 <br>
 
@@ -119,10 +227,13 @@
 
 플레이어 제어 UI(재생/일시정지/음량/전체화면/트랙변경 등)와 관련된 이벤트 그룹
 
-| Event                                            | Description                                                                                |
-| :----------------------------------------------- | :----------------------------------------------------------------------------------------- |
-| [**controls**](./controls.md#oncontrols)         | 플레이어 컨트롤(Play/Pause 버튼, 시킹바, 볼륨, 설정 버튼 등) 의 표시 상태가 변경될 때 호출 |
-| [**displayClick**](./controls.md#ondisplayClick) | 사용자가 플레이어의 메인 비디오 영역(Display Area) 을 클릭했을 때 호출                     |
+- [**controls**](./controls.md#oncontrols)
+
+  - 스크립트에 의해 컨트롤이 활성화되거나 비활성화될 때 트리거됩니다.
+
+- [**displayClick**](./controls.md#ondisplayClick)
+
+  - 사용자가 비디오 디스플레이 영역을 클릭할 때 트리거됩니다.
 
 <br>
 
@@ -130,9 +241,9 @@
 
 플레이어가 화면 위에 떠(floating)서 위치가 바뀔 때와 관련된 이벤트 그룹
 
-| Event                                     | Description                                                  |
-| :---------------------------------------- | :----------------------------------------------------------- |
-| [**float**](./floating-player.md#onfloat) | 플레이어가 플로팅(floating) 상태로 전환되거나 해제될 때 호출 |
+- [**float**](./floating-player.md#onfloat)
+
+  - 플로팅 플레이어가 떠오르거나(floating 시작) 원래 위치로 복귀할 때 트리거됩니다.
 
 <br>
 
@@ -140,10 +251,13 @@
 
 미디어 파일 내부에 포함된 메타데이터(e.g., ID3, timed-metadata, 트랙 길이·제작자 정보 등)와 관련된 이벤트 그룹
 
-| Event                                                      | Description                                                        |
-| :--------------------------------------------------------- | :----------------------------------------------------------------- |
-| [**meta**](./metadata.md#onmeta)                           | 재생이 새로운 메타데이터가 활성화되는 시간 범위에 진입할 때 트리거 |
-| [**metadataCueParsed**](./metadata.md#onmetadataCueParsed) | 메타데이터 큐 포인트(metadata cue point)가 버퍼링될 때 트리거      |
+- [**meta**](./metadata.md#onmeta)
+
+  - 재생이 새로운 메타데이터가 활성화되는 시간 구간에 진입할 때 트리거됩니다.
+
+- [**metadataCueParsed**](./metadata.md#onmetadataCueParsed)
+
+  - 메타데이터 큐 포인트가 버퍼링되면 트리거됩니다.
 
 <br>
 
@@ -151,19 +265,51 @@
 
 실제 재생 상태 변화와 관련된 이벤트 그룹
 
-| Event                                                          | Description                                                                                                                                        |
-| :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**autostartNotAllowed**](./playback.md#onautostartNotAllowed) | 플레이어 설정(`autostart: true`) 또는 `player.play()` 호출로 자동재생을 시도했으나, 브라우저나 OS의 미디어 자동재생 정책에 의해 차단되었을 때 호출 |
-| [**buffer**](./playback.md#onbuffer)                           | 플레이어가 재생 도중 데이터 로딩이 부족하여 일시적으로 멈출 때 호출                                                                                |
-| [**complete**](./playback.md#oncomplete)                       | 플레이어가 현재 재생 중인 영상의 마지막 프레임을 모두 재생 완료했을 때 호출                                                                        |
-| [**error**](./playback.md#onerror)                             | 플레이어가 재생 중 오류를 감지했을 때 호출                                                                                                         |
-| [**firstFrame**](./playback.md#onfirstFrame)                   | 영상이 실제로 화면에 첫 번째 프레임을 렌더링했을 때 호출                                                                                           |
-| [**idle**](./playback.md#onidle)                               | 플레이어가 재생 가능한 미디어가 없거나, 현재 재생이 완전히 종료되어 대기 상태로 전환될 때 호출                                                     |
-| [**pause**](./playback.md#onpause)                             | 재생 중이던 영상이 일시정지(Pause) 상태로 전환될 때 호출                                                                                           |
-| [**play**](./playback.md#onplay)                               | 플레이어가 실제 재생 상태(playing)로 전환될 때 호출                                                                                                |
-| [**playAttemptFailed**](./playback.md#onplayAttemptFailed)     | 플레이어가 재생을 시도했으나(play() 실행됨) 브라우저 또는 플랫폼 정책, 미디어 문제 등으로 인해 재생이 시작되지 못했을 때 호출                      |
-| [**playbackRateChanged**](./playback.md#onplaybackRateChanged) | 플레이어의 재생 속도(playbackRate) 가 변경될 때마다 호출                                                                                           |
-| [**warning**](./playback.md#onwarning)                         | 재생은 계속 진행되지만 경고성 문제(Warning)가 발생했을 때 호출                                                                                     |
+- [**autostartNotAllowed**](./playback.md#onautostartNotAllowed)
+
+  - 플레이어가 자동 재생(autostart) 으로 설정되어 있지만, 브라우저 설정으로 인해 자동 재생이 차단될 때 트리거됩니다.
+
+- [**buffer**](./playback.md#onbuffer)
+
+  - 다음 이벤트 중 하나가 발생할 때 트리거됩니다:
+    - 플레이어가 재생을 시작할 때
+    - 플레이어가 버퍼링 상태에 진입할 때
+
+- [**complete**](./playback.md#oncomplete)
+
+  - 비디오의 끝에 도달했을 때 트리거됩니다.
+
+- [**error**](./playback.md#onerror)
+
+  - 재생 과정에서 치명적인 오류가 발생했을 때 트리거됩니다.
+
+- [**firstFrame**](./playback.md#onfirstFrame)
+
+  - 비디오의 첫 번째 프레임이 표시되거나, 오디오 파일이 재생을 시작하는 순간 트리거됩니다.
+
+- [**idle**](./playback.md#onidle)
+
+  - 플레이어가 idle(대기) 상태로 전환될 때 트리거됩니다.
+
+- [**pause**](./playback.md#onpause)
+
+  - 플레이어 내의 광고가 아닌 미디어 콘텐츠가 일시정지될 때 트리거됩니다.
+
+- [**play**](./playback.md#onplay)
+
+  - 플레이어 내의 광고가 아닌 미디어 콘텐츠가 재생을 시작할 때 트리거됩니다.
+
+- [**playAttemptFailed**](./playback.md#onplayAttemptFailed)
+
+  - 재생이 중단되거나 차단될 때 트리거됩니다.
+
+- [**playbackRateChanged**](./playback.md#onplaybackRateChanged)
+
+  - 재생 속도가 변경되었을 때 트리거됩니다.
+
+- [**warning**](./playback.md#onwarning)
+
+  - 설정(setup) 또는 재생 과정(playback process) 에 치명적이지 않은 오류가 발생했을 때 트리거됩니다.
 
 <br>
 
@@ -171,12 +317,23 @@
 
 플레이리스트와 관련된 이벤트 그룹
 
-| Event                                                    | Description                                                    |
-| :------------------------------------------------------- | :------------------------------------------------------------- |
-| [**nextClick**](./playlist.md#onnextClick)               | 사용자가 플레이어 UI의 “다음(next)” 버튼을 클릭했을 때 호출    |
-| [**playlist**](./playlist.md#onplaylist)                 | 완전히 새로운 플레이리스트가 플레이어에 로드되었을 때 1회 호출 |
-| [**playlistItem**](./playlist.md#onplaylistItem)         | 플레이리스트 내에서 현재 재생 항목이 바뀌는 순간 호출          |
-| [**playlistComplete**](./playlist.md#onplaylistComplete) | 플레이리스트의 모든 항목이 끝까지 재생된 직후 한 번만 호출     |
+- [**nextClick**](./playlist.md#onnextClick)
+
+  - 컨트롤 바의 다음(next) 버튼 또는 Next Up 오버레이가 클릭된 후 트리거됩니다.
+
+- [**playlist**](./playlist.md#onplaylist)
+
+  - 완전히 새로운 플레이리스트가 플레이어에 로드될 때 트리거됩니다.
+
+- [**playlistItem**](./playlist.md#onplaylistItem)
+
+  - 플레이리스트의 인덱스가 새 항목으로 변경될 때 트리거됩니다.
+
+- [**playlistComplete**](./playlist.md#onplaylistComplete)
+
+  - 다음 조건이 모두 충족될 때 트리거됩니다:
+    - 플레이어가 플레이리스트의 모든 항목 재생을 완료했을 때
+    - repeat 옵션이 false로 설정되어 있을 때
 
 <br>
 
@@ -184,11 +341,17 @@
 
 영상/오디오의 품질과 관련된 이벤트 그룹
 
-| Event                                             | Description                                                                                 |
-| :------------------------------------------------ | :------------------------------------------------------------------------------------------ |
-| [**levels**](./quality.md#onlevels)               | 플레이어가 영상의 화질(quality) 정보를 로드하고, 선택 가능한 레벨 목록이 준비되었을 때 호출 |
-| [**levelsChanged**](./quality.md#onlevelsChanged) | 플레이어의 재생 화질(quality level)이 변경될 때마다 호출                                    |
-| [**visualQuality**](./quality.md#onvisualQuality) | 플레이어의 실제 비디오 렌더링 품질(Visual Quality) 이 실시간으로 변경될 때 호출             |
+- [**levels**](./quality.md#onlevels)
+
+  - 사용 가능한 화질 수준 목록이 업데이트될 때 트리거됩니다.
+
+- [**levelsChanged**](./quality.md#onlevelsChanged)
+
+  - 활성 화질 수준이 변경될 때 트리거됩니다.
+
+- [**visualQuality**](./quality.md#onvisualQuality)
+
+  - HLS에서 활성 화질 수준이 변경될 때 트리거됩니다.
 
 <br>
 
@@ -196,12 +359,21 @@
 
 동영상이 끝난 뒤 관련 콘텐츠 표시와 관련된 이벤트 그룹
 
-| Event                                                 | Description                                                                                                    |
-| :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
-| [**relatedReady**](./related.md#onrelatedReady)       | Related 플러그인(추천 영상 기능) 이 추천 콘텐츠(related playlist) 를 불러오고 DOM 렌더링 준비가 끝났을 때 호출 |
-| [**related-on-close**](./related.md#onrelatedOnclose) | 추천(related) 콘텐츠 오버레이가 닫힐 때 호출                                                                   |
-| [**related-on-open**](./related.md#onrelatedOnopen)   | 추천(related) 콘텐츠 오버레이가 실제로 열릴 때 호출                                                            |
-| [**related-on-play**](./related.md#onrelatedOnplay)   | 사용자가 추천 콘텐츠(related item)를 클릭하여 재생이 시작될 때 호출                                            |
+- [**relatedReady**](./related.md#onrelatedReady)
+
+  - Related 플러그인이 준비되었을 때\*\* 트리거되는 이벤트를 나타냅니다.
+
+- [**related-on-open**](./related.md#onrelatedOnopen)
+
+  - 추천(related) 인터페이스가 열릴 때 트리거됩니다.
+
+- [**related-on-close**](./related.md#onrelatedOnclose)
+
+  - 추천(related) 인터페이스가 닫힐 때 트리거됩니다.
+
+- [**related-on-play**](./related.md#onrelatedOnplay)
+
+  - 사용자가 추천 피드에서 항목을 선택했을 때 트리거됩니다.
 
 <br>
 
@@ -209,10 +381,13 @@
 
 플레이어 크기(가로·세로) 또는 전체화면(fullscreen)과 관련된 이벤트 그룹
 
-| Event                                      | Description                                                            |
-| :----------------------------------------- | :--------------------------------------------------------------------- |
-| [**fullscreen**](./resize.md#onfullscreen) | 플레이어가 전체화면 모드(Fullscreen Mode) 로 진입하거나 해제될 때 호출 |
-| [**resize**](./resize.md#onresize)         | 플레이어 컨테이너의 크기(width/height)가 변경될 때마다 호출            |
+- [**fullscreen**](./resize.md#onfullscreen)
+
+  - 플레이어가 전체화면 모드로 전환되거나 해제될 때 트리거됩니다.
+
+- [**resize**](./resize.md#onresize)
+
+  - 플레이어의 페이지 내 크기(dimension)가 변경되었을 때 트리거됩니다.
 
 <br>
 
@@ -220,12 +395,21 @@
 
 재생 위치를 이동(seek)과 관련된 이벤트 그룹
 
-| Event                                                          | Description                                                                                         |
-| :------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
-| [**absolutePositionReady**](./seek.md#onabsolutePositionReady) | 플레이어가 타임라인 상의 “절대 위치(absolute position)” 정보를 계산할 준비가 완료된 시점에 호출     |
-| [**seek**](./seek.md#onseek)                                   | 사용자가 재생 위치를 변경(Seek) 했을 때 호출                                                        |
-| [**seeked**](./seek.md#onseeked)                               | 시킹(Seek) 동작이 완료된 직후, 즉 플레이어가 새 위치로 이동하고 재생 가능한 상태로 복귀했을 때 호출 |
-| [**time**](./seek.md#ontime)                                   | 플레이어가 재생 중일 때, 매 프레임(또는 일정 주기) 마다 호출                                        |
+- [**absolutePositionReady**](./seek.md#onabsolutePositionReady)
+
+  - .getAbsolutePosition() 메서드가 데이터를 반환할 준비가 되었을 때 트리거됩니다.
+
+- [**seek**](./seek.md#onseek)
+
+  - 컨트롤 바에서 스크럽(scrubbing) 하거나 API를 통해 탐색(seek) 이 요청되었을 때 트리거됩니다.
+
+- [**seeked**](./seek.md#onseeked)
+
+  - on('seek') 이벤트가 탐색 동작이 발생할 때 트리거되는 것과 달리, 이 이벤트는 탐색이 완료되어 비디오 위치가 실제로 변경된 후 트리거됩니다.
+
+- [**time**](./seek.md#ontime)
+
+  - 플레이어가 재생 중일 때 재생 위치가 업데이트될 때마다 트리거됩니다.
 
 <br>
 
@@ -233,17 +417,17 @@
 
 공유 기능(소셜 링크, 임베드 코드 등)과 관련된 이벤트 그룹
 
-```javascript
-player.on('ready', function (event) {
-  sharingPlugin = jwplayer().getPlugin('sharing');
-});
-```
+- [**sharing-on-click**](./sharing.md#onsharingOnclick)
 
-| Event                                                 | Description                                                   |
-| :---------------------------------------------------- | :------------------------------------------------------------ |
-| [**sharing-on-click**](./sharing.md#onsharingOnclick) | 사용자가 공유 패널 내의 특정 플랫폼 아이콘을 클릭했을 때 호출 |
-| [**sharing-on-close**](./sharing.md#onsharingOnclose) | 사용자가 공유 패널(Sharing Overlay) 을 열었을 때 호출         |
-| [**sharing-on-open**](./sharing.md#onsharingOnopen)   | 사용자가 공유 패널을 닫았을 때 호출                           |
+  - 공유(Sharing) 플러그인이 열릴 때 감지합니다.
+
+- [**sharing-on-close**](./sharing.md#onsharingOnclose)
+
+  - 공유(Sharing) 플러그인이 닫힐 때 감지합니다.
+
+- [**sharing-on-open**](./sharing.md#onsharingOnopen)
+
+  - 공유(Sharing) 플러그인 내에서 사용자가 콘텐츠를 공유할 때마다 트리거됩니다.
 
 <br>
 
@@ -251,10 +435,13 @@ player.on('ready', function (event) {
 
 플레이어가 화면에 얼마나 보여지는지(viewable)와 관련된 이벤트 그룹
 
-| Event                                                         | Description                                                                             |
-| :------------------------------------------------------------ | :-------------------------------------------------------------------------------------- |
-| [**containerViewable**](./viewability.md#oncontainerViewable) | 플레이어가 브라우저 뷰포트(Viewport) 내에서 보이는 상태인지 감지될 때마다 호출          |
-| [**viewable**](./viewability.md#onviewable)                   | 플레이어가 브라우저 탭 또는 OS 수준에서 “실제로 보이는 상태(Viewable)”로 전환될 때 호출 |
+- [**containerViewable**](./viewability.md#oncontainerViewable)
+
+  - 플레이어 컨테이너(<div> 요소)의 가시성(viewability) 상태를 나타내는 이벤트가 트리거됩니다.
+
+- [**viewable**](./viewability.md#onviewable)
+
+  - 플레이어의 가시성(viewability) 상태를 나타내는 이벤트가 트리거됩니다.
 
 <br>
 
@@ -262,7 +449,10 @@ player.on('ready', function (event) {
 
 볼륨 변화(음량 변경, 음소거/음소거 해제)와 관련된 이벤트 그룹
 
-| Event                              | Description                                    |
-| :--------------------------------- | :--------------------------------------------- |
-| [**mute**](./volume.md#onmute)     | 플레이어의 음소거 상태(Muted)가 변경될 때 호출 |
-| [**volume**](./volume.md#onvolume) | 플레이어의 볼륨(Volume) 크기가 변경될 때 호출  |
+- [**mute**](./volume.md#onmute)
+
+  - 플레이어가 음소거 상태로 전환되거나 해제될 때 트리거됩니다.
+
+- [**volume**](./volume.md#onvolume)
+
+  - 플레이어의 볼륨이 변경될 때 트리거됩니다.

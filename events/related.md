@@ -1,4 +1,4 @@
-\*\*# Related Events
+# Related Events
 
 <br>
 <br>
@@ -30,7 +30,7 @@ Related 플러그인이 준비되었을 때** 트리거되는 이벤트를 나�
 <br>
 <br>
 
-# ("related").on('open')
+## ("related").on('open')
 
 추천(related) 인터페이스가 **열릴 때** 트리거됩니다.
 
@@ -49,7 +49,7 @@ Related 플러그인이 준비되었을 때** 트리거되는 이벤트를 나�
 <br>
 <br>
 
-# ("related").on('close')
+## ("related").on('close')
 
 추천(related) 인터페이스가 **닫힐 때** 트리거됩니다.
 
@@ -83,7 +83,7 @@ Related 플러그인이 준비되었을 때** 트리거되는 이벤트를 나�
 <br>
 <br>
 
-# ("related").on('play')
+## ("related").on('play')
 
 사용자가 **추천 피드에서 항목을 선택했을 때** 트리거됩니다.
 
